@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC&OR - Club Decision Consulting & Operations Research - INSEA</title>
+    <style>
+        /* Variables et réinitialisation */
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #0ea5e9;
+            --accent-color: #4f46e5;
+            --light-bg: #f8fafc;
+            --dark-bg: #0f172a;
+            --text-light: #f8fafc;
+            --text-dark: #1e293b;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--primary-color);
+            padding: 1rem 5%;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 5%;
+            background-color: rgba(30, 58, 138, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--secondary-color);
+        }
+
+        .burger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .burger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-light);
+            margin: 5px;
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: var(--text-light);
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            animation: fadeIn 2s ease-out;
+        }
+
+        .cta-btn:hover {
+            background-color: #0284c7;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        /* À propos */
+        .about {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transform: rotate(3deg);
+            transition: var(--transition);
+        }
+
+        .about-img:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Missions */
+        .missions {
+            padding: 5rem 10%;
+            background-color: var(--light-bg);
+        }
+
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .mission-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mission-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .mission-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Programme académique */
+        .programme {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        .semester-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .semester-tab {
+            padding: 0.75rem 1.5rem;
+            background-color: var(--light-bg);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .semester-tab.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .semester-content {
+            display: none;
+        }
+
+        .semester-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-item {
+            background-color: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .course-item:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Débouchés */
+        .debouches {
+            padding: 5rem 10%;
+            background-color: var(--light-bg);
+        }
+
+        .debouches-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .debouche-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: 180px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .debouche-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .debouche-icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Compétences */
+        .competences {
+            padding: 5rem 10%;
+            background-color: white;
+        }
+
+        .competences-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .competence-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .competence-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .competence-icon {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+
+        /* Contact */
+        .contact {
+            padding: 5rem 10%;
+            background-color: var(--light-bg);
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 3rem 10% 1rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+
+            .about-img {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto 2rem;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                right: 0;
+                top: 70px;
+                height: calc(100vh - 70px);
+                background-color: var(--primary-color);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                transform: translateX(100%);
+                transition: transform 0.5s ease-in;
+                padding-top: 2rem;
+            }
+
+            .nav-links li {
+                margin: 1.5rem 0;
+            }
+
+            .burger {
+                display: block;
+            }
+
+            .nav-active {
+                transform: translateX(0%);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .mission-card, .competence-item {
+                padding: 1.5rem;
+            }
+
+            .debouche-item {
+                width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">DC<span>&</span>OR</a>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#missions">Missions</a></li>
+                <li><a href="#programme">Programme</a></li>
+                <li><a href="#debouches">Débouchés</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div id="particles-js" class="particles"></div>
+        <div class="hero-content">
+            <h1>Decision Consulting & Operations Research</h1>
+            <p>Exploitez la puissance de la Recherche Opérationnelle et de l'Analytique Avancée pour résoudre les défis complexes du monde moderne</p>
+            <a href="#about" class="cta-btn">Découvrir notre club</a>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="about" class="about">
+        <h2 class="section-title">À propos du Club</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Basé à l'<strong>INSEA</strong>, le Club <strong>Decision Consulting & Operations Research (DC&OR)</strong> est un espace d'excellence dédié à la <strong>Recherche Opérationnelle (RO)</strong> et à l'<strong>Analytique Avancée</strong>.</p>
+                <p>Bien que méconnue du grand public, la Recherche Opérationnelle se révèle être une discipline puissante, capable de transformer la prise de décision dans les entreprises grâce à ses innombrables applications dans des domaines tels que l'industrie, la finance, la santé, la logistique, l'énergie et bien d'autres.</p>
+                <p>Le club se donne pour mission de combler ce manque de visibilité en promouvant la RO comme <strong>un outil essentiel</strong> au service de la performance des organisations. Avec une approche innovante, en combinant la force de la Recherche Opérationnelle avec un appui ciblé de l'Analytique Avancée, on aboutit à des solutions robustes et éclairées aux problématiques complexes.</p>
+                <p>Le résultat ? Une meilleure prise de décision, fondée sur l'optimisation et les données.</p>
+            </div>
+            <div class="about-img">
+                <img src="DS&RO1.png" alt="Club DC&OR à l'INSEA">
+            </div>
+        </div>
+    </section>
+
+    <!-- Missions -->
+    <section id="missions" class="missions">
+        <h2 class="section-title">Nos Missions</h2>
+        <div class="missions-grid">
+            <div class="mission-card">
+                <div class="mission-icon">📢</div>
+                <h3>Promouvoir la RO</h3>
+                <p>Sensibiliser les futurs ingénieurs et le grand public à la puissance de la Recherche Opérationnelle comme levier stratégique pour l'entreprise.</p>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">👨‍🎓</div>
+                <h3>Former des Experts</h3>
+                <p>Développer une génération d'experts en optimisation et en analytique, capables de relever les défis d'aujourd'hui et de demain.</p>
+            </div>
+            <div class="mission-card">
+                <div class="mission-icon">🔍</div>
+                <h3>Simplifier la complexité</h3>
+                <p>Rendre accessibles et inspirants les concepts complexes de la Recherche Opérationnelle pour faciliter leur adoption.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Notre Vision</h3>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.2rem;">Bâtir une communauté scientifique engagée, capable d'exploiter la puissance de la Recherche Opérationnelle et des données pour répondre aux défis complexes des entreprises modernes.</p>
+        </div>
+    </section>
+
+    <!-- Programme académique -->
+    <section id="programme" class="programme">
+        <h2 class="section-title">Programme Académique</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">La filière des Sciences de la Décision et Recherche Opérationnelle forme des futurs ingénieurs outillés pour analyser et résoudre des problèmes mathématiques et algorithmiques complexes.</p>
+        
+        <div class="semester-tabs">
+            <button class="semester-tab active" data-semester="1">Semestre 1</button>
+            <button class="semester-tab" data-semester="2">Semestre 2</button>
+            <button class="semester-tab" data-semester="3">Semestre 3</button>
+            <button class="semester-tab" data-semester="4">Semestre 4</button>
+            <button class="semester-tab" data-semester="5">Semestre 5</button>
+            <button class="semester-tab" data-semester="6">Semestre 6</button>
+        </div>
+
+        <div class="semester-content active" data-semester="1">
+            <div class="course-list">
+                <div class="course-item">ALGORITHMIQUE ET PROGRAMMATION</div>
+                <div class="course-item">ANALYSE ET CONCEPTION RELATIONNELLES ET BASES DE DONNEES</div>
+                <div class="course-item">MATHEMATIQUES POUR L'INGENIEUR</div>
+                <div class="course-item">OPTIMISATION LINEAIRE ET GRAPHES</div>
+                <div class="course-item">STATISTIQUE DESCRIPTIVE, PROBABILITES ET SAS</div>
+                <div class="course-item">MATHEMATIQUES FINANCIERES</div>
+                <div class="course-item">PRINCIPES DE L'ECONOMIE ET HISTOIRE DE LA PENSEE ECONOMIQUE</div>
+                <div class="course-item">COMMUNICATION ET SCIENCES SOCIALES I</div>
+            </div>
+        </div>
+
+        <div class="semester-content" data-semester="2">
+            <div class="course-list">
+                <div class="course-item">INTRODUCTION À L'ANALYSE ECONOMIQUE ET MODELISATION STOCHASTIQUE</div>
+                <div class="course-item">OPTIMISATION NON LINEAIRE ET CALCUL SCIENTIFIQUE</div>
+                <div class="course-item">INFERENCE STATISTIQUE ET STATISTIQUES MULTIVARIEES</div>
+                <div class="course-item">STRUCTURE DE DONNEES ET PROGRAMMATION AVANCEE</div>
+                <div class="course-item">PROGRAMMATION ORIENTEE OBJET</div>
+                <div class="course-item">COMMUNICATION ET SCIENCES SOCIALES II</div>
+                <div class="course-item">ENTREPRENARIAT I</div>
+                <div class="course-item">COMPTABILITE NATIONALE</div>
+            </div>
+        </div>
+
+        <div class="semester-content" data-semester="3">
+            <div class="course-list">
+                <div class="course-item">ANALYSE DE LA REGRESSION ET SERIES CHRONOLOGIQUES</div>
+                <div class="course-item">GESTION DES STOCKS, DE LA PRODUCTION ET DES PROJETS</div>
+                <div class="course-item">ANALYSE DES DONNÉES</div>
+                <div class="course-item">FINANCE DE MARCHÉ</div>
+                <div class="course-item">PROGRAMMATION ORIENTÉE OBJET AVANACÉE</div>
+                <div class="course-item">OPTIMISATION DISCRETE ET SIMULATION I</div>
+                <div class="course-item">COMMUNICATION ET SCIENCES SOCIALES III</div>
+                <div class="course-item">ENTREPRENARIAT II</div>
+            </div>
+        </div>
+
+        <div class="semester-content" data-semester="4">
+            <div class="course-list">
+                <div class="course-item">ECONOMETRIE ET THEORIE DES JEUX</div>
+                <div class="course-item">APPRENTISSAGE STATISTIQUE</div>
+                <div class="course-item">FIABILITE ET MAINTENANCE ET CONTROLE DE QUALITE</div>
+                <div class="course-item">MULTICRITERE ET MODELISATION RO</div>
+                <div class="course-item">INTELLIGENCE D'AFFAIRES ET DECOUVERTE DES CONNAISSANCES</div>
+                <div class="course-item">ALGORITHMES D'OPTIMISATION</div>
+                <div class="course-item">COMMUNICATION ET SCIENCES SOCIALES IV</div>
+                <div class="course-item">ENTREPRENARIAT III</div>
+            </div>
+        </div>
+
+        <div class="semester-content" data-semester="5">
+            <div class="course-list">
+                <div class="course-item">ECHANTILLONNAGE ET TRAITEMENT DES VALEURS MANQUANTES</div>
+                <div class="course-item">SIMULATION AVANCEE ET LOGIQUE FLOUE</div>
+                <div class="course-item">OPTIMISATION DYNAMIQUE ET STOCHASTIQUE</div>
+                <div class="course-item">RESOLUTION DES PROBLEMES D'OPTIMISATION DE GRANDE TAILLE</div>
+                <div class="course-item">APPRENTISSAGE AUTOMATIQUE ET APPRENTISSAGE APPROFONDIE</div>
+                <div class="course-item">MANAGEMENT DES CHAINES LOGISTIQUES ET TRANSPORT</div>
+                <div class="course-item">ENTREPRENARIAT IV</div>
+            </div>
+        </div>
+
+        <div class="semester-content" data-semester="6">
+            <div style="text-align: center; padding: 3rem;">
+                <h3 style="font-size: 1.8rem; color: var(--primary-color);">Projet de fin d'études</h3>
+                <p style="font-size: 1.1rem; margin-top: 1rem;">Application concrète des connaissances acquises à travers un projet professionnel ou de recherche.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Débouchés -->
+    <section id="debouches" class="debouches">
+        <h2 class="section-title">Débouchés Professionnels</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">L'ingénieur en Sciences de la Décision et Recherche Opérationnelle peut exercer son métier dans tous les grands secteurs et s'adapter facilement aux tendances actuelles du marché du travail.</p>
+        
+        <div class="debouches-container">
+            <div class="debouche-item">
+                <div class="debouche-icon">📊</div>
+                <p>Data Science</p>
+            </div>
+            <div class="debouche-item">
+                <div class="debouche-icon">🏭</div>
+                <p>Production et Logistique</p>
+            </div>
+            <div class="debouche-item">
+                <div class="debouche-icon">📡</div>
+                <p>Télécommunications</p>
+            </div>
+            <div class="debouche-item">
+                <div class="debouche-icon">⚡</div>
+                <p>Énergie</p>
+            </div>
+            <div class="debouche-item">
+                <div class="debouche-icon">✈️</div>
+                <p>Aéroportuaire et Ferroviaire</p>
+            </div>
+            <div class="debouche-item">
+                <div class="debouche-icon">🏦</div>
+                <p>Banque et Assurance</p>
+            </div>
+            <div class="debouche-item">
+                <div class="debouche-icon">📝</div>
+                <p>Audit et Études</p>
+            </div>
+            <div class="debouche-item">
+                <div class="debouche-icon">💻</div>
+                <p>Sociétés Informatiques</p>
+            </div>
+            <div class="debouche-item">
+                <div class="debouche-icon">🏛️</div>
+                <p>Administrations</p>
+            </div>
+            <div class="debouche-item">
+                <div class="debouche-icon">🔬</div>
+                <p>Recherche</p>
+            </div>
+        </div>
+    </section>
+    <!-- Compétences -->
+    <section id="competences" class="competences">
+        <h2 class="section-title">Compétences Acquises</h2>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem;">Nos étudiants développent un solide ensemble de compétences leur permettant de résoudre des problèmes complexes dans divers secteurs.</p>
+        
+        <div class="competences-list">
+            <div class="competence-item">
+                <div class="competence-icon">📋</div>
+                <div>
+                    <h3>Formulation et Modélisation</h3>
+                    <p>Formuler, analyser et modéliser des problèmes réels issus de l'entreprise.</p>
+                </div>
+            </div>
+            <div class="competence-item">
+                <div class="competence-icon">🔧</div>
+                <div>
+                    <h3>Optimisation</h3>
+                    <p>Proposer des méthodes d'optimisation et de recherche opérationnelle ou d'aide à la décision adaptées au contexte.</p>
+                </div>
+            </div>
+            <div class="competence-item">
+                <div class="competence-icon">💻</div>
+                <div>
+                    <h3>Implémentation Algorithmique</h3>
+                    <p>Implémenter des algorithmes de résolution et mener des campagnes de tests numériques.</p>
+                </div>
+            </div>
+            <div class="competence-item">
+                <div class="competence-icon">📊</div>
+                <div>
+                    <h3>Analyse de Données Massives</h3>
+                    <p>Concevoir et utiliser des modèles mathématiques en vue d'analyser et d'optimiser des systèmes très variés avec des données massives.</p>
+                </div>
+            </div>
+            <div class="competence-item">
+                <div class="competence-icon">🤖</div>
+                <div>
+                    <h3>Intelligence Artificielle</h3>
+                    <p>Mettre en œuvre des modèles de prédiction et des techniques d'analyse des données, des modèles d'apprentissage automatique et d'apprentissage approfondi.</p>
+                </div>
+            </div>
+            <div class="competence-item">
+                <div class="competence-icon">🔍</div>
+                <div>
+                    <h3>Gestion de l'Incertitude</h3>
+                    <p>Traiter des données imprécises ou incertaines à l'aide de méthodes statistiques et probabilistes avancées.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contactez-nous</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Informations de Contact</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <p>INSEA, Avenue Mohammed Ben Abdallah Regragui, Madinat Al Irfane, BP 6217, Rabat, Maroc</p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <p>rechOper.insea@insea.ac.ma</p>
+                    </div>
+                   
+                </div>
+                <h3>Suivez-nous</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://tiny.cc/fnfa001" class="social-link">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.instagram.com/optimisation.insea?igsh=MWJyeGcydGF0ZjIyMQ==" class="social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Sujet</label>
+                        <input type="text" id="subject" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-item">
+                <h3>DC&OR Club</h3>
+                <p>Un espace d'excellence dédié à la Recherche Opérationnelle et à l'Analytique Avancée à l'INSEA.</p>
+            </div>
+            <div class="footer-item">
+                <h3>Liens rapides</h3>
+                <ul class="footer-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#missions">Missions</a></li>
+                    <li><a href="#programme">Programme</a></li>
+                    <li><a href="#debouches">Débouchés</a></li>
+                </ul>
+            </div>
+            <div class="footer-item">
+                <h3>Ressources</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Articles</a></li>
+                    <li><a href="#">Projets</a></li>
+                    <li><a href="#">Événements</a></li>
+                    <li><a href="#">Bibliothèque RO</a></li>
+                </ul>
+            </div>
+            <div class="footer-item">
+                <h3>Inscription</h3>
+                <p>Inscrivez-vous à notre newsletter pour recevoir les dernières actualités.</p>
+                <form class="footer-subscribe">
+                    <input type="email" placeholder="Votre email" class="form-control" style="margin-bottom: 1rem;">
+                    <button type="submit" class="submit-btn">S'inscrire</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DC&OR Club - INSEA. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome pour les icônes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <!-- Particles.js pour l'animation du fond -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Navigation
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links li');
+
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            nav.classList.toggle('nav-active');
+            
+            // Animate Links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `fadeIn 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+            
+            // Burger Animation
+            burger.classList.toggle('toggle');
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    // Close mobile menu if open
+                    if (nav.classList.contains('nav-active')) {
+                        nav.classList.remove('nav-active');
+                        burger.classList.remove('toggle');
+                        navLinks.forEach(link => {
+                            link.style.animation = '';
+                        });
+                    }
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Semester Tabs
+        const semesterTabs = document.querySelectorAll('.semester-tab');
+        const semesterContents = document.querySelectorAll('.semester-content');
+
+        semesterTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const semester = tab.getAttribute('data-semester');
+                
+                // Remove active class from all tabs and contents
+                semesterTabs.forEach(tab => tab.classList.remove('active'));
+                semesterContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to selected tab and content
+                tab.classList.add('active');
+                document.querySelector(`.semester-content[data-semester="${semester}"]`).classList.add('active');
+            });
+        });
+
+        // Contact Form Validation
+        const contactForm = document.getElementById('contactForm');
+        
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic validation
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                if (name && email && subject && message) {
+                    // Display success message (in a real application, you would send this data to a server)
+                    alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
+                    contactForm.reset();
+                } else {
+                    alert('Veuillez remplir tous les champs du formulaire.');
+                }
+            });
+        }
+
+        // Initialize Particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            particlesJS('particles-js', {
+                "particles": {
+                    "number": {
+                        "value": 80,
+                        "density": {
+                            "enable": true,
+                            "value_area": 800
+                        }
+                    },
+                    "color": {
+                        "value": "#ffffff"
+                    },
+                    "shape": {
+                        "type": "circle",
+                        "stroke": {
+                            "width": 0,
+                            "color": "#000000"
+                        },
+                        "polygon": {
+                            "nb_sides": 5
+                        }
+                    },
+                    "opacity": {
+                        "value": 0.5,
+                        "random": false,
+                        "anim": {
+                            "enable": false,
+                            "speed": 1,
+                            "opacity_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "size": {
+                        "value": 3,
+                        "random": true,
+                        "anim": {
+                            "enable": false,
+                            "speed": 40,
+                            "size_min": 0.1,
+                            "sync": false
+                        }
+                    },
+                    "line_linked": {
+                        "enable": true,
+                        "distance": 150,
+                        "color": "#ffffff",
+                        "opacity": 0.4,
+                        "width": 1
+                    },
+                    "move": {
+                        "enable": true,
+                        "speed": 6,
+                        "direction": "none",
+                        "random": false,
+                        "straight": false,
+                        "out_mode": "out",
+                        "bounce": false,
+                        "attract": {
+                            "enable": false,
+                            "rotateX": 600,
+                            "rotateY": 1200
+                        }
+                    }
+                },
+                "interactivity": {
+                    "detect_on": "canvas",
+                    "events": {
+                        "onhover": {
+                            "enable": true,
+                            "mode": "grab"
+                        },
+                        "onclick": {
+                            "enable": true,
+                            "mode": "push"
+                        },
+                        "resize": true
+                    },
+                    "modes": {
+                        "grab": {
+                            "distance": 140,
+                            "line_linked": {
+                                "opacity": 1
+                            }
+                        },
+                        "bubble": {
+                            "distance": 400,
+                            "size": 40,
+                            "duration": 2,
+                            "opacity": 8,
+                            "speed": 3
+                        },
+                        "repulse": {
+                            "distance": 200,
+                            "duration": 0.4
+                        },
+                        "push": {
+                            "particles_nb": 4
+                        },
+                        "remove": {
+                            "particles_nb": 2
+                        }
+                    }
+                },
+                "retina_detect": true
+            });
+        });
+
+        // Animation on Scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.mission-card, .competence-item, .debouche-item, .course-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const viewportHeight = window.innerHeight;
+                
+                if (elementPosition < viewportHeight - 100) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        };
+
+        // Add initial styles for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.mission-card, .competence-item, .debouche-item, .course-item');
+            
+            elements.forEach(element => {
+                element.style.opacity = "0";
+                element.style.transform = "translateY(20px)";
+                element.style.transition = "opacity 0.6s ease-out, transform 0.6s ease-out";
+            });
+            
+            // Trigger first animation check
+            animateOnScroll();
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+    
