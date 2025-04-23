@@ -925,22 +925,22 @@
                 </div>
             </div>
             <div class="contact-form">
-                <form id="contactForm" netlify>
+                <form id="contactForm" method="POST" data-netlify="true" onSubmit="submit">
                     <div class="form-group">
                         <label for="name">Nom complet</label>
-                        <input type="text" id="name" class="form-control" required>
+                        <input type="text" id="name" class="form-control" name="name" >
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" required>
+                        <input type="email" id="email" class="form-control" name="email" >
                     </div>
                     <div class="form-group">
                         <label for="subject">Sujet</label>
-                        <input type="text" id="subject" class="form-control" required>
+                        <input type="text" id="subject" class="form-control" name="subject">
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
-                        <textarea id="message" class="form-control" required></textarea>
+                        <textarea id="message" class="form-control" name="message"></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Envoyer le message</button>
                 </form>
@@ -977,8 +977,8 @@
             <div class="footer-item">
                 <h3>Inscription</h3>
                 <p>Inscrivez-vous à notre newsletter pour recevoir les dernières actualités.</p>
-                <form class="footer-subscribe" netlify>
-                    <input type="email" placeholder="Votre email" class="form-control" style="margin-bottom: 1rem;">
+                <form class="footer-subscribe" data-netlify="true" onSubmit="submit">
+                    <input type="email" placeholder="Votre email" name="name" class="form-control" style="margin-bottom: 1rem;">
                     <button type="submit" class="submit-btn">S'inscrire</button>
                 </form>
             </div>
