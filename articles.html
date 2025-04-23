@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles | INSEARO</title>
+    <link rel="icon" type="image/png" href="images/article2.png">
+    <style>
+        :root {
+            --primary-color:#013100;
+            --secondary-color:#69a25c;
+            --accent-color: #70bd12;
+            --text-color: #333333;
+            --light-bg: #f5f7fa;
+            --white: #ffffff;
+            --grey: #707070;
+            --light-grey: #e1e1e1;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --font-primary: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary-color);
+        }
+
+        
+
+        /* Mobile menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Page title */
+        .page-header {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 2.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 100%);
+            z-index: 1;
+        }
+
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-description {
+
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Articles grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .article-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-image::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+        }
+
+        .card-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .card-excerpt {
+            color: var(--grey);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: var(--grey);
+            border-top: 1px solid var(--light-grey);
+            padding-top: 1rem;
+            margin-top: auto;
+        }
+
+        .card-date {
+            display: flex;
+            align-items: center;
+        }
+
+        .card-date span {
+            margin-left: 0.3rem;
+        }
+
+        .read-more {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: var(--primary-color);
+        }
+
+        .read-more span {
+            margin-left: 0.3rem;
+        }
+
+        /* Filters */
+        .filters {
+            background-color: var(--white);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .filters-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .filters-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .filter-tag {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .filter-tag:hover, .filter-tag.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links li {
+            margin: 0 1rem 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .pagination-item {
+            margin: 0 0.3rem;
+        }
+
+        .pagination-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--text-color);
+            text-decoration: none;
+            box-shadow: var(--shadow);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .pagination-link:hover, .pagination-link.active {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .pagination-prev, .pagination-next {
+            width: auto;
+            padding: 0 1rem;
+            border-radius: 20px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease-out;
+            }
+
+            nav.active {
+                max-height: 300px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 0.5rem 0;
+            }
+
+            nav ul li {
+                margin: 0;
+                text-align: center;
+                padding: 0.7rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .filters-content {
+                flex-direction: column;
+            }
+
+            .filter-tag {
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delayed {
+            opacity: 0;
+        }
+
+        /* Search bar */
+        .search-container {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 3rem;
+            border: 1px solid var(--light-grey);
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--grey);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#about" class="logo">DC<span>&</span>OR</a>
+                <button class="mobile-menu-toggle" id="menuToggle">☰</button>
+                <nav id="mainNav">
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="index.html#programme">Formations</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <div class="container">
+            <p class="page-description">Découvrez nos dernières publications sur la recherche opérationnelle, l'optimisation et ses applications dans divers domaines.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="search-container">
+            <div class="search-icon"></div>
+            <input type="text" class="search-input" placeholder="Rechercher un article..." id="searchInput">
+        </div>
+
+        <div class="filters">
+            <div class="filters-title" id="filtersToggle">
+                <span>Filtrer par catégorie</span>
+                <span>▼</span>
+            </div>
+            <div class="filters-content" id="filtersContent">
+                <div class="filter-tag active" data-category="all">Tous</div>
+                <div class="filter-tag" data-category="ro">Recherche Opérationnelle</div>
+                <div class="filter-tag" data-category="optimisation">Optimisation</div>
+                <div class="filter-tag" data-category="logistique">Logistique</div>
+                <div class="filter-tag" data-category="finance">Finance</div>
+                <div class="filter-tag" data-category="industrie">Industrie</div>
+            </div>
+        </div>
+
+        <div class="articles-grid" id="articlesGrid">
+            <!-- Article 1 Card -->
+            <div class="article-card animate" data-category="ro">
+                <div class="card-image" style="background-image: url('images/article1.png')">
+                    <div class="card-category">Recherche Opérationnelle</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Introduction à la Recherche Opérationnelle</h3>
+                    <p class="card-excerpt">
+                        Découvrez les principes fondamentaux de la Recherche Opérationnelle, son histoire, ses objectifs et ses domaines d'application. Apprenez comment elle se différencie de la data science et de l'intelligence artificielle.
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <span>23 avril 2025</span>
+                        </div>
+                        <a href="articles/article1.html" class="read-more">
+                            Lire l'article <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 2 Card -->
+            <div class="article-card animate delayed" data-category="optimisation">
+                <div class="card-image" style="background-image: url('images/article2.png')">
+                    <div class="card-category">Optimisation</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Les méthodes d'optimisation</h3>
+                    <p class="card-excerpt">
+                        Plongez dans le monde de l'optimisation . Cet article explore les principes, les algorithmes et les applications pratiques de la programmation linéaire dans divers secteurs.
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <span>20 avril 2025</span>
+                        </div>
+                        <a href="articles/article2.html" class="read-more">
+                            Lire l'article <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 3 Card 
+            <div class="article-card animate delayed" data-category="logistique">
+                <div class="card-image" style="background-image: url('/api/placeholder/600/400')">
+                    <div class="card-category">Logistique</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Optimisation des chaînes logistiques</h3>
+                    <p class="card-excerpt">
+                        Comment la recherche opérationnelle permet-elle d'optimiser les chaînes d'approvisionnement ? Découvrez les modèles et techniques utilisés pour résoudre les défis logistiques modernes.
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <span>15 avril 2025</span>
+                        </div>
+                        <a href="/articles/article3.html" class="read-more">
+                            Lire l'article <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             Article 4 Card 
+            <div class="article-card animate delayed" data-category="finance">
+                <div class="card-image" style="background-image: url('/api/placeholder/600/400')">
+                    <div class="card-category">Finance</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Modèles d'optimisation en finance</h3>
+                    <p class="card-excerpt">
+                        L'application de la recherche opérationnelle dans le secteur financier. Explorez les modèles d'optimisation de portefeuille, de gestion des risques et de tarification.
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <span>10 avril 2025</span>
+                        </div>
+                        <a href="/articles/article4.html" class="read-more">
+                            Lire l'article <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             Article 5 Card 
+            <div class="article-card animate delayed" data-category="industrie">
+                <div class="card-image" style="background-image: url('/api/placeholder/600/400')">
+                    <div class="card-category">Industrie</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Planification de la production industrielle</h3>
+                    <p class="card-excerpt">
+                        Comment optimiser la production industrielle grâce à la recherche opérationnelle ? Découvrez les méthodes d'ordonnancement et de planification pour maximiser l'efficacité.
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <span>5 avril 2025</span>
+                        </div>
+                        <a href="/articles/article5.html" class="read-more">
+                            Lire l'article <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+             Article 6 Card 
+            <div class="article-card animate delayed" data-category="optimisation">
+                <div class="card-image" style="background-image: url('/api/placeholder/600/400')">
+                    <div class="card-category">Optimisation</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Métaheuristiques et algorithmes évolutionnaires</h3>
+                    <p class="card-excerpt">
+                        Exploration des méthodes d'optimisation avancées comme les algorithmes génétiques, le recuit simulé et la recherche tabou pour résoudre les problèmes complexes.
+                    </p>
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <span>1 avril 2025</span>
+                        </div>
+                        <a href="/articles/article6.html" class="read-more">
+                            Lire l'article <span>→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>-->
+        </div>
+
+        <div class="pagination">
+            <a href="#" class="pagination-link pagination-prev">← Précédent</a>
+            <div class="pagination-item">
+                <a href="#" class="pagination-link active">1</a>
+            </div>
+            <!--<div class="pagination-item">
+                <a href="#" class="pagination-link">2</a>
+            </div>
+            <div class="pagination-item">
+                <a href="#" class="pagination-link">3</a>
+            </div>-->
+            <a href="#" class="pagination-link pagination-next">Suivant →</a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">INSEARO</div>
+                <ul class="footer-links">
+                    <li><a href="/mentions-legales/">Mentions légales</a></li>
+                    <li><a href="/confidentialite/">Politique de confidentialité</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+                <div class="copyright">
+                    &copy; 2025 INSEARO - Institut Supérieur d'Études Appliquées en Recherche Opérationnelle
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // Filters toggle
+            const filtersToggle = document.getElementById('filtersToggle');
+            const filtersContent = document.getElementById('filtersContent');
+            
+            filtersToggle.addEventListener('click', function() {
+                filtersContent.style.display = filtersContent.style.display === 'none' ? 'flex' : 'none';
+                filtersToggle.querySelector('span:last-child').textContent = filtersContent.style.display === 'none' ? '▼' : '▲';
+            });
+            
+            // Filter functionality
+            const filterTags = document.querySelectorAll('.filter-tag');
+            const articleCards = document.querySelectorAll('.article-card');
+            
+            filterTags.forEach(tag => {
+                tag.addEventListener('click', function() {
+                    // Remove active class from all filter tags
+                    filterTags.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tag
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    
+                    // Show or hide articles based on category
+                    articleCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                
+                articleCards.forEach(card => {
+                    const title = card.querySelector('.card-title').textContent.toLowerCase();
+                    const excerpt = card.querySelector('.card-excerpt').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+            
+            // Animation on scroll
+            const animateCards = document.querySelectorAll('.delayed');
+            
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.9 &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            function handleScroll() {
+                animateCards.forEach((card, index) => {
+                    if (isElementInViewport(card)) {
+                        // Add a delay based on the card's position
+                        setTimeout(() => {
+                            card.classList.add('animate');
+                            card.classList.remove('delayed');
+                        }, 100 * (index % 3)); // Stagger animation by row
+                    }
+                });
+            }
+            
+            // Initial check
+            setTimeout(handleScroll, 300);
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Pagination functionality (simplified for demo)
+            const paginationLinks = document.querySelectorAll('.pagination-link');
+            
+            paginationLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all pagination links
+                    paginationLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link if it's a number
+                    if (!this.classList.contains('pagination-prev') && !this.classList.contains('pagination-next')) {
+                        this.classList.add('active');
+                    }
+                    
+                    // Scroll to top of the articles section
+                    document.getElementById('articlesGrid').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
