@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACP - Guide Pratique pour Examens</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #43b541 0%, #009502 100%);
+            padding: 20px;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #1e3c72;
+        }
+        h2 {
+            color: #1e3c72;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1e3c72;
+        }
+        h3 {
+            color: #333;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        h3::before {
+            content: "▶";
+            color: #1e3c72;
+            margin-right: 10px;
+            font-size: 0.8em;
+        }
+        .formule {
+            background: white;
+            border: 2px solid #1e3c72;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .important {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .important strong {
+            color: #856404;
+        }
+        .etapes {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        .etape {
+            display: flex;
+            margin: 15px 0;
+            padding: 15px;
+            background: #e3f2fd;
+            border-radius: 8px;
+            align-items: start;
+        }
+        .etape-numero {
+            background: #1e3c72;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        .etape-contenu {
+            flex: 1;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        .exemple {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border: 2px solid #2196f3;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .exemple h4 {
+            color: #1565c0;
+            margin-bottom: 10px;
+        }
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        .astuce {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .attention {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #1e3c72;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        .toc {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .toc h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+        .toc a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 8px 0;
+            transition: color 0.3s;
+        }
+        .toc a:hover {
+            color: #1e3c72;
+            padding-left: 10px;
+        }
+        .comparaison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>📊 Analyse en Composantes Principales (ACP)</h1>
+        <p>Guide Complet pour Réussir vos Examens</p>
+    </header>
+
+    <div class="content">
+        
+        <!-- Table des matières -->
+        <div class="toc">
+            <h3>📑 Table des Matières</h3>
+            <ul>
+                <li><a href="#section1">1. Introduction à l'ACP</a></li>
+                <li><a href="#section2">2. Types d'ACP</a></li>
+                <li><a href="#section3">3. Test de Bartlett</a></li>
+                <li><a href="#section4">4. Valeurs Propres et Critères</a></li>
+                <li><a href="#section5">5. Qualité de Représentation</a></li>
+                <li><a href="#section6">6. Contributions</a></li>
+                <li><a href="#section7">7. Interprétation des Cartes</a></li>
+                <li><a href="#section8">8. Variables Supplémentaires</a></li>
+                <li><a href="#section9">9. Récapitulatif Examens</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Introduction -->
+        <div id="section1" class="section">
+            <h2>1. Introduction à l'ACP</h2>
+            
+            <div class="important">
+                <strong>🎯 Objectif de l'ACP :</strong><br>
+                Réduire la dimension d'un tableau de données en conservant le maximum d'information
+            </div>
+
+            <h3>Principe Général</h3>
+            <p>L'ACP transforme <strong>p variables corrélées</strong> en <strong>nouvelles variables non corrélées</strong> appelées <strong>composantes principales</strong></p>
+
+            <div class="grid">
+                <div class="card">
+                    <h4>✅ Avantages</h4>
+                    <ul>
+                        <li>Visualisation en 2D ou 3D</li>
+                        <li>Élimination de la redondance</li>
+                        <li>Détection de structures</li>
+                        <li>Réduction du bruit</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>📋 Applications</h4>
+                    <ul>
+                        <li>Marketing (segmentation)</li>
+                        <li>Biologie (génomique)</li>
+                        <li>Économie (indices)</li>
+                        <li>Image (compression)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Données de Départ</h3>
+            <p><strong>Tableau X</strong> : n individus × p variables quantitatives</p>
+            
+            <table style="width: 60%; margin: 15px auto;">
+                <tr>
+                    <th></th>
+                    <th>Var 1</th>
+                    <th>Var 2</th>
+                    <th>...</th>
+                    <th>Var p</th>
+                </tr>
+                <tr>
+                    <td>Ind 1</td>
+                    <td>x₁₁</td>
+                    <td>x₁₂</td>
+                    <td>...</td>
+                    <td>x₁ₚ</td>
+                </tr>
+                <tr>
+                    <td>Ind 2</td>
+                    <td>x₂₁</td>
+                    <td>x₂₂</td>
+                    <td>...</td>
+                    <td>x₂ₚ</td>
+                </tr>
+                <tr>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                    <td>...</td>
+                </tr>
+                <tr>
+                    <td>Ind n</td>
+                    <td>xₙ₁</td>
+                    <td>xₙ₂</td>
+                    <td>...</td>
+                    <td>xₙₚ</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Section 2: Types d'ACP -->
+        <div id="section2" class="section">
+            <h2>2. Types d'ACP</h2>
+
+            <div class="comparaison">
+                <div class="card" style="border: 3px solid #28a745;">
+                    <h3 style="color: #28a745;">ACP Centrée</h3>
+                    <p><strong>Matrice analysée :</strong> Variance-Covariance</p>
+                    <div class="formule">V = (1/n)X'X - ḡḡ'</div>
+                    
+                    <h4>Quand l'utiliser ?</h4>
+                    <ul>
+                        <li>Variables de <strong>même unité</strong></li>
+                        <li>Variables de <strong>même ordre de grandeur</strong></li>
+                    </ul>
+                    
+                    <div class="exemple">
+                        <strong>Exemple :</strong> Températures en différentes villes (toutes en °C)
+                    </div>
+                </div>
+                
+                <div class="card" style="border: 3px solid #dc3545;">
+                    <h3 style="color: #dc3545;">ACP Normée (Réduite)</h3>
+                    <p><strong>Matrice analysée :</strong> Corrélations</p>
+                    <div class="formule">R = matrice des corrélations</div>
+                    
+                    <h4>Quand l'utiliser ?</h4>
+                    <ul>
+                        <li>Variables d'<strong>unités différentes</strong></li>
+                        <li>Variables d'<strong>échelles différentes</strong></li>
+                    </ul>
+                    
+                    <div class="exemple">
+                        <strong>Exemple :</strong> Poids (kg), Taille (cm), Âge (ans)
+                    </div>
+                </div>
+            </div>
+
+            <div class="attention">
+                <strong>⚠️ TRÈS IMPORTANT pour l'Examen :</strong><br>
+                Dans les exercices, on précise toujours le type d'ACP :<br>
+                • "ACP-normée" → Matrice de corrélations<br>
+                • "ACP centrée" → Matrice de covariances
+            </div>
+
+            <h3>Normalisation des Données</h3>
+            <p>Pour l'ACP normée, chaque variable est <strong>centrée et réduite</strong> :</p>
+            <div class="formule">
+                z_ij = (x_ij - x̄_j) / σ_j
+            </div>
+            <p>où x̄_j est la moyenne et σ_j l'écart-type de la variable j</p>
+        </div>
+
+        <!-- Section 3: Test de Bartlett -->
+        <div id="section3" class="section">
+            <h2>3. Test de Sphéricité de Bartlett</h2>
+
+            <div class="important">
+                <strong>🎯 Objectif :</strong> Tester si l'ACP est pertinente<br>
+                (Vérifier si les variables sont corrélées)
+            </div>
+
+            <h3>Hypothèses du Test</h3>
+            <div class="formule">
+                H₀ : R = I (matrice identité - variables non corrélées)<br>
+                H₁ : R ≠ I (variables corrélées)
+            </div>
+
+            <h3>Statistique du Test</h3>
+            <div class="formule">
+                χ² = -[n - 1 - (2p + 5)/6] × ln(|R|)
+            </div>
+            <p>Cette statistique suit une loi du χ² à <strong>p(p-1)/2 degrés de liberté</strong></p>
+
+            <div class="etapes">
+                <div class="etape">
+                    <div class="etape-numero">1</div>
+                    <div class="etape-contenu">
+                        <strong>Calculer les degrés de liberté :</strong>
+                        <div class="formule">df = p(p-1) / 2</div>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">2</div>
+                    <div class="etape-contenu">
+                        <strong>Comparer χ² calculé avec χ² théorique :</strong>
+                        <ul>
+                            <li>Si <strong>p-value < 0.05</strong> → Rejeter H₀ ✓ (ACP pertinente)</li>
+                            <li>Si <strong>p-value ≥ 0.05</strong> → Accepter H₀ (ACP non pertinente)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exemple">
+                <h4>📝 Exemple (Examen 2022-2023 - Pizzas)</h4>
+                <p><strong>Données :</strong></p>
+                <ul>
+                    <li>p = 5 variables</li>
+                    <li>χ² = 969.8418</li>
+                    <li>p-value = 5.855763e-202</li>
+                    <li>df = ? à calculer</li>
+                </ul>
+                
+                <p><strong>Calcul df :</strong></p>
+                <div class="formule">
+                    df = 5(5-1)/2 = 5×4/2 = <strong>10</strong>
+                </div>
+                
+                <p><strong>Interprétation :</strong></p>
+                <div class="astuce">
+                    p-value ≈ 0 << 0.05 → On rejette H₀<br>
+                    Les variables sont <strong>significativement corrélées</strong><br>
+                    → L'ACP est <strong>pertinente</strong> pour ces données
+                </div>
+            </div>
+
+            <div class="astuce">
+                <strong>💡 Pour l'Examen :</strong><br>
+                Le df apparaît souvent comme <code>$df [1] ?</code> dans les résultats R.<br>
+                Il suffit de le calculer avec la formule p(p-1)/2
+            </div>
+        </div>
+
+        <!-- Section 4: Valeurs Propres -->
+        <div id="section4" class="section">
+            <h2>4. Valeurs Propres et Choix des Axes</h2>
+
+            <h3>Valeurs Propres (Eigenvalues)</h3>
+            <p>Les valeurs propres λ₁, λ₂, ..., λₚ mesurent la <strong>variance expliquée</strong> par chaque composante</p>
+
+            <div class="formule">
+                λ₁ + λ₂ + ... + λₚ = p (pour ACP normée)<br>
+                λ₁ + λ₂ + ... + λₚ = Trace(V) (pour ACP centrée)
+            </div>
+
+            <div class="important">
+                <strong>🔑 Propriété :</strong> λ₁ ≥ λ₂ ≥ ... ≥ λₚ ≥ 0<br>
+                Les valeurs propres sont classées par ordre décroissant
+            </div>
+
+            <h3>Critères de Sélection des Axes</h3>
+
+            <div class="etapes">
+                <div class="etape">
+                    <div class="etape-numero">1</div>
+                    <div class="etape-contenu">
+                        <strong>Critère de Kaiser</strong>
+                        <p>Retenir les axes dont :</p>
+                        <div class="formule">
+                            λₖ > moyenne = p/p = 1 (ACP normée)<br>
+                            λₖ > moyenne des λ (ACP centrée)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">2</div>
+                    <div class="etape-contenu">
+                        <strong>Critère du Coude (Scree Plot)</strong>
+                        <p>Observer le graphique des valeurs propres et retenir les axes avant le "coude"</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">3</div>
+                    <div class="etape-contenu">
+                        <strong>Critère du Pourcentage</strong>
+                        <p>Retenir suffisamment d'axes pour expliquer au moins <strong>70-80%</strong> de la variance totale</p>
+                        <div class="formule">
+                            % cumulé = (Σᵏⱼ₌₁ λⱼ) / p × 100
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exemple">
+                <h4>📝 Exemple (Examen 2022-2023 - Pizzas)</h4>
+                <table style="width: 80%; margin: 10px auto;">
+                    <tr>
+                        <th>Composante</th>
+                        <th>Valeur Propre</th>
+                        <th>% Variance</th>
+                        <th>% Cumulé</th>
+                    </tr>
+                    <tr>
+                        <td>Dim.1</td>
+                        <td>2.558</td>
+                        <td>51.165%</td>
+                        <td>51.165%</td>
+                    </tr>
+                    <tr>
+                        <td>Dim.2</td>
+                        <td>2.148</td>
+                        <td>42.959%</td>
+                        <td>94.124%</td>
+                    </tr>
+                    <tr>
+                        <td>Dim.3</td>
+                        <td>0.293</td>
+                        <td>5.865%</td>
+                        <td>99.989%</td>
+                    </tr>
+                    <tr>
+                        <td>Dim.4</td>
+                        <td>0.001</td>
+                        <td>0.011%</td>
+                        <td>100%</td>
+                    </tr>
+                </table>
+                
+                <p><strong>Application du critère de Kaiser :</strong></p>
+                <div class="formule">
+                    Moyenne = 5/5 = 1<br>
+                    λ₁ = 2.558 > 1 ✓<br>
+                    λ₂ = 2.148 > 1 ✓<br>
+                    λ₃ = 0.293 < 1 ✗
+                </div>
+                
+                <div class="astuce">
+                    <strong>Conclusion :</strong> On retient <strong>2 axes</strong><br>
+                    Ils expliquent 94.12% de la variance totale
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Qualité de Représentation -->
+        <div id="section5" class="section">
+            <h2>5. Qualité de Représentation (cos²)</h2>
+
+            <h3>Pour les Variables</h3>
+            <p>La qualité mesure <strong>à quel point une variable est bien représentée</strong> sur un axe ou un plan factoriel</p>
+
+            <div class="formule">
+                cos²(variable j, axe k) = (corrélation(variable j, axe k))² = r²ⱼₖ
+            </div>
+
+            <h3>Formules Pratiques</h3>
+
+            <div class="etapes">
+                <div class="etape">
+                    <div class="etape-numero">F₁</div>
+                    <div class="etape-contenu">
+                        <strong>Qualité sur F₁ :</strong>
+                        <div class="formule">
+                            cos²(j, F₁) = (coord_j sur F₁)²
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">F₂</div>
+                    <div class="etape-contenu">
+                        <strong>Qualité sur F₂ :</strong>
+                        <div class="formule">
+                            cos²(j, F₂) = (coord_j sur F₂)²
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">Plan</div>
+                    <div class="etape-contenu">
+                        <strong>Qualité sur le plan (F₁, F₂) :</strong>
+                        <div class="formule">
+                            cos²(j, F₁F₂) = cos²(j, F₁) + cos²(j, F₂)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exemple">
+                <h4>📝 Exemple de Calcul (Examen 2022-2023)</h4>
+                <p><strong>Coordonnées des variables :</strong></p>
+                <table style="width: 70%; margin: 10px auto;">
+                    <tr>
+                        <th>Variable</th>
+                        <th>Dim.1</th>
+                        <th>Dim.2</th>
+                    </tr>
+                    <tr>
+                        <td>Eau</td>
+                        <td>0.84</td>
+                        <td>-0.49</td>
+                    </tr>
+                    <tr>
+                        <td>Prot</td>
+                        <td>0.85</td>
+                        <td>0.32</td>
+                    </tr>
+                    <tr>
+                        <td>Gras</td>
+                        <td>0.23</td>
+                        <td>0.94</td>
+                    </tr>
+                    <tr>
+                        <td>Carb</td>
+                        <td>-0.94</td>
+                        <td>-0.33</td>
+                    </tr>
+                    <tr>
+                        <td>Cal</td>
+                        <td>-0.44</td>
+                        <td>0.90</td>
+                    </tr>
+                </table>
+                
+                <p><strong>Calcul pour "Eau" :</strong></p>
+                <div class="formule">
+                    cos²(Eau, F₁) = (0.84)² = 0.706<br>
+                    cos²(Eau, F₂) = (-0.49)² = 0.240<br>
+                    cos²(Eau, F₁F₂) = 0.706 + 0.240 = <strong>0.946</strong>
+                </div>
+                
+                <div class="astuce">
+                    <strong>Interprétation :</strong> Eau est <strong>très bien représentée</strong> sur le plan (F₁, F₂)<br>
+                    94.6% de son information est conservée
+                </div>
+            </div>
+
+            <h3>Pour les Individus</h3>
+            <p>Même principe que pour les variables :</p>
+            <div class="formule">
+                cos²(individu i, axe k) = (coord_i sur axe k)² / d²(i, origine)
+            </div>
+            
+            <p>où <code>d²(i, origine)</code> est la distance au carré de l'individu i à l'origine (centre de gravité)</p>
+
+            <div class="important">
+                <strong>🎯 Interprétation du cos² :</strong>
+                <ul>
+                    <li><strong>0.7 à 1</strong> → Excellente représentation</li>
+                    <li><strong>0.5 à 0.7</strong> → Bonne représentation</li>
+                    <li><strong>0.3 à 0.5</strong> → Représentation acceptable</li>
+                    <li><strong>< 0.3</strong> → Mauvaise représentation</li>
+                </ul>
+            </div>
+
+            <div class="attention">
+                <strong>⚠️ Variable bien représentée :</strong><br>
+                Une variable est bien représentée sur la carte factorielle (F₁, F₂) si :<br>
+                • Son <strong>cos² est élevé</strong> (> 0.7)<br>
+                • Elle est <strong>proche du cercle</strong> des corrélations<br>
+                • Elle est <strong>éloignée du centre</strong> du graphique
+            </div>
+        </div>
+
+        <!-- Section 6: Contributions -->
+        <div id="section6" class="section">
+            <h2>6. Contributions</h2>
+
+            <h3>Contribution des Variables</h3>
+            <p>La contribution mesure <strong>l'importance d'une variable dans la formation d'un axe</strong></p>
+
+            <div class="formule">
+                CTR(variable j, axe k) = (coord_j sur axe k)² / λₖ
+            </div>
+
+            <div class="important">
+                <strong>🔑 Propriété :</strong><br>
+                La somme des contributions de toutes les variables sur un axe = 100%
+                <div class="formule">
+                    Σⱼ CTR(j, axe k) = 1 = 100%
+                </div>
+            </div>
+
+            <div class="exemple">
+                <h4>📝 Exemple de Calcul</h4>
+                <p><strong>Pour la variable "Prot" sur F₁ :</strong></p>
+                <ul>
+                    <li>Coordonnée sur Dim.1 : 0.85</li>
+                    <li>Valeur propre λ₁ = 2.558</li>
+                </ul>
+                
+                <div class="formule">
+                    CTR(Prot, F₁) = (0.85)² / 2.558<br>
+                    = 0.7225 / 2.558<br>
+                    = 0.282 = <strong>28.2%</strong>
+                </div>
+                
+                <p><strong>Interprétation :</strong> Prot contribue à <strong>28.2%</strong> dans la formation de l'axe F₁</p>
+            </div>
+
+            <h3>Contribution des Individus</h3>
+            <div class="formule">
+                CTR(individu i, axe k) = (1/n) × (coord_i sur axe k)² / λₖ
+            </div>
+
+            <p>où n est le nombre total d'individus</p>
+
+            <div class="important">
+                <strong>🔑 Interprétation :</strong>
+                <ul>
+                    <li><strong>Contribution élevée</strong> → L'individu/variable structure fortement l'axe</li>
+                    <li><strong>Contribution faible</strong> → Peu d'influence sur l'axe</li>
+                    <li>Une forte contribution ne signifie pas toujours une bonne représentation !</li>
+                </ul>
+            </div>
+
+            <div class="astuce">
+                <strong>💡 Conseil Examen :</strong><br>
+                Combiner <strong>qualité ET contribution</strong> pour une interprétation complète :<br>
+                • <strong>Qualité élevée + Contribution élevée</strong> → Variable/individu clé pour l'axe<br>
+                • <strong>Qualité élevée + Contribution faible</strong> → Bien représenté mais peu influent<br>
+                • <strong>Qualité faible + Contribution élevée</strong> → Influent mais mal représenté
+            </div>
+        </div>
+
+        <!-- Section 7: Interprétation -->
+        <div id="section7" class="section">
+            <h2>7. Interprétation des Cartes Factorielles</h2>
+
+            <h3>Carte des Variables (Cercle des Corrélations)</h3>
+
+            <div class="etapes">
+                <div class="etape">
+                    <div class="etape-numero">1</div>
+                    <div class="etape-contenu">
+                        <strong>Proximité au cercle</strong>
+                        <p>Plus une variable est <strong>proche du cercle</strong>, mieux elle est représentée sur le plan</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">2</div>
+                    <div class="etape-contenu">
+                        <strong>Corrélations entre variables</strong>
+                        <ul>
+                            <li><strong>Angle aigu (< 90°)</strong> → Variables positivement corrélées</li>
+                            <li><strong>Angle droit (≈ 90°)</strong> → Variables non corrélées</li>
+                            <li><strong>Angle obtus (> 90°)</strong> → Variables négativement corrélées</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">3</div>
+                    <div class="etape-contenu">
+                        <strong>Interprétation des axes</strong>
+                        <p>Un axe est caractérisé par les variables qui :</p>
+                        <ul>
+                            <li>Ont une <strong>forte contribution</strong></li>
+                            <li>Sont <strong>bien représentées</strong></li>
+                            <li>Sont <strong>proches de l'axe</strong> (coordonnée élevée)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exemple">
+                <h4>📝 Interprétation - Examen 2022-2023 (Pizzas)</h4>
+                
+                <div class="card" style="background: #e3f2fd;">
+                    <h4 style="color: #1976d2;">Axe 1 (51.2% de variance) :</h4>
+                    <p><strong>Côté POSITIF :</strong></p>
+                    <ul>
+                        <li><strong>Eau</strong> (0.84) et <strong>Prot</strong> (0.85)</li>
+                        <li>→ Pizzas <strong>légères, riches en protéines</strong></li>
+                    </ul>
+                    <p><strong>Côté NÉGATIF :</strong></p>
+                    <ul>
+                        <li><strong>Carb</strong> (-0.94) et <strong>Cal</strong> (-0.44)</li>
+                        <li>→ Pizzas <strong>caloriques, riches en glucides</strong></li>
+                    </ul>
+                    <p><strong>Signification de l'axe :</strong> Opposition entre pizzas légères/protéinées et pizzas caloriques/glucidiques</p>
+                </div>
+                
+                <div class="card" style="background: #fff3e0; margin-top: 15px;">
+                    <h4 style="color: #f57c00;">Axe 2 (43.0% de variance) :</h4>
+                    <p><strong>Côté POSITIF :</strong></p>
+                    <ul>
+                        <li><strong>Gras</strong> (0.94) et <strong>Cal</strong> (0.90)</li>
+                        <li>→ Pizzas <strong>grasses et caloriques</strong></li>
+                    </ul>
+                    <p><strong>Côté NÉGATIF :</strong></p>
+                    <ul>
+                        <li><strong>Eau</strong> (-0.49) et <strong>Carb</strong> (-0.33)</li>
+                        <li>→ Pizzas <strong>moins grasses</strong></li>
+                    </ul>
+                    <p><strong>Signification de l'axe :</strong> Teneur en matières grasses</p>
+                </div>
+
+                <h4 style="margin-top: 20px; color: #1e3c72;">Corrélations Observées :</h4>
+                <ul>
+                    <li><strong>Eau ⟷ Prot</strong> : Angle aigu → Corrélées positivement</li>
+                    <li><strong>Gras ⟷ Cal</strong> : Très proche → Très corrélées</li>
+                    <li><strong>Carb ⟷ (Gras, Cal)</strong> : Angle obtus → Corrélées négativement</li>
+                    <li><strong>Prot ⟷ Gras</strong> : Angle ≈ 90° → Non corrélées</li>
+                </ul>
+            </div>
+
+            <h3>Carte des Individus</h3>
+
+            <div class="etapes">
+                <div class="etape">
+                    <div class="etape-numero">1</div>
+                    <div class="etape-contenu">
+                        <strong>Position sur les axes</strong>
+                        <p>La position d'un individu indique ses caractéristiques selon les variables qui définissent l'axe</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">2</div>
+                    <div class="etape-contenu">
+                        <strong>Groupes d'individus</strong>
+                        <p>Des individus <strong>proches</strong> ont des profils similaires</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">3</div>
+                    <div class="etape-contenu">
+                        <strong>Individus extrêmes</strong>
+                        <p>Les individus <strong>éloignés du centre</strong> sont atypiques (outliers potentiels)</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Représentation Simultanée (Biplot)</h3>
+            <p>Superposition des cartes des variables et des individus</p>
+
+            <div class="important">
+                <strong>🎯 Lecture du Biplot :</strong>
+                <ul>
+                    <li>Un individu proche d'une variable → <strong>Valeur élevée</strong> pour cette variable</li>
+                    <li>Un individu du côté opposé → <strong>Valeur faible</strong> pour cette variable</li>
+                    <li>Permet d'identifier les <strong>profils types</strong></li>
+                </ul>
+            </div>
+
+            <div class="exemple">
+                <h4>📝 Exemple (Pizzas - Groupes identifiés)</h4>
+                <div class="grid">
+                    <div class="card">
+                        <h4>Groupe A (en haut) :</h4>
+                        <p>A1, A2, A3, A4, A5, A6</p>
+                        <p><strong>Caractéristiques :</strong></p>
+                        <ul>
+                            <li>Riches en <strong>Gras</strong> et <strong>Calories</strong></li>
+                            <li>Pizzas <strong>énergétiques</strong></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Groupe B (droite) :</h4>
+                        <p>B1, B2, B3, B4, B5, B6</p>
+                        <p><strong>Caractéristiques :</strong></p>
+                        <ul>
+                            <li>Riches en <strong>Protéines</strong></li>
+                            <li>Taux d'<strong>Eau</strong> élevé</li>
+                            <li>Pizzas <strong>légères</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 8: Variables Supplémentaires -->
+        <div id="section8" class="section">
+            <h2>8. Variables Supplémentaires</h2>
+
+            <div class="important">
+                <strong>🔑 Principe :</strong> Les variables supplémentaires n'interviennent <strong>pas dans le calcul</strong> des axes, mais sont <strong>projetées après</strong> pour enrichir l'interprétation
+            </div>
+
+            <h3>Variables Quantitatives Supplémentaires</h3>
+
+            <div class="etapes">
+                <div class="etape">
+                    <div class="etape-numero">1</div>
+                    <div class="etape-contenu">
+                        <strong>Calcul des corrélations</strong>
+                        <p>On calcule la corrélation entre la variable supplémentaire et chaque composante principale</p>
+                        <div class="formule">
+                            r(var_sup, Fₖ) = cor(var_sup, Fₖ)
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">2</div>
+                    <div class="etape-contenu">
+                        <strong>Représentation sur le cercle</strong>
+                        <p>Les coordonnées sont les corrélations calculées</p>
+                        <p>La variable est représentée en <strong>pointillés ou couleur différente</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Variables Qualitatives Supplémentaires</h3>
+
+            <div class="etapes">
+                <div class="etape">
+                    <div class="etape-numero">1</div>
+                    <div class="etape-contenu">
+                        <strong>Calcul des barycentres</strong>
+                        <p>Pour chaque modalité, on calcule le <strong>barycentre</strong> des individus qui la possèdent</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">2</div>
+                    <div class="etape-contenu">
+                        <strong>Projection sur les axes</strong>
+                        <p>Chaque modalité est représentée par son barycentre</p>
+                        <p>Représentation en <strong>gros points ou symboles différents</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exemple">
+                <h4>📝 Exemple d'Utilisation</h4>
+                <p><strong>Données actives :</strong> Variables nutritionnelles (Eau, Prot, Gras, Carb, Cal)</p>
+                <p><strong>Variables supplémentaires possibles :</strong></p>
+                <ul>
+                    <li><strong>Quantitative :</strong> Prix, Note gustative, Temps de cuisson</li>
+                    <li><strong>Qualitative :</strong> Marque, Type de pizza, Origine</li>
+                </ul>
+                
+                <p><strong>Intérêt :</strong> Voir si le prix est lié aux caractéristiques nutritionnelles, ou si certaines marques se distinguent</p>
+            </div>
+
+            <div class="astuce">
+                <strong>💡 Pour l'Examen :</strong><br>
+                Expliquez clairement la différence :<br>
+                • <strong>Variables actives</strong> : Construisent les axes<br>
+                • <strong>Variables supplémentaires</strong> : Projetées après, aident à l'interprétation
+            </div>
+        </div>
+
+        <!-- Section 9: Récapitulatif Examens -->
+        <div class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h2 style="color: white; border-bottom: 2px solid white;">📋 Récapitulatif - Questions Types Examen</h2>
+
+            <div class="etapes" style="background: rgba(255,255,255,0.1);">
+                <div class="etape">
+                    <div class="etape-numero">Q1</div>
+                    <div class="etape-contenu" style="color: white;">
+                        <strong>Test de Bartlett</strong>
+                        <p>• Calculer df = p(p-1)/2</p>
+                        <p>• Interpréter : Si p-value < 0.05 → ACP pertinente</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">Q2</div>
+                    <div class="etape-contenu" style="color: white;">
+                        <strong>Nombre d'axes à retenir</strong>
+                        <p>• Kaiser : λₖ > 1 (ACP normée)</p>
+                        <p>• Pourcentage cumulé > 70-80%</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">Q3</div>
+                    <div class="etape-contenu" style="color: white;">
+                        <strong>Qualité de représentation (Variables)</strong>
+                        <p>• Sur F₁ : cos²(j, F₁) = (coord_j₁)²</p>
+                        <p>• Sur F₂ : cos²(j, F₂) = (coord_j₂)²</p>
+                        <p>• Sur plan : cos²(j, F₁F₂) = cos²(j, F₁) + cos²(j, F₂)</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">Q4</div>
+                    <div class="etape-contenu" style="color: white;">
+                        <strong>Contributions (Variables)</strong>
+                        <p>• CTR(j, Fₖ) = (coord_jₖ)² / λₖ</p>
+                        <p>• Interprétation : Importance dans la formation de l'axe</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">Q5</div>
+                    <div class="etape-contenu" style="color: white;">
+                        <strong>Qualité de représentation (Individus)</strong>
+                        <p>• cos²(i, Fₖ) = (coord_iₖ)² / distance²(i, origine)</p>
+                        <p>• Distance² = Σ(coord)² sur tous les axes</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">Q6</div>
+                    <div class="etape-contenu" style="color: white;">
+                        <strong>Contributions (Individus)</strong>
+                        <p>• CTR(i, Fₖ) = (1/n) × (coord_iₖ)² / λₖ</p>
+                        <p>• Vérifier : Σ CTR = 100%</p>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">Q7</div>
+                    <div class="etape-contenu" style="color: white;">
+                        <strong>Interprétation globale</strong>
+                        <ul>
+                            <li>Décrire chaque axe (variables qui le définissent)</li>
+                            <li>Identifier les corrélations entre variables</li>
+                            <li>Repérer les groupes d'individus</li>
+                            <li>Caractériser les profils types</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="etape">
+                    <div class="etape-numero">Q8</div>
+                    <div class="etape-contenu" style="color: white;">
+                        <strong>Variables supplémentaires</strong>
+                        <ul>
+                            <li>Quantitatives : Projetées par corrélation</li>
+                            <li>Qualitatives : Barycentres des modalités</li>
+                            <li>N'interviennent pas dans le calcul des axes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Matrice des Corrélations Partielles -->
+        <div class="section">
+            <h2>💡 Bonus : Matrice des Corrélations Partielles</h2>
+
+            <div class="important">
+                <strong>Définition :</strong> La corrélation partielle entre deux variables mesure leur corrélation <strong>en éliminant l'effet de toutes les autres variables</strong>
+            </div>
+
+            <h3>Interprétation</h3>
+            <ul>
+                <li><strong>|r| proche de 0</strong> → Les variables ne sont pas directement liées (leur corrélation est due aux autres variables)</li>
+                <li><strong>|r| élevé</strong> → Les variables sont directement liées, indépendamment des autres</li>
+            </ul>
+
+            <div class="exemple">
+                <h4>📝 Exemple (Examen Rattrapage 2023-2024)</h4>
+                <p>Si la corrélation simple entre CYL et PUISS est 0.90, mais la corrélation partielle est 0.11 :</p>
+                <div class="astuce">
+                    <strong>Interprétation :</strong> La forte corrélation entre CYL et PUISS est principalement due aux <strong>autres variables</strong> (comme POIDS). Une fois cet effet retiré, la relation directe est faible.
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Conseils Finaux -->
+        <div class="section" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+            <h2 style="color: white; border-bottom: 2px solid white;">🎓 Conseils pour Réussir l'Examen ACP</h2>
+
+            <div class="grid">
+                <div class="card" style="background: rgba(255,255,255,0.95); color: #333;">
+                    <h3 style="color: #1e3c72;">✅ Checklist Avant l'Examen</h3>
+                    <ul>
+                        <li>✓ Savoir calculer df = p(p-1)/2</li>
+                        <li>✓ Maîtriser le critère de Kaiser</li>
+                        <li>✓ Formule cos² pour variables</li>
+                        <li>✓ Formule CTR pour variables</li>
+                        <li>✓ Interprétation du cercle des corrélations</li>
+                        <li>✓ Lecture d'un biplot</li>
+                    </ul>
+                </div>
+                
+                <div class="card" style="background: rgba(255,255,255,0.95); color: #333;">
+                    <h3 style="color: #dc3545;">❌ Erreurs Fréquentes</h3>
+                    <ul>
+                        <li>✗ Confondre ACP centrée et normée</li>
+                        <li>✗ Oublier de diviser par λₖ dans CTR</li>
+                        <li>✗ Mal interpréter les angles (cercle)</li>
+                        <li>✗ Ne pas vérifier Σ CTR = 100%</li>
+                        <li>✗ Interpréter sans regarder cos²</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; margin-top: 20px;">
+                <h3 style="color: white;">🔑 Formules Essentielles</h3>
+                <div class="formule" style="background: white; color: #333; margin: 10px 0;">
+                    <strong>1.</strong> df (Bartlett) = p(p-1)/2
+                </div>
+                <div class="formule" style="background: white; color: #333; margin: 10px 0;">
+                    <strong>2.</strong> cos²(var, axe) = (coord)²
+                </div>
+                <div class="formule" style="background: white; color: #333; margin: 10px 0;">
+                    <strong>3.</strong> CTR(var, axe) = (coord)² / λ
+                </div>
+                <div class="formule" style="background: white; color: #333; margin: 10px 0;">
+                    <strong>4.</strong> cos²(plan) = cos²(F₁) + cos²(F₂)
+                </div>
+            </div>
+
+            <div style="margin-top: 20px; text-align: center;">
+                <h3 style="color: white;">📊 Méthodologie d'Interprétation</h3>
+                <ol style="text-align: left; display: inline-block; color: white;">
+                    <li>Vérifier la pertinence de l'ACP (Bartlett)</li>
+                    <li>Choisir le nombre d'axes (Kaiser + %)</li>
+                    <li>Identifier les variables bien représentées (cos²)</li>
+                    <li>Repérer les variables importantes (CTR)</li>
+                    <li>Interpréter chaque axe (signification)</li>
+                    <li>Analyser les corrélations (angles)</li>
+                    <li>Identifier les groupes d'individus</li>
+                    <li>Caractériser les profils types</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="background: #333; color: white; padding: 20px; text-align: center; margin-top: 30px;">
+            <p style="margin: 0; font-size: 1.1em;">📊 Analyse en Composantes Principales - Guide Complet</p>
+            <p style="margin: 10px 0 0 0; opacity: 0.8;">INSEA 2022-2024 | Bonne Chance pour vos Examens ! 🎓</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
