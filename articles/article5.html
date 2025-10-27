@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cours : Relaxations et Bornes en PNE</title>
+    <title>Relaxations et Bornes - Explication des Formules</title>
     <style>
         * {
             margin: 0;
@@ -12,24 +12,25 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            line-height: 1.8;
             color: #333;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding: 20px;
+            font-size: 18px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             overflow: hidden;
         }
 
         header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
             color: white;
             padding: 40px;
             text-align: center;
@@ -38,38 +39,6 @@
         header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .sommaire {
-            background: #f8f9fa;
-            padding: 30px;
-            border-bottom: 3px solid #667eea;
-        }
-
-        .sommaire h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-
-        .sommaire ul {
-            list-style: none;
-        }
-
-        .sommaire li {
-            padding: 12px;
-            margin: 8px 0;
-            background: white;
-            border-left: 4px solid #667eea;
-            border-radius: 5px;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .sommaire li:hover {
-            transform: translateX(10px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
         }
 
         .content {
@@ -80,125 +49,171 @@
             margin-bottom: 50px;
             padding: 30px;
             background: #f8f9fa;
-            border-radius: 10px;
-            border-left: 5px solid #667eea;
+            border-radius: 15px;
+            border-left: 8px solid #ff6b6b;
         }
 
-        .section h2 {
-            color: #667eea;
+        h2 {
+            color: #ff6b6b;
             font-size: 2em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #667eea;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #ff6b6b;
         }
 
-        .section h3 {
-            color: #764ba2;
-            font-size: 1.5em;
-            margin: 25px 0 15px 0;
+        h3 {
+            color: #ffa500;
+            font-size: 1.6em;
+            margin: 30px 0 20px 0;
         }
 
-        .definition {
-            background: #e3f2fd;
-            border-left: 5px solid #2196F3;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-
-        .definition strong {
-            color: #2196F3;
-            font-size: 1.1em;
-        }
-
-        .proposition {
-            background: #fff3e0;
-            border-left: 5px solid #ff9800;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-
-        .proposition strong {
-            color: #ff9800;
-            font-size: 1.1em;
-        }
-
-        .theoreme {
-            background: #f3e5f5;
-            border-left: 5px solid #9c27b0;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-
-        .theoreme strong {
-            color: #9c27b0;
-            font-size: 1.1em;
-        }
-
-        .remarque {
-            background: #e8f5e9;
-            border-left: 5px solid #4caf50;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-
-        .remarque strong {
-            color: #4caf50;
-            font-size: 1.1em;
-        }
-
-        .exemple {
-            background: #fff9c4;
-            border-left: 5px solid #fbc02d;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-
-        .exemple strong {
-            color: #f57f17;
-            font-size: 1.1em;
-        }
-
-        .formule {
+        .formule-box {
             background: white;
-            padding: 20px;
-            margin: 20px 0;
-            border: 2px solid #667eea;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 1.2em;
-            overflow-x: auto;
+            border: 4px solid #667eea;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
         }
 
-        .formule-inline {
-            background: #f0f0f0;
-            padding: 3px 8px;
-            border-radius: 3px;
+        .formule-title {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            margin: -30px -30px 20px -30px;
+            border-radius: 11px 11px 0 0;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .formule-display {
+            background: #e3f2fd;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            font-size: 1.5em;
+            text-align: center;
             font-family: 'Courier New', monospace;
+            border: 3px dashed #2196f3;
+        }
+
+        .explication {
+            background: #fff9c4;
+            border-left: 6px solid #fbc02d;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .explication-title {
+            color: #f57f17;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .mot {
+            background: #c8e6c9;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #2e7d32;
+            display: inline-block;
+            margin: 3px;
+        }
+
+        .exemple-enfant {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            border: 4px solid #fdcb6e;
+        }
+
+        .exemple-enfant h4 {
+            color: #d63031;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .analogie-simple {
+            background: #e1f5fe;
+            border: 4px solid #03a9f4;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .step-by-step {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-by-step li {
+            counter-increment: step;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            position: relative;
+            padding-left: 80px;
+            border: 3px solid #667eea;
+        }
+
+        .step-by-step li::before {
+            content: counter(step);
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #667eea;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .variable-box {
+            background: #f3e5f5;
+            border: 3px solid #9c27b0;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .variable-name {
+            color: #9c27b0;
+            font-size: 1.4em;
+            font-weight: bold;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 25px 0;
             background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         th {
             background: #667eea;
             color: white;
-            padding: 15px;
-            text-align: center;
-            font-weight: bold;
+            padding: 18px;
+            font-size: 1.1em;
         }
 
         td {
-            padding: 12px;
+            padding: 15px;
             text-align: center;
             border: 1px solid #ddd;
         }
@@ -207,225 +222,429 @@
             background: #f8f9fa;
         }
 
-        tr:hover {
-            background: #e3f2fd;
-        }
-
-        .conclusion {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 10px;
-            font-size: 1.1em;
+        .dessin {
             text-align: center;
+            font-size: 3em;
+            margin: 20px 0;
         }
 
-        .highlight {
-            background: #ffeb3b;
-            padding: 2px 5px;
-            border-radius: 3px;
-        }
-
-        .important {
-            background: #ffcdd2;
-            border-left: 5px solid #f44336;
-            padding: 15px;
+        .fleche {
+            text-align: center;
+            font-size: 2em;
+            color: #ff6b6b;
             margin: 15px 0;
-            border-radius: 5px;
         }
 
-        .steps {
-            counter-reset: step-counter;
-            list-style: none;
-            padding-left: 0;
+        .important-box {
+            background: #ffebee;
+            border: 4px solid #f44336;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 25px 0;
         }
 
-        .steps li {
-            counter-increment: step-counter;
-            margin: 15px 0;
-            padding: 15px;
-            background: white;
-            border-radius: 5px;
-            position: relative;
-            padding-left: 60px;
-        }
-
-        .steps li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #667eea;
-            color: white;
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .important-box::before {
+            content: "⚠️ ATTENTION !";
+            display: block;
+            font-size: 1.5em;
             font-weight: bold;
+            color: #c62828;
+            margin-bottom: 15px;
+        }
+
+        .exemple-calcul {
+            background: #e8f5e9;
+            border: 3px solid #4caf50;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
             font-size: 1.2em;
         }
 
-        .grid-2col {
+        .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
             margin: 20px 0;
         }
 
+        .card-simple {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .card-simple h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
-            .grid-2col {
+            .grid-2 {
                 grid-template-columns: 1fr;
             }
         }
 
-        code {
-            background: #f5f5f5;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            color: #d63384;
-        }
-
-        .arrow {
-            color: #667eea;
+        .highlight-rouge {
+            background: #ffcdd2;
+            padding: 3px 8px;
+            border-radius: 5px;
             font-weight: bold;
-            font-size: 1.5em;
+            color: #c62828;
         }
 
-        .comparison-table {
-            margin: 30px 0;
+        .highlight-vert {
+            background: #c8e6c9;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #2e7d32;
         }
 
-        .comparison-table th:first-child {
-            background: #764ba2;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .visual-box {
-            background: white;
-            border: 2px solid #667eea;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .math {
-            font-style: italic;
-            font-family: 'Times New Roman', serif;
-        }
-
-        .fraction {
-            display: inline-block;
-            vertical-align: middle;
-            text-align: center;
-        }
-
-        .fraction .num {
-            display: block;
-            border-bottom: 1px solid #333;
-            padding-bottom: 2px;
-        }
-
-        .fraction .den {
-            display: block;
-            padding-top: 2px;
-        }
-
-        .sommaire a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        .sommaire a:hover {
-            color: #667eea;
+        .highlight-bleu {
+            background: #bbdefb;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #1565c0;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>📊 Chapitre 2 : Relaxations et Bornes</h1>
-            <p>Programmation en Nombres Entiers</p>
+            <h1>🧮 Relaxations et Bornes</h1>
+            <p style="font-size: 1.3em;">Chaque formule expliquée comme à un enfant !</p>
         </header>
 
-        <div class="sommaire">
-            <h2>📑 Sommaire</h2>
-            <ul>
-                <li><a href="#section1">1. Relaxation Linéaire</a></li>
-                <li><a href="#section2">2. Propriétés des Relaxations</a></li>
-                <li><a href="#section3">3. Formulations Idéales</a></li>
-                <li><a href="#section4">4. Bornes pour le Problème de Sac à Dos</a></li>
-            </ul>
-        </div>
-
         <div class="content">
-            <!-- SECTION 1 -->
-            <div class="section" id="section1">
-                <h2>1. Relaxation Linéaire (Continue)</h2>
 
-                <div class="definition">
-                    <strong>📖 Définition :</strong> La relaxation linéaire (ou continue) d'un PNE consiste à <span class="highlight">omettre les contraintes d'intégrité</span> pour obtenir un programme linéaire.
-                </div>
+            <!-- SECTION 1: QU'EST-CE QU'UN PNE ? -->
+            <div class="section">
+                <h2>1️⃣ La Formule de Base : Le PNE</h2>
 
-                <h3>1.1 Formulation</h3>
-                
-                <div class="grid-2col">
-                    <div class="visual-box">
-                        <h4 style="color: #667eea; text-align: center;">Programme en Nombres Entiers (PNE)</h4>
-                        <div class="formule">
-                            <span class="math">z</span> = min<sub><span class="math">x,y</span></sub> −6<span class="math">x</span> + <span class="math">y</span>
-                        </div>
-                        <p style="text-align: center;">sujet à :</p>
-                        <div class="formule">
-                            8<span class="math">x</span> − 2<span class="math">y</span> ≤ 15<br>
-                            4<span class="math">x</span> + 5<span class="math">y</span> ≤ 36<br>
-                            <span class="math">x, y</span> ∈ ℕ
-                        </div>
-                    </div>
-
-                    <div class="visual-box">
-                        <h4 style="color: #764ba2; text-align: center;">Relaxation Linéaire (RL)</h4>
-                        <div class="formule">
-                            <span class="math">z<sup>R</sup></span> = min<sub><span class="math">x,y</span></sub> −6<span class="math">x</span> + <span class="math">y</span>
-                        </div>
-                        <p style="text-align: center;">sujet à :</p>
-                        <div class="formule">
-                            8<span class="math">x</span> − 2<span class="math">y</span> ≤ 15<br>
-                            4<span class="math">x</span> + 5<span class="math">y</span> ≤ 36<br>
-                            <span class="math">x, y</span> ≥ 0
-                        </div>
-                    </div>
-                </div>
-
-                <div class="remarque">
-                    <strong>💡 Remarque importante :</strong> <span class="math">z<sup>R</sup></span> ≤ <span class="math">z</span> car toute solution réalisable de PNE est aussi réalisable pour RL.
-                </div>
-
-                <h3>1.2 Résolution par l'Algorithme du Simplexe</h3>
-
-                <div class="exemple">
-                    <strong>📝 Exemple complet de résolution :</strong>
+                <div class="formule-box">
+                    <div class="formule-title">📝 Programme en Nombres Entiers (PNE)</div>
                     
-                    <p><strong>Forme standard :</strong></p>
-                    <div class="formule">
-                        min −6<span class="math">x</span> + <span class="math">y</span><br>
-                        8<span class="math">x</span> − 2<span class="math">y</span> + <span class="math">e</span>₁ = 15<br>
-                        4<span class="math">x</span> + 5<span class="math">y</span> + <span class="math">e</span>₂ = 36<br>
-                        <span class="math">x, y, e</span>₁, <span class="math">e</span>₂ ≥ 0
+                    <div class="formule-display">
+                        z = min<sub>x,y</sub> (-6x + y)
                     </div>
 
-                    <h4 style="color: #f57f17; margin-top: 20px;">📊 Itération 1 : Tableau initial</h4>
+                    <div class="explication">
+                        <div class="explication-title">🔍 Qu'est-ce que ça veut dire ?</div>
+                        <ul class="step-by-step">
+                            <li>
+                                <span class="mot">z</span> = le score final (qu'on veut rendre le plus petit possible)
+                            </li>
+                            <li>
+                                <span class="mot">min</span> = "minimiser" = chercher le plus PETIT score possible
+                            </li>
+                            <li>
+                                <span class="mot">x, y</span> = les variables qu'on doit choisir (comme des choix dans un jeu)
+                            </li>
+                            <li>
+                                <span class="mot">-6x + y</span> = la formule pour calculer le score
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple-enfant">
+                        <h4>🍬 Exemple avec des bonbons</h4>
+                        <p><strong>Imagine :</strong></p>
+                        <ul style="margin-left: 30px; margin-top: 15px; font-size: 1.1em;">
+                            <li><strong>x</strong> = nombre de bonbons rouges que tu prends</li>
+                            <li><strong>y</strong> = nombre de bonbons bleus que tu prends</li>
+                            <li><strong>-6x</strong> = chaque bonbon rouge te donne -6 points (c'est bien car on veut minimiser !)</li>
+                            <li><strong>+y</strong> = chaque bonbon bleu te donne +1 point (c'est moins bien)</li>
+                        </ul>
+                        <p style="margin-top: 20px; font-size: 1.2em; text-align: center;">
+                            <strong>Objectif :</strong> Trouver combien de bonbons rouges et bleus prendre pour avoir le score le plus PETIT possible !
+                        </p>
+                    </div>
+
+                    <div class="formule-display" style="margin-top: 30px;">
+                        sujet à : 8x - 2y ≤ 15
+                    </div>
+
+                    <div class="explication">
+                        <div class="explication-title">🔍 Contrainte 1 : Qu'est-ce que ça veut dire ?</div>
+                        <ul class="step-by-step">
+                            <li>
+                                <span class="mot">sujet à</span> = "MAIS il y a des règles à respecter !"
+                            </li>
+                            <li>
+                                <span class="mot">8x</span> = 8 fois le nombre de bonbons rouges
+                            </li>
+                            <li>
+                                <span class="mot">-2y</span> = moins 2 fois le nombre de bonbons bleus
+                            </li>
+                            <li>
+                                <span class="mot">≤ 15</span> = le résultat doit être inférieur ou égal à 15
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple-enfant">
+                        <h4>📦 Exemple concret</h4>
+                        <p><strong>Règle 1 :</strong> Tu as un sac qui peut contenir maximum 15 unités de poids.</p>
+                        <ul style="margin-left: 30px; margin-top: 15px; font-size: 1.1em;">
+                            <li>Chaque bonbon rouge pèse 8 unités</li>
+                            <li>Chaque bonbon bleu enlève 2 unités de poids (il est très léger !)</li>
+                            <li>Total : 8x - 2y ≤ 15</li>
+                        </ul>
+                        
+                        <div class="exemple-calcul" style="margin-top: 20px;">
+                            <strong>Exemple :</strong> Si x=2 et y=3<br>
+                            8×2 - 2×3 = 16 - 6 = 10<br>
+                            10 ≤ 15 ✅ <span style="color: green;">C'est BON !</span>
+                        </div>
+                    </div>
+
+                    <div class="formule-display" style="margin-top: 30px;">
+                        4x + 5y ≤ 36
+                    </div>
+
+                    <div class="explication">
+                        <div class="explication-title">🔍 Contrainte 2</div>
+                        <p><strong>Règle 2 :</strong> Tu as aussi un budget de 36 pièces d'or.</p>
+                        <ul style="margin-left: 30px; margin-top: 15px; font-size: 1.1em;">
+                            <li>Chaque bonbon rouge coûte 4 pièces</li>
+                            <li>Chaque bonbon bleu coûte 5 pièces</li>
+                            <li>Total : 4x + 5y ≤ 36 pièces</li>
+                        </ul>
+                    </div>
+
+                    <div class="formule-display" style="margin-top: 30px;">
+                        x, y ∈ ℕ
+                    </div>
+
+                    <div class="explication">
+                        <div class="explication-title">🔍 La contrainte la PLUS IMPORTANTE !</div>
+                        <ul class="step-by-step">
+                            <li>
+                                <span class="mot">∈</span> = "appartient à" = "doit être dans l'ensemble"
+                            </li>
+                            <li>
+                                <span class="mot">ℕ</span> = l'ensemble des nombres naturels = {0, 1, 2, 3, 4, 5...}
+                            </li>
+                            <li>
+                                <strong>Signification :</strong> x et y doivent être des nombres ENTIERS (pas 2.5 ou 3.7 !)
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple-enfant">
+                        <h4>🚫 Pourquoi pas de décimales ?</h4>
+                        <p style="font-size: 1.2em;">Parce que dans la vraie vie, tu ne peux pas prendre <strong>2.5 bonbons</strong> ! 😄</p>
+                        <p style="margin-top: 15px;">Tu dois prendre soit 2 bonbons, soit 3 bonbons. Pas entre les deux !</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: LA RELAXATION LINÉAIRE -->
+            <div class="section">
+                <h2>2️⃣ La Relaxation Linéaire (RL)</h2>
+
+                <div class="formule-box">
+                    <div class="formule-title">✨ On transforme le problème !</div>
+
+                    <div class="analogie-simple">
+                        <h4 style="color: #0277bd; font-size: 1.4em; margin-bottom: 15px;">🎮 Comme dans un jeu vidéo</h4>
+                        <p style="font-size: 1.2em;">
+                            <strong>Mode DIFFICILE (PNE) :</strong> x et y doivent être des entiers<br>
+                            <span class="fleche">⬇️</span>
+                            <strong>Mode FACILE (RL) :</strong> x et y peuvent être des décimales !
+                        </p>
+                    </div>
+
+                    <div class="grid-2">
+                        <div class="card-simple">
+                            <h4>❌ AVANT (PNE)</h4>
+                            <div class="formule-display" style="font-size: 1.2em; background: #ffebee;">
+                                x, y ∈ ℕ
+                            </div>
+                            <p style="text-align: center; margin-top: 10px;">
+                                x et y doivent être<br>
+                                <span class="highlight-rouge">0, 1, 2, 3, 4...</span>
+                            </p>
+                        </div>
+
+                        <div class="card-simple">
+                            <h4>✅ APRÈS (RL)</h4>
+                            <div class="formule-display" style="font-size: 1.2em; background: #e8f5e9;">
+                                x, y ≥ 0
+                            </div>
+                            <p style="text-align: center; margin-top: 10px;">
+                                x et y peuvent être<br>
+                                <span class="highlight-vert">0, 1.5, 2.3, 3.75...</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="exemple-enfant">
+                        <h4>🍕 Exemple avec des pizzas</h4>
+                        <p><strong>PNE (difficile) :</strong> "Tu peux commander 1 pizza, 2 pizzas, 3 pizzas... mais pas 2.5 pizzas !"</p>
+                        <p style="margin-top: 15px;"><strong>RL (facile) :</strong> "Tu peux commander 2.5 pizzas si tu veux !" (même si c'est bizarre dans la vraie vie 😄)</p>
+                    </div>
+
+                    <div class="important-box">
+                        <strong>Pourquoi on fait ça ?</strong><br><br>
+                        Parce que résoudre un problème avec des décimales est <span class="highlight-bleu">10 000 fois plus facile</span> qu'avec des entiers !<br><br>
+                        On utilise l'algorithme du SIMPLEXE (très rapide ⚡)
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3: z^R ≤ z -->
+            <div class="section">
+                <h2>3️⃣ La Formule Magique : z<sup>R</sup> ≤ z</h2>
+
+                <div class="formule-box">
+                    <div class="formule-title">🎯 La relation entre RL et PNE</div>
+
+                    <div class="formule-display" style="font-size: 2em;">
+                        z<sup>R</sup> ≤ z
+                    </div>
+
+                    <div class="explication">
+                        <div class="explication-title">🔍 Décodage symbole par symbole</div>
+                        <div class="variable-box">
+                            <div class="variable-name">z<sup>R</sup></div>
+                            <p style="margin-top: 10px;">= Le score optimal de la <strong>Relaxation</strong> (problème facile)</p>
+                        </div>
+
+                        <div class="variable-box">
+                            <div class="variable-name">z</div>
+                            <p style="margin-top: 10px;">= Le score optimal du <strong>PNE</strong> (problème difficile)</p>
+                        </div>
+
+                        <div class="variable-box">
+                            <div class="variable-name">≤</div>
+                            <p style="margin-top: 10px;">= "inférieur ou égal à" = "plus petit ou pareil"</p>
+                        </div>
+                    </div>
+
+                    <div class="exemple-enfant">
+                        <h4>🏃 Exemple avec une course</h4>
+                        <p style="font-size: 1.2em;">
+                            <strong>Imagine deux courses :</strong>
+                        </p>
+                        
+                        <div style="margin: 20px 0; padding: 20px; background: white; border-radius: 10px;">
+                            <p><strong>Course 1 (RL) :</strong> Tu peux courir sur un chemin PLAT et DIRECT</p>
+                            <p style="margin-top: 10px;">→ Temps : 10 minutes</p>
+                        </div>
+
+                        <div style="margin: 20px 0; padding: 20px; background: white; border-radius: 10px;">
+                            <p><strong>Course 2 (PNE) :</strong> Tu dois courir sur le MÊME chemin, MAIS avec des obstacles !</p>
+                            <p style="margin-top: 10px;">→ Temps : 15 minutes (forcément plus long !)</p>
+                        </div>
+
+                        <p style="margin-top: 20px; font-size: 1.3em; text-align: center; background: #e3f2fd; padding: 15px; border-radius: 10px;">
+                            <strong>Conclusion :</strong> Le temps sans obstacles (z<sup>R</sup>) est toujours ≤ au temps avec obstacles (z) !
+                        </p>
+                    </div>
+
+                    <div class="explication">
+                        <div class="explication-title">💡 Pourquoi c'est TOUJOURS vrai ?</div>
+                        <ul class="step-by-step">
+                            <li>Dans RL, on a ENLEVÉ une contrainte (celle des entiers)</li>
+                            <li>Donc on a PLUS de liberté pour choisir x et y</li>
+                            <li>Avec plus de liberté, on peut trouver un meilleur score (ou au moins aussi bon)</li>
+                            <li>Donc z<sup>R</sup> ≤ z (toujours !)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="formule-box">
+                    <div class="formule-title">📊 Exemple avec des VRAIS chiffres</div>
+
+                    <div class="exemple-calcul">
+                        <strong>Relaxation (RL) :</strong><br>
+                        Solution optimale : x<sup>R</sup> = 3.0625 et y<sup>R</sup> = 4.75<br>
+                        Score : z<sup>R</sup> = -6×3.0625 + 4.75 = -13.625
+                    </div>
+
+                    <div class="fleche">⬇️</div>
+
+                    <div class="exemple-calcul">
+                        <strong>PNE (problème original) :</strong><br>
+                        Solution optimale : x = 2 et y = 1 (des ENTIERS !)<br>
+                        Score : z = -6×2 + 1 = -11
+                    </div>
+
+                    <div class="analogie-simple" style="margin-top: 30px;">
+                        <h4 style="color: #c62828; font-size: 1.4em;">✅ Vérifions !</h4>
+                        <p style="font-size: 1.5em; text-align: center; margin-top: 15px;">
+                            z<sup>R</sup> = -13.625<br>
+                            z = -11<br><br>
+                            -13.625 ≤ -11 ? <span style="color: green; font-size: 1.2em;">✅ OUI !</span>
+                        </p>
+                        <p style="margin-top: 20px; text-align: center; font-size: 1.1em;">
+                            (Rappel : -13.625 est plus petit que -11, comme -5 est plus petit que -2)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 4: LES CONTRAINTES DU SIMPLEXE -->
+            <div class="section">
+                <h2>4️⃣ Le Tableau du Simplexe</h2>
+
+                <div class="formule-box">
+                    <div class="formule-title">📋 Forme Standard</div>
+
+                    <div class="formule-display">
+                        8x - 2y + e₁ = 15<br>
+                        4x + 5y + e₂ = 36
+                    </div>
+
+                    <div class="explication">
+                        <div class="explication-title">🔍 C'est quoi e₁ et e₂ ?</div>
+                        
+                        <div class="variable-box">
+                            <div class="variable-name">e₁ et e₂</div>
+                            <p style="margin-top: 10px;">= Variables d'<strong>ÉCART</strong> (slack variables en anglais)</p>
+                        </div>
+
+                        <div class="exemple-enfant">
+                            <h4>🎒 Exemple avec un sac</h4>
+                            <p><strong>Contrainte originale :</strong> 8x - 2y ≤ 15</p>
+                            <p style="margin-top: 15px;">Ça veut dire : "8x - 2y doit être plus petit ou égal à 15"</p>
+                            
+                            <div style="margin: 20px 0; padding: 20px; background: white; border-radius: 10px;">
+                                <p><strong>Imagine :</strong></p>
+                                <ul style="margin-left: 20px; margin-top: 10px;">
+                                    <li>Tu as un sac qui peut contenir 15 kg</li>
+                                    <li>Tu mets des affaires qui pèsent 8x - 2y kg</li>
+                                    <li><strong>e₁</strong> = l'espace VIDE restant dans le sac !</li>
+                                </ul>
+                            </div>
+
+                            <div class="exemple-calcul">
+                                <strong>Exemple :</strong><br>
+                                Si 8x - 2y = 12 kg<br>
+                                Alors e₁ = 15 - 12 = 3 kg restant<br><br>
+                                Vérifions : 8x - 2y + e₁ = 12 + 3 = 15 ✅
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="important-box">
+                        <strong>Pourquoi on ajoute e₁ et e₂ ?</strong><br><br>
+                        Pour transformer les inégalités (≤) en égalités (=)<br>
+                        C'est nécessaire pour l'algorithme du simplexe !
+                    </div>
+                </div>
+
+                <div class="formule-box">
+                    <div class="formule-title">📊 Le Tableau du Simplexe - Itération 1</div>
+
                     <table>
                         <tr>
                             <th>base</th>
@@ -434,16 +653,14 @@
                             <th>e₁</th>
                             <th>e₂</th>
                             <th>val</th>
-                            <th>ratio</th>
                         </tr>
-                        <tr>
-                            <td>-z</td>
-                            <td style="background: #ffcdd2;">-6</td>
+                        <tr style="background: #ffebee;">
+                            <td><strong>-z</strong></td>
+                            <td><strong style="color: red;">-6</strong></td>
                             <td>1</td>
                             <td>0</td>
                             <td>0</td>
                             <td>0</td>
-                            <td>-</td>
                         </tr>
                         <tr>
                             <td>e₁</td>
@@ -452,21 +669,66 @@
                             <td>1</td>
                             <td>0</td>
                             <td>15</td>
-                            <td style="background: #c8e6c9;">15/8</td>
                         </tr>
                         <tr>
-                            <td style="background: #fff9c4;">e₂</td>
+                            <td>e₂</td>
                             <td>4</td>
                             <td>5</td>
                             <td>0</td>
                             <td>1</td>
                             <td>36</td>
-                            <td>36/4</td>
                         </tr>
                     </table>
-                    <p><strong>Variable entrante :</strong> <span class="math">x</span> | <strong>Variable sortante :</strong> <span class="math">e</span>₁</p>
 
-                    <h4 style="color: #f57f17; margin-top: 20px;">📊 Itération 2</h4>
+                    <div class="explication">
+                        <div class="explication-title">🔍 Comment lire ce tableau ?</div>
+                        <ul class="step-by-step">
+                            <li>
+                                <strong>Colonne "base"</strong> = les variables qui ont une valeur NON NULLE<br>
+                                Au début : e₁ et e₂ sont en base (x=0, y=0)
+                            </li>
+                            <li>
+                                <strong>Ligne "-z"</strong> = les coefficients de la fonction objectif<br>
+                                Le -6 sous x signifie que x a un coefficient de -6
+                            </li>
+                            <li>
+                                <strong>Colonne "val"</strong> = les valeurs actuelles<br>
+                                e₁ = 15, e₂ = 36, z = 0
+                            </li>
+                            <li>
+                                <strong>Nombre NÉGATIF dans ligne -z</strong> = on peut améliorer !<br>
+                                Le -6 signifie : "Si on augmente x, z va diminuer" (bon pour minimisation !)
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple-enfant">
+                        <h4>🎯 Variable ENTRANTE et SORTANTE</h4>
+                        
+                        <div class="analogie-simple">
+                            <p style="font-size: 1.2em;">
+                                <strong>Variable ENTRANTE (x) :</strong> Celle qu'on va "activer"<br>
+                                → Comme inviter quelqu'un à entrer dans une pièce 🚪➡️
+                            </p>
+                            <p style="font-size: 1.2em; margin-top: 15px;">
+                                <strong>Variable SORTANTE (e₁) :</strong> Celle qui va devenir 0<br>
+                                → Comme quelqu'un qui sort de la pièce ⬅️🚪
+                            </p>
+                        </div>
+
+                        <div class="exemple-calcul" style="margin-top: 20px;">
+                            <strong>Règle du ratio :</strong><br><br>
+                            Pour e₁ : 15 ÷ 8 = 1.875<br>
+                            Pour e₂ : 36 ÷ 4 = 9<br><br>
+                            → On choisit le PLUS PETIT : 1.875<br>
+                            → Donc e₁ sort, x entre !
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formule-box">
+                    <div class="formule-title">✨ Solution FINALE (après 3 itérations)</div>
+
                     <table>
                         <tr>
                             <th>base</th>
@@ -475,55 +737,14 @@
                             <th>e₁</th>
                             <th>e₂</th>
                             <th>val</th>
-                            <th>ratio</th>
                         </tr>
-                        <tr>
-                            <td>-z</td>
-                            <td>0</td>
-                            <td style="background: #ffcdd2;">-1/2</td>
-                            <td>3/4</td>
-                            <td>0</td>
-                            <td>45/4</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td>x</td>
-                            <td>1</td>
-                            <td>-1/4</td>
-                            <td>1/8</td>
-                            <td>0</td>
-                            <td>15/8</td>
-                            <td>-</td>
-                        </tr>
-                        <tr>
-                            <td style="background: #fff9c4;">e₂</td>
-                            <td>0</td>
-                            <td>6</td>
-                            <td>-1/2</td>
-                            <td>1</td>
-                            <td>57/2</td>
-                            <td style="background: #c8e6c9;">57/12</td>
-                        </tr>
-                    </table>
-                    <p><strong>Variable entrante :</strong> <span class="math">y</span> | <strong>Variable sortante :</strong> <span class="math">e</span>₂</p>
-
-                    <h4 style="color: #f57f17; margin-top: 20px;">📊 Itération 3 : Solution optimale</h4>
-                    <table>
-                        <tr>
-                            <th>base</th>
-                            <th>x</th>
-                            <th>y</th>
-                            <th>e₁</th>
-                            <th>e₂</th>
-                            <th>val</th>
-                        </tr>
-                        <tr>
-                            <td>-z</td>
+                        <tr style="background: #c8e6c9;">
+                            <td><strong>-z</strong></td>
                             <td>0</td>
                             <td>0</td>
                             <td>17/24</td>
                             <td>1/12</td>
-                            <td style="background: #c8e6c9; font-weight: bold;">109/8</td>
+                            <td style="font-size: 1.3em; font-weight: bold;">109/8</td>
                         </tr>
                         <tr>
                             <td>x</td>
@@ -543,413 +764,338 @@
                         </tr>
                     </table>
 
-                    <div class="conclusion">
-                        <strong>🎯 Solution optimale de la RL :</strong><br>
-                        <span class="math">x<sup>R</sup></span> = 49/16 ≈ 3.06 ∈ [3, 4]<br>
-                        <span class="math">y<sup>R</sup></span> = 19/4 = 4.75 ∈ [4, 5]<br>
-                        <span class="math">z<sup>R</sup></span> = −109/8 = −13.625
-                    </div>
-                </div>
-
-                <div class="important">
-                    <strong>⚠️ Attention :</strong> Puisque les coefficients dans la fonction objectif sont entiers, alors <span class="math">z</span> ≥ −13.
-                </div>
-
-                <h3>1.3 Arrondir : une mauvaise idée !</h3>
-
-                <div class="exemple">
-                    <strong>🔍 Vérification des solutions arrondies :</strong>
-                    
-                    <p>Les 2² = 4 solutions entières voisines de (49/16, 19/4) sont :</p>
-                    <ul style="margin-left: 40px; margin-top: 10px;">
-                        <li>(3, 4) → <strong style="color: #f44336;">NON réalisable</strong></li>
-                        <li>(3, 5) → <strong style="color: #f44336;">NON réalisable</strong></li>
-                        <li>(4, 4) → <strong style="color: #f44336;">NON réalisable</strong></li>
-                        <li>(4, 5) → <strong style="color: #f44336;">NON réalisable</strong></li>
-                    </ul>
-                    
-                    <p style="margin-top: 15px;">La solution entière réalisable la plus proche est <strong>(2, 5)</strong> avec un coût de <strong>-7</strong>.</p>
-                    
-                    <p style="margin-top: 15px;">On sait donc que : <strong>−13 ≤ z ≤ −7</strong></p>
-                    
-                    <p style="margin-top: 15px;">La solution optimale réelle est <strong>(2, 1)</strong> avec <span class="math">z</span> = <strong>-11</strong>, qui est loin de (49/16, 19/4).</p>
-                </div>
-
-                <div class="conclusion">
-                    <strong>⚠️ Conclusion importante :</strong> Arrondir la solution de la relaxation linéaire peut donner une solution non réalisable ou une solution de piètre qualité.
-                </div>
-
-                <h3>1.4 Dualité en Programmation Linéaire</h3>
-
-                <div class="definition">
-                    <strong>📖 Domaines primal et dual :</strong>
-                    <div class="formule">
-                        <span class="math">X</span> = {<span class="math">x</span> ≥ 0 | <span class="math">Ax</span> = <span class="math">b</span>}<br>
-                        <span class="math">Y</span> = {<span class="math">y</span> ∈ ℝ<sup>m</sup> | <span class="math">y<sup>T</sup>A</span> ≤ <span class="math">c<sup>T</sup></span>}
-                    </div>
-                    <p style="margin-top: 15px;">
-                        <strong>Primal :</strong> min<sub><span class="math">x∈X</span></sub> <span class="math">c<sup>T</sup>x</span><br>
-                        <strong>Dual :</strong> max<sub><span class="math">y∈Y</span></sub> <span class="math">y<sup>T</sup>b</span>
-                    </p>
-                </div>
-
-                <div class="proposition">
-                    <strong>📐 Proposition (Dualité faible) :</strong> Si <span class="math">x</span> ∈ <span class="math">X</span> et <span class="math">y</span> ∈ <span class="math">Y</span>, alors <span class="math">y<sup>T</sup>b</span> ≤ <span class="math">c<sup>T</sup>x</span>.
-                </div>
-
-                <div class="theoreme">
-                    <strong>🎯 Théorème (Dualité forte) :</strong> Si <span class="math">X</span> ≠ ∅ et <span class="math">Y</span> ≠ ∅, alors il existe des solutions <span class="math">x*</span> ∈ <span class="math">X</span> et <span class="math">y*</span> ∈ <span class="math">Y</span> telles que <span class="math">c<sup>T</sup>x*</span> = <span class="math">y*<sup>T</sup>b</span>.
-                </div>
-
-                <div class="proposition">
-                    <strong>📊 Application au PNE :</strong> Si <span class="math">y</span> ∈ <span class="math">Y</span>, alors <span class="math">y<sup>T</sup>b</span> est une <span class="highlight">borne inférieure</span> sur <span class="math">z</span> (i.e., <span class="math">y<sup>T</sup>b</span> ≤ <span class="math">z</span>).
-                </div>
-            </div>
-
-            <!-- SECTION 2 -->
-            <div class="section" id="section2">
-                <h2>2. Propriétés des Relaxations</h2>
-
-                <div class="definition">
-                    <strong>📖 Définition générale :</strong> Soit P un programme mathématique général :
-                    <div class="formule">
-                        (P) <span class="math">z</span> = min<sub><span class="math">x</span></sub> <span class="math">c(x)</span><br>
-                        sujet à : <span class="math">x</span> ∈ <span class="math">X</span> ⊆ ℝ<sup>n</sup>
-                    </div>
-                    <p style="margin-top: 15px;">Alors</p>
-                    <div class="formule">
-                        (R) <span class="math">z<sup>R</sup></span> = min<sub><span class="math">x</span></sub> <span class="math">f(x)</span><br>
-                        sujet à : <span class="math">x</span> ∈ <span class="math">T</span> ⊆ ℝ<sup>n</sup>
-                    </div>
-                    <p style="margin-top: 15px;">est une <strong>relaxation</strong> de P si <span class="math">X</span> ⊆ <span class="math">T</span> et <span class="math">f(x)</span> ≤ <span class="math">c(x)</span>, ∀<span class="math">x</span> ∈ <span class="math">X</span>.</p>
-                </div>
-
-                <div class="proposition">
-                    <strong>📐 Proposition fondamentale :</strong> Si R est une relaxation de P, alors <span class="math">z</span> ≥ <span class="math">z<sup>R</sup></span>.
-                    
-                    <p style="margin-top: 15px;"><strong>Preuve :</strong></p>
-                    <ul class="steps">
-                        <li>Si P est non réalisable, alors <span class="math">z</span> = +∞ ≥ <span class="math">z<sup>R</sup></span></li>
-                        <li>Si P est réalisable (<span class="math">X</span> ≠ ∅ et <span class="math">T</span> ≠ ∅), alors :
-                            <div class="formule">
-                                <span class="math">z<sup>R</sup></span> = min<sub><span class="math">x∈T</span></sub> <span class="math">f(x)</span> ≤ min<sub><span class="math">x∈X</span></sub> <span class="math">f(x)</span> ≤ min<sub><span class="math">x∈X</span></sub> <span class="math">c(x)</span> = <span class="math">z</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="definition">
-                    <strong>📖 Saut d'intégrité :</strong> Si R est la relaxation linéaire de P, alors la différence <span class="math">z</span> − <span class="math">z<sup>R</sup></span> est appelée le <span class="highlight">saut d'intégrité</span>.
-                </div>
-
-                <div class="proposition">
-                    <strong>📊 Propriétés pratiques :</strong> Soit R une relaxation de P.
-                    <ol style="margin-left: 40px; margin-top: 15px;">
-                        <li style="margin: 10px 0;"><strong>Si R est non réalisable</strong>, alors P est non réalisable.</li>
-                        <li style="margin: 10px 0;"><strong>Si x* est une solution optimale de R</strong>, <span class="math">x*</span> ∈ <span class="math">X</span> et <span class="math">f(x*)</span> = <span class="math">c(x*)</span>, alors <span class="math">x*</span> est aussi optimale pour P.</li>
-                    </ol>
-                </div>
-
-                <div class="remarque">
-                    <strong>💡 En pratique :</strong> Pour un problème donné, il existe plusieurs modèles et, pour chaque modèle, plusieurs relaxations. En général, on cherche à utiliser un modèle ayant une relaxation :
-                    <ul style="margin-left: 40px; margin-top: 10px;">
-                        <li>✅ Assez facile à résoudre</li>
-                        <li>✅ Fournissant une valeur optimale <span class="math">z<sup>R</sup></span> le plus près possible de <span class="math">z</span></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- SECTION 3 -->
-            <div class="section" id="section3">
-                <h2>3. Formulations Idéales</h2>
-
-                <div class="definition">
-                    <strong>📖 Combinaison convexe :</strong> Soit <span class="math">v</span>ᵢ, i = 1,...,k, k points de ℝ<sup>n</sup> et λᵢ, i = 1,...,k, k scalaires non négatifs tels que Σλᵢ = 1. Le point <span class="math">x</span> = Σλᵢ<span class="math">v</span>ᵢ est une <strong>combinaison convexe</strong> des points <span class="math">v</span>ᵢ.
-                </div>
-
-                <div class="definition">
-                    <strong>📖 Enveloppe convexe :</strong> Soit <span class="math">X</span> ⊆ ℝ<sup>n</sup>. L'<strong>enveloppe convexe</strong> de <span class="math">X</span>, notée conv(<span class="math">X</span>), est l'ensemble de toutes les combinaisons convexes de points de <span class="math">X</span>.
-                    
-                    <div class="formule">
-                        conv(<span class="math">X</span>) = {<span class="math">x</span> = Σλᵢ<span class="math">v</span>ᵢ | Σλᵢ = 1, λᵢ ≥ 0, ∀i, et {<span class="math">v</span>₁,...,<span class="math">v</span>ₖ} ⊆ <span class="math">X</span>}
-                    </div>
-                </div>
-
-                <div class="remarque">
-                    <strong>💡 Remarque :</strong> <span class="math">X</span> ⊆ conv(<span class="math">X</span>)
-                </div>
-
-                <div class="proposition">
-                    <strong>📐 Proposition :</strong> Tous les points extrêmes de conv(<span class="math">X</span>) appartiennent à <span class="math">X</span>.
-                </div>
-
-                <div class="definition">
-                    <strong>📖 Formulation idéale :</strong> Une formulation PNE est dite <span class="highlight">idéale</span> si <span class="math">T</span> = conv(<span class="math">X</span>), où :
-                    <ul style="margin-left: 40px; margin-top: 10px;">
-                        <li><span class="math">X</span> est le domaine réalisable de PNE</li>
-                        <li><span class="math">T</span> est le domaine réalisable de sa relaxation linéaire</li>
-                    </ul>
-                </div>
-
-                <div class="important">
-                    <strong>🎯 Conséquence majeure :</strong> Si PNE est une formulation idéale, alors on peut obtenir une solution optimale en résolvant sa relaxation linéaire (par l'algorithme du simplexe).
-                </div>
-
-                <h3>3.1 Renforcement d'une Relaxation</h3>
-
-                <div class="exemple">
-                    <strong>📝 Exemple : Problème de couplage parfait</strong>
-                    
-                    <p><strong>Formulation de base :</strong></p>
-                    <div class="formule">
-                        max Σ<sub>i&lt;j</sub> c<sub>ij</sub>x<sub>ij</sub><br><br>
-                        sujet à : Σ<sub>i&lt;ℓ</sub> x<sub>iℓ</sub> + Σ<sub>ℓ&lt;j</sub> x<sub>ℓj</sub> = 1, ∀ℓ<br>
-                        x<sub>ij</sub> ∈ {0,1}
-                    </div>
-
-                    <p style="margin-top: 20px;"><strong>⚠️ Cette formulation peut être très faible !</strong></p>
-
-                    <p style="margin-top: 15px;"><strong>✅ Renforcement :</strong> On peut la renforcer en ajoutant les contraintes suivantes :</p>
-                    <div class="formule">
-                        Σ<sub>ℓ∈S</sub> (Σ<sub>i∉S, i&lt;ℓ</sub> x<sub>iℓ</sub> + Σ<sub>j∉S, ℓ&lt;j</sub> x<sub>ℓj</sub>) ≥ 1<br>
-                        ∀S ⊂ N, |S| impair
-                    </div>
-
-                    <div class="remarque" style="margin-top: 20px;">
-                        <strong>💡 Observations :</strong>
-                        <ul style="margin-left: 20px; margin-top: 10px;">
-                            <li>✅ Avec toutes ces inégalités, la formulation devient <strong>idéale</strong></li>
-                            <li>⚠️ Il y a un nombre <strong>exponentiel</strong> de ces inégalités</li>
-                            <li>✅ En général, seul un <strong>petit nombre</strong> est nécessaire pour que la solution de la relaxation linéaire soit entière</li>
+                    <div class="explication">
+                        <div class="explication-title">🎉 On a fini ! Comment interpréter ?</div>
+                        <ul class="step-by-step">
+                            <li>
+                                <strong>x = 49/16</strong> = 3.0625 bonbons rouges
+                            </li>
+                            <li>
+                                <strong>y = 19/4</strong> = 4.75 bonbons bleus
+                            </li>
+                            <li>
+                                <strong>z = -109/8</strong> = -13.625 (le score optimal de la relaxation)
+                            </li>
+                            <li>
+                                <strong>Tous les nombres dans la ligne -z sont ≥ 0</strong> → OPTIMAL ! 🎯
+                            </li>
                         </ul>
                     </div>
-                </div>
 
-                <div class="exemple">
-                    <strong>📝 Exemple : Problème de localisation d'entrepôts</strong>
-                    
-                    <p><strong>Formulation initiale :</strong></p>
-                    <div class="formule">
-                        min Σ<sub>i∈M</sub> Σ<sub>j∈N</sub> c<sub>ij</sub>x<sub>ij</sub> + Σ<sub>j∈N</sub> f<sub>j</sub>y<sub>j</sub><br><br>
-                        sujet à : Σ<sub>j∈N</sub> x<sub>ij</sub> = 1, ∀i ∈ M<br>
-                        Σ<sub>i∈M</sub> x<sub>ij</sub> ≤ my<sub>j</sub>, ∀j ∈ N<br>
-                        x<sub>ij</sub>, y<sub>j</sub> ∈ {0,1}
+                    <div class="important-box">
+                        <strong>Mais ATTENTION !</strong><br><br>
+                        x = 3.0625 et y = 4.75 ne sont PAS des entiers !<br>
+                        Ce n'est pas une solution du PNE original !<br><br>
+                        <strong>C'est juste une BORNE</strong> qui nous dit : "Le vrai z est au moins -13 (on arrondit -13.625)"
                     </div>
-
-                    <p style="margin-top: 20px;"><strong>✅ Meilleure formulation :</strong> Remplacer les contraintes <code>Σ x<sub>ij</sub> ≤ my<sub>j</sub></code> par :</p>
-                    <div class="formule" style="background: #c8e6c9;">
-                        x<sub>ij</sub> ≤ y<sub>j</sub>, ∀i ∈ M, j ∈ N
-                    </div>
-
-                    <p style="margin-top: 15px;"><strong>Pourquoi c'est mieux ?</strong></p>
-                    <ul style="margin-left: 40px; margin-top: 10px;">
-                        <li>✅ Une solution satisfaisant les nouvelles contraintes satisfait aussi les anciennes</li>
-                        <li>❌ Mais les anciennes n'impliquent pas les nouvelles</li>
-                        <li>📊 Exemple : si m = 2, la solution x₁ⱼ = 1, x₂ⱼ = 0, yⱼ = 0.5 satisfait les anciennes contraintes mais pas les nouvelles</li>
-                    </ul>
-                </div>
-
-                <h3>3.2 Comparaison de Relaxations</h3>
-
-                <div class="exemple">
-                    <strong>📝 Exemple de comparaison</strong>
-                    
-                    <p>Considérons trois domaines :</p>
-                    <div class="formule">
-                        X<sub>A</sub> = {x ∈ 𝔹⁴ | 93x₁ + 49x₂ + 37x₃ + 29x₄ ≤ 111}<br><br>
-                        X<sub>B</sub> = {x ∈ 𝔹⁴ | 2x₁ + x₂ + x₃ + x₄ ≤ 2}<br><br>
-                        X<sub>C</sub> = {x ∈ 𝔹⁴ | 2x₁ + x₂ + x₃ + x₄ ≤ 2,<br>
-                        x₁ + x₂ ≤ 1, x₁ + x₃ ≤ 1, x₁ + x₄ ≤ 1}
-                    </div>
-
-                    <div class="proposition" style="margin-top: 20px;">
-                        <strong>📐 Résultat :</strong> Ces trois domaines sont <span class="highlight">équivalents en nombres entiers</span> : X<sub>A</sub> = X<sub>B</sub> = X<sub>C</sub>
-                    </div>
-
-                    <p style="margin-top: 15px;"><strong>Mais pour les relaxations linéaires :</strong></p>
-                    <div class="formule">
-                        T<sub>C</sub> ⊂ T<sub>B</sub> ⊂ T<sub>A</sub>
-                    </div>
-
-                    <div class="conclusion">
-                        <strong>🎯 Conclusion :</strong> T<sub>A</sub> est la relaxation la plus faible et T<sub>C</sub> est la meilleure relaxation.
-                    </div>
-                </div>
-
-                <div class="definition">
-                    <strong>📖 Qualité des relaxations :</strong>
-                    <ul style="margin-left: 40px; margin-top: 10px;">
-                        <li>R₁ est <strong>au moins aussi bonne que</strong> R₂ si T₁ ⊆ T₂</li>
-                        <li>R₁ est <strong>meilleure que</strong> R₂ si T₁ ⊂ T₂</li>
-                    </ul>
                 </div>
             </div>
 
-            <!-- SECTION 4 -->
-            <div class="section" id="section4">
-                <h2>4. Bornes pour le Problème de Sac à Dos</h2>
+            <!-- SECTION 5: LES BORNES -->
+            <div class="section">
+                <h2>5️⃣ Les Bornes : Encadrer la Solution</h2>
 
-                <div class="definition">
-                    <strong>📖 Formulation du problème :</strong>
-                    <div class="formule">
-                        z = max Σ<sub>j=1</sub><sup>m</sup> c<sub>j</sub>x<sub>j</sub><br><br>
-                        sujet à : Σ<sub>j=1</sub><sup>m</sup> a<sub>j</sub>x<sub>j</sub> ≤ b<br>
-                        x ∈ 𝔹<sup>m</sup>
-                    </div>
-                    
-                    <p style="margin-top: 15px;"><strong>Sans perte de généralité :</strong> c, a > 0 et <span class="fraction"><span class="num">c<sub>i</sub></span><span class="den">a<sub>i</sub></span></span> ≥ <span class="fraction"><span class="num">c<sub>j</sub></span><span class="den">a<sub>j</sub></span></span> si i < j</p>
-                </div>
+                <div class="formule-box">
+                    <div class="formule-title">📏 La Formule d'Encadrement</div>
 
-                <h3>4.1 Résolution de la Relaxation Linéaire</h3>
-
-                <div class="proposition">
-                    <strong>📊 Algorithme efficace (sans simplexe) :</strong>
-                    
-                    <p><strong>Cas 1 :</strong> Si Σa<sub>j</sub> ≤ b, alors la solution optimale est :</p>
-                    <div class="formule">
-                        x<sub>j</sub> = 1, ∀j = 1,...,m
+                    <div class="formule-display" style="font-size: 1.8em;">
+                        borne_inf ≤ z ≤ borne_sup
                     </div>
 
-                    <p style="margin-top: 20px;"><strong>Cas 2 :</strong> Si Σa<sub>j</sub> > b, alors la solution optimale est :</p>
-                    <div class="formule">
-                        x<sub>j</sub> = <span style="display: inline-block; vertical-align: middle;">
-                            {<br>
-                            &nbsp;&nbsp;1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; si j < p<br>
-                            &nbsp;&nbsp;0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; si j > p<br>
-                            &nbsp;&nbsp;<span class="fraction"><span class="num">b − Σ<sub>i=1</sub><sup>p-1</sup>a<sub>i</sub></span><span class="den">a<sub>p</sub></span></span> &nbsp; si j = p
-                        </span>
-                    </div>
-                    
-                    <p style="margin-top: 15px;">où p est le plus petit indice tel que Σ<sub>i=1</sub><sup>p</sup> a<sub>i</sub> > b</p>
-                </div>
-
-                <div class="exemple">
-                    <strong>📝 Preuve (algorithme du simplexe avec variables bornées) :</strong>
-                    
-                    <p>La solution proposée forme une solution de base dans laquelle :</p>
-                    <ul style="margin-left: 40px; margin-top: 10px;">
-                        <li>x<sub>p</sub> est en base</li>
-                        <li>x<sub>j</sub> avec j < p est hors-base à sa borne supérieure</li>
-                        <li>x<sub>j</sub> avec j > p est hors-base à sa borne inférieure</li>
-                    </ul>
-
-                    <p style="margin-top: 15px;">Dans ce cas :</p>
-                    <div class="formule">
-                        B = (a<sub>p</sub>), &nbsp; B<sup>-1</sup> = <span class="fraction"><span class="num">1</span><span class="den">a<sub>p</sub></span></span>, &nbsp; c̄<sub>j</sub> = c<sub>j</sub> − <span class="fraction"><span class="num">c<sub>p</sub>a<sub>j</sub></span><span class="den">a<sub>p</sub></span></span>
+                    <div class="exemple-enfant">
+                        <h4>📐 Exemple avec une règle</h4>
+                        <div class="dessin">
+                            📏━━━━━━━━━━━━━━━━━━━━📏
+                        </div>
+                        <p style="text-align: center; font-size: 1.2em;">
+                            <span style="background: #ffcdd2; padding: 10px; border-radius: 5px;">-13</span>
+                            <span style="margin: 0 20px;">←</span>
+                            <span style="background: #fff9c4; padding: 10px; border-radius: 5px; font-weight: bold;">-11 (solution optimale)</span>
+                            <span style="margin: 0 20px;">→</span>
+                            <span style="background: #c8e6c9; padding: 10px; border-radius: 5px;">-7</span>
+                        </p>
+                        <p style="margin-top: 20px; text-align: center; font-size: 1.1em;">
+                            On est CERTAIN que la solution est entre -13 et -7 !
+                        </p>
                     </div>
 
-                    <p style="margin-top: 15px;"><strong>Cette solution est optimale si :</strong></p>
-                    <ul style="margin-left: 40px; margin-top: 10px;">
-                        <li>c̄<sub>j</sub> ≥ 0, ∀j < p (vérifié par l'hypothèse de tri)</li>
-                        <li>c̄<sub>j</sub> ≤ 0, ∀j > p (vérifié par l'hypothèse de tri)</li>
-                    </ul>
-                </div>
-
-                <h3>4.2 Bornes Inférieure et Supérieure</h3>
-
-                <div class="proposition">
-                    <strong>📊 Borne inférieure :</strong> La solution x<sub>j</sub> = 1 si j < p et x<sub>j</sub> = 0 sinon est réalisable.
-                    <div class="formule" style="background: #e8f5e9;">
-                        Borne inférieure : Σ<sub>j=1</sub><sup>p-1</sup> c<sub>j</sub>
-                    </div>
-                </div>
-
-                <div class="proposition">
-                    <strong>📊 Borne supérieure :</strong> La valeur optimale de la relaxation linéaire.
-                    <div class="formule" style="background: #e3f2fd;">
-                        Borne supérieure : Σ<sub>j=1</sub><sup>p-1</sup> c<sub>j</sub> + <span class="fraction"><span class="num">c<sub>p</sub></span><span class="den">a<sub>p</sub></span></span>(b − Σ<sub>i=1</sub><sup>p-1</sup> a<sub>i</sub>)
-                    </div>
-                </div>
-
-                <div class="conclusion">
-                    <strong>🎯 Encadrement de la solution optimale :</strong>
-                    <div class="formule">
-                        Σ<sub>j=1</sub><sup>p-1</sup> c<sub>j</sub> &nbsp;≤&nbsp; z &nbsp;≤&nbsp; Σ<sub>j=1</sub><sup>p-1</sup> c<sub>j</sub> + <span class="fraction"><span class="num">c<sub>p</sub></span><span class="den">a<sub>p</sub></span></span>(b − Σ<sub>i=1</sub><sup>p-1</sup> a<sub>i</sub>)
-                    </div>
-                </div>
-
-                <div class="remarque">
-                    <strong>💡 Améliorations possibles :</strong>
-                    <ol style="margin-left: 40px; margin-top: 10px;">
-                        <li style="margin: 10px 0;"><strong>Si les c<sub>j</sub> sont entiers</strong>, la borne supérieure peut être remplacée par :
-                            <div class="formule">
-                                ⌊Σ<sub>j=1</sub><sup>p-1</sup> c<sub>j</sub> + <span class="fraction"><span class="num">c<sub>p</sub></span><span class="den">a<sub>p</sub></span></span>(b − Σ<sub>i=1</sub><sup>p-1</sup> a<sub>i</sub>)⌋
+                    <div class="explication">
+                        <div class="explication-title">🔍 Comment trouver les bornes ?</div>
+                        
+                        <div class="variable-box" style="background: #ffebee;">
+                            <div class="variable-name" style="color: #c62828;">📉 Borne Inférieure</div>
+                            <p style="margin-top: 10px;"><strong>Source :</strong> La relaxation linéaire (RL)</p>
+                            <div class="exemple-calcul" style="margin-top: 15px;">
+                                z<sup>R</sup> = -13.625<br>
+                                Comme on cherche des entiers : z ≥ -13
                             </div>
-                        </li>
-                        <li style="margin: 10px 0;"><strong>La borne inférieure</strong> peut être améliorée en ajoutant des items j > p qui entrent dans l'espace résiduel.</li>
-                    </ol>
+                            <p style="margin-top: 10px;"><strong>Logique :</strong> Le problème facile donne toujours un score meilleur ou égal</p>
+                        </div>
+
+                        <div class="variable-box" style="background: #e8f5e9; margin-top: 20px;">
+                            <div class="variable-name" style="color: #2e7d32;">📈 Borne Supérieure</div>
+                            <p style="margin-top: 10px;"><strong>Source :</strong> Une solution RÉALISABLE trouvée</p>
+                            <div class="exemple-calcul" style="margin-top: 15px;">
+                                On teste (2, 5) :<br>
+                                8×2 - 2×5 = 6 ≤ 15 ✅<br>
+                                4×2 + 5×5 = 33 ≤ 36 ✅<br>
+                                z = -6×2 + 5 = -7
+                            </div>
+                            <p style="margin-top: 10px;"><strong>Logique :</strong> On a trouvé une solution qui marche, donc l'optimum est au moins aussi bon</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formule-box">
+                    <div class="formule-title">⚠️ Pourquoi NE PAS arrondir bêtement ?</div>
+
+                    <div class="exemple-enfant">
+                        <h4>❌ L'erreur classique</h4>
+                        <p style="font-size: 1.2em;">
+                            <strong>Relaxation donne :</strong> x = 3.0625 et y = 4.75<br><br>
+                            <strong>On se dit :</strong> "Je vais arrondir à x=3 et y=5"
+                        </p>
+
+                        <div class="important-box" style="margin-top: 20px;">
+                            <strong>Vérifions si (3, 5) est réalisable :</strong>
+                            <div class="exemple-calcul" style="margin-top: 15px;">
+                                Contrainte 1 : 8×3 - 2×5 = 24 - 10 = 14 ≤ 15 ✅<br>
+                                Contrainte 2 : 4×3 + 5×5 = 12 + 25 = 37 ≤ 36 ❌ RATÉ !
+                            </div>
+                            <p style="margin-top: 15px; color: #c62828; font-size: 1.2em;">
+                                37 > 36 → La solution (3, 5) est INTERDITE !
+                            </p>
+                        </div>
+
+                        <p style="margin-top: 20px; font-size: 1.1em; text-align: center;">
+                            <strong>Conclusion :</strong> Arrondir peut donner une solution IMPOSSIBLE !
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 6: SAC À DOS -->
+            <div class="section">
+                <h2>6️⃣ Application : Problème du Sac à Dos</h2>
+
+                <div class="formule-box">
+                    <div class="formule-title">🎒 La Formule du Sac à Dos</div>
+
+                    <div class="formule-display">
+                        z = max Σ cⱼxⱼ
+                    </div>
+
+                    <div class="explication">
+                        <div class="explication-title">🔍 Décodage</div>
+                        <div class="variable-box">
+                            <div class="variable-name">Σ (sigma)</div>
+                            <p style="margin-top: 10px;">= Symbole de la SOMME = "additionner plusieurs choses"</p>
+                            <div class="exemple-calcul" style="margin-top: 15px;">
+                                Σ cⱼxⱼ = c₁x₁ + c₂x₂ + c₃x₃ + ... + cₘxₘ
+                            </div>
+                        </div>
+
+                        <div class="variable-box">
+                            <div class="variable-name">cⱼ</div>
+                            <p style="margin-top: 10px;">= La VALEUR de l'objet j (combien il vaut)</p>
+                        </div>
+
+                        <div class="variable-box">
+                            <div class="variable-name">xⱼ</div>
+                            <p style="margin-top: 10px;">= 1 si on prend l'objet j, 0 sinon</p>
+                        </div>
+                    </div>
+
+                    <div class="exemple-enfant">
+                        <h4>🎁 Exemple avec 3 objets</h4>
+                        <table>
+                            <tr>
+                                <th>Objet j</th>
+                                <th>Valeur cⱼ</th>
+                                <th>Poids aⱼ</th>
+                                <th>Ratio cⱼ/aⱼ</th>
+                            </tr>
+                            <tr>
+                                <td>🔦 Lampe (j=1)</td>
+                                <td>50€</td>
+                                <td>1 kg</td>
+                                <td style="background: #c8e6c9; font-weight: bold;">50</td>
+                            </tr>
+                            <tr>
+                                <td>💧 Eau (j=2)</td>
+                                <td>120€</td>
+                                <td>3 kg</td>
+                                <td style="background: #c8e6c9; font-weight: bold;">40</td>
+                            </tr>
+                            <tr>
+                                <td>🍫 Nourriture (j=3)</td>
+                                <td>60€</td>
+                                <td>2 kg</td>
+                                <td style="background: #fff9c4;">30</td>
+                            </tr>
+                        </table>
+
+                        <p style="margin-top: 20px;"><strong>Capacité du sac :</strong> b = 10 kg</p>
+
+                        <div class="formule-display" style="margin-top: 20px; font-size: 1.2em;">
+                            Contrainte : Σ aⱼxⱼ ≤ b<br>
+                            1×x₁ + 3×x₂ + 2×x₃ ≤ 10
+                        </div>
+                    </div>
+                </div>
+
+                <div class="formule-box">
+                    <div class="formule-title">🧮 Algorithme GLOUTON (pour la relaxation)</div>
+
+                    <div class="explication">
+                        <div class="explication-title">📋 L'algorithme en 3 étapes</div>
+                        <ul class="step-by-step">
+                            <li>
+                                <strong>ÉTAPE 1 :</strong> Trier les objets par ratio valeur/poids (du meilleur au pire)<br>
+                                <div class="exemple-calcul" style="margin-top: 10px;">
+                                    Ordre : Lampe (50) → Eau (40) → Nourriture (30)
+                                </div>
+                            </li>
+                            <li>
+                                <strong>ÉTAPE 2 :</strong> Prendre les objets dans l'ordre jusqu'à ce que le sac soit plein
+                                <div class="exemple-calcul" style="margin-top: 10px;">
+                                    Lampe : 1 kg → reste 9 kg<br>
+                                    Eau : 3 kg → reste 6 kg<br>
+                                    Nourriture : 2 kg → reste 4 kg<br>
+                                    Tout rentre ! 😊
+                                </div>
+                            </li>
+                            <li>
+                                <strong>ÉTAPE 3 :</strong> Si un objet ne rentre pas entièrement, en prendre une FRACTION (pour la relaxation uniquement !)
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="exemple-enfant">
+                        <h4>🎯 Solution de la relaxation</h4>
+                        <div class="exemple-calcul">
+                            x₁ = 1 (lampe entière)<br>
+                            x₂ = 1 (eau entière)<br>
+                            x₃ = 1 (nourriture entière)<br><br>
+                            Poids total : 1 + 3 + 2 = 6 kg ≤ 10 kg ✅<br>
+                            Valeur totale : 50 + 120 + 60 = 230€
+                        </div>
+
+                        <p style="margin-top: 20px; text-align: center; font-size: 1.3em; background: #c8e6c9; padding: 15px; border-radius: 10px;">
+                            <strong>Dans cet exemple :</strong> La relaxation = Solution entière = 230€ ! 🎉
+                        </p>
+                    </div>
+                </div>
+
+                <div class="formule-box">
+                    <div class="formule-title">📊 Formule des Bornes (sac à dos)</div>
+
+                    <div class="formule-display">
+                        Σ<sub>j=1</sub><sup>p-1</sup> cⱼ ≤ z ≤ Σ<sub>j=1</sub><sup>p-1</sup> cⱼ + (cₚ/aₚ)(b - Σ<sub>i=1</sub><sup>p-1</sup> aᵢ)
+                    </div>
+
+                    <div class="explication">
+                        <div class="explication-title">🔍 Qu'est-ce que ça veut dire ?</div>
+                        
+                        <div class="variable-box">
+                            <div class="variable-name">p</div>
+                            <p style="margin-top: 10px;">= Le premier objet qui NE RENTRE PAS complètement dans le sac</p>
+                        </div>
+
+                        <div class="variable-box" style="background: #e8f5e9;">
+                            <div class="variable-name" style="color: #2e7d32;">Borne inférieure : Σ<sub>j=1</sub><sup>p-1</sup> cⱼ</div>
+                            <p style="margin-top: 10px;">= La somme des valeurs des objets 1 à p-1</p>
+                            <p style="margin-top: 10px;">= Les objets qui rentrent ENTIÈREMENT</p>
+                        </div>
+
+                        <div class="variable-box" style="background: #e3f2fd;">
+                            <div class="variable-name" style="color: #1565c0;">Borne supérieure : + (cₚ/aₚ)(b - Σaᵢ)</div>
+                            <p style="margin-top: 10px;">= On ajoute une FRACTION de l'objet p</p>
+                            <p style="margin-top: 10px;"><strong>(cₚ/aₚ)</strong> = valeur par kg de l'objet p</p>
+                            <p style="margin-top: 10px;"><strong>(b - Σaᵢ)</strong> = espace restant dans le sac</p>
+                        </div>
+                    </div>
+
+                    <div class="exemple-enfant">
+                        <h4>🧮 Exemple de calcul</h4>
+                        <p><strong>Situation :</strong> Sac de 5 kg, 2 objets :</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Objet 1 : 60€, 2 kg (ratio 30)</li>
+                            <li>Objet 2 : 50€, 4 kg (ratio 12.5)</li>
+                        </ul>
+
+                        <div class="exemple-calcul" style="margin-top: 20px;">
+                            <strong>Borne inférieure :</strong><br>
+                            On prend objet 1 entier = 60€<br>
+                            Reste 3 kg, mais objet 2 pèse 4 kg → ne rentre pas !<br>
+                            Borne inf. = 60€
+                        </div>
+
+                        <div class="exemple-calcul" style="margin-top: 20px;">
+                            <strong>Borne supérieure :</strong><br>
+                            60€ + (50/4) × 3 = 60 + 12.5 × 3 = 60 + 37.5 = 97.5€<br>
+                            On arrondit : 97€
+                        </div>
+
+                        <div class="formule-display" style="margin-top: 20px; font-size: 1.5em;">
+                            60€ ≤ z ≤ 97€
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- RÉSUMÉ FINAL -->
-            <div class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                <h2 style="color: white; border-bottom: 2px solid white;">📚 Points Clés à Retenir</h2>
-                
-                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
-                    <h3 style="color: white;">1️⃣ Relaxation Linéaire</h3>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Omettre les contraintes d'intégrité → Programme linéaire</li>
-                        <li>z<sup>R</sup> ≤ z (borne inférieure sur le problème de minimisation)</li>
-                        <li>⚠️ Arrondir la solution de RL peut donner une solution mauvaise ou non réalisable</li>
-                    </ul>
+            <div class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none;">
+                <h2 style="color: white; border-bottom-color: white;">🎓 Résumé de TOUTES les Formules</h2>
+
+                <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 15px; margin: 20px 0;">
+                    <h3 style="color: white; font-size: 1.5em; margin-bottom: 15px;">1️⃣ PNE (Programme en Nombres Entiers)</h3>
+                    <div style="background: rgba(255,255,255,0.3); padding: 20px; border-radius: 10px; color: white;">
+                        z = min<sub>x,y</sub> (-6x + y)<br>
+                        sujet à : 8x - 2y ≤ 15 et 4x + 5y ≤ 36<br>
+                        x, y ∈ ℕ (ENTIERS !)
+                    </div>
+                    <p style="margin-top: 10px;">➡️ <strong>Problème DIFFICILE</strong></p>
                 </div>
 
-                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
-                    <h3 style="color: white;">2️⃣ Propriétés des Relaxations</h3>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>R relaxation de P ⟹ X ⊆ T et f(x) ≤ c(x)</li>
-                        <li>Saut d'intégrité = z - z<sup>R</sup></li>
-                        <li>Si R non réalisable ⟹ P non réalisable</li>
-                    </ul>
+                <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 15px; margin: 20px 0;">
+                    <h3 style="color: white; font-size: 1.5em; margin-bottom: 15px;">2️⃣ RL (Relaxation Linéaire)</h3>
+                    <div style="background: rgba(255,255,255,0.3); padding: 20px; border-radius: 10px; color: white;">
+                        Même chose, MAIS : x, y ≥ 0 (DÉCIMALES OK !)
+                    </div>
+                    <p style="margin-top: 10px;">➡️ <strong>Problème FACILE</strong></p>
                 </div>
 
-                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
-                    <h3 style="color: white;">3️⃣ Formulations Idéales</h3>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>T = conv(X) → Formulation idéale</li>
-                        <li>Si idéale : résoudre RL donne la solution optimale de PNE</li>
-                        <li>Renforcement : ajouter des contraintes pour améliorer la relaxation</li>
-                    </ul>
+                <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 15px; margin: 20px 0;">
+                    <h3 style="color: white; font-size: 1.5em; margin-bottom: 15px;">3️⃣ Relation Magique</h3>
+                    <div style="background: rgba(255,255,255,0.3); padding: 20px; border-radius: 10px; color: white; font-size: 1.5em;">
+                        z<sup>R</sup> ≤ z
+                    </div>
+                    <p style="margin-top: 10px;">➡️ <strong>La relaxation donne TOUJOURS un score ≤ au PNE</strong></p>
                 </div>
 
-                <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 10px; margin: 20px 0;">
-                    <h3 style="color: white;">4️⃣ Sac à Dos</h3>
-                    <ul style="margin-left: 20px; margin-top: 10px;">
-                        <li>Algorithme efficace pour résoudre RL (sans simplexe)</li>
-                        <li>Bornes facilement calculables</li>
-                        <li>Borne inférieure : solution gloutonne</li>
-                        <li>Borne supérieure : valeur de RL (possiblement arrondie)</li>
-                    </ul>
+                <div style="background: rgba(255,255,255,0.2); padding: 25px; border-radius: 15px; margin: 20px 0;">
+                    <h3 style="color: white; font-size: 1.5em; margin-bottom: 15px;">4️⃣ Encadrement</h3>
+                    <div style="background: rgba(255,255,255,0.3); padding: 20px; border-radius: 10px; color: white; font-size: 1.5em;">
+                        borne_inf ≤ z ≤ borne_sup
+                    </div>
+                    <p style="margin-top: 10px;">➡️ <strong>On sait où chercher la solution !</strong></p>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px; font-size: 1.3em;">
+                    <p>🎉 Maintenant tu comprends TOUTES les formules ! 🎉</p>
                 </div>
             </div>
+
         </div>
 
-        <footer>
-            <p>📖 Cours de Programmation en Nombres Entiers - Chapitre 2 : Relaxations et Bornes</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">Conçu pour une maîtrise complète des concepts fondamentaux</p>
+        <footer style="background: #333; color: white; text-align: center; padding: 30px;">
+            <p style="font-size: 1.3em;">✅ Tu as maintenant compris chaque symbole, chaque formule !</p>
+            <p style="margin-top: 15px; font-size: 1.1em;">
+                Relis ce cours autant de fois que nécessaire.<br>
+                La maîtrise vient avec la pratique ! 💪
+            </p>
         </footer>
     </div>
-
-    <script>
-        // Smooth scroll pour le sommaire
-        document.querySelectorAll('.sommaire a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-
-        // Animation au survol des sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.01)';
-                this.style.transition = 'transform 0.3s ease';
-            });
-            section.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
-        });
-    </script>
 </body>
 </html>
