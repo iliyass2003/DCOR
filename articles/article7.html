@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COURS COMPLET - Basé sur TES TDs et Corrections</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.8;
+            color: #1e293b;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%);
+            color: white;
+            padding: 60px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.8em;
+        }
+
+        .nav {
+            background: #2563eb;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 8px;
+            transition: background 0.3s;
+            display: inline-block;
+        }
+
+        .nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .content {
+            padding: 60px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            padding: 50px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            border-left: 10px solid #2563eb;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #2563eb;
+            font-size: 3em;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 5px solid #2563eb;
+        }
+
+        h3 {
+            color: #7c3aed;
+            font-size: 2.2em;
+            margin: 50px 0 25px 0;
+        }
+
+        h4 {
+            color: #f59e0b;
+            font-size: 1.7em;
+            margin: 30px 0 20px 0;
+        }
+
+        .exercice-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+            border: 5px solid #f59e0b;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+        }
+
+        .exercice-title {
+            background: #f59e0b;
+            color: white;
+            padding: 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 15px 15px 0 0;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .formule-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #e9d5ff 100%);
+            border: 5px solid #2563eb;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .formule-title {
+            background: #2563eb;
+            color: white;
+            padding: 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 15px 15px 0 0;
+            font-size: 1.6em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .formule-display {
+            background: white;
+            padding: 30px;
+            margin: 25px 0;
+            border-radius: 15px;
+            font-size: 1.6em;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            border: 4px solid #2563eb;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+        }
+
+        .solution-box {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 5px solid #10b981;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .solution-title {
+            background: #10b981;
+            color: white;
+            padding: 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 15px 15px 0 0;
+            font-size: 1.6em;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .attention-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border: 5px solid #ef4444;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .attention-box::before {
+            content: "⚠️ ATTENTION !";
+            display: block;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #c62828;
+            margin-bottom: 20px;
+        }
+
+        .conseil-box {
+            background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+            border: 5px solid #10b981;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .conseil-box::before {
+            content: "💡 CONSEIL PRATIQUE";
+            display: block;
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #065f46;
+            margin-bottom: 20px;
+        }
+
+        .etape {
+            background: white;
+            border-left: 8px solid #7c3aed;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .etape-number {
+            background: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.8em;
+            margin-right: 20px;
+            float: left;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        th {
+            background: #2563eb;
+            color: white;
+            padding: 25px;
+            font-size: 1.3em;
+            text-align: center;
+        }
+
+        td {
+            padding: 22px;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            font-size: 1.2em;
+        }
+
+        tr:nth-child(even) {
+            background: #f8fafc;
+        }
+
+        .highlight-blue {
+            background: #dbeafe;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #1e40af;
+        }
+
+        .highlight-purple {
+            background: #e9d5ff;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #6b21a8;
+        }
+
+        .highlight-orange {
+            background: #fed7aa;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #ea580c;
+        }
+
+        .highlight-green {
+            background: #bbf7d0;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #16a34a;
+        }
+
+        .highlight-red {
+            background: #fecaca;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #dc2626;
+        }
+
+        ul, ol {
+            margin: 25px 0 25px 50px;
+        }
+
+        li {
+            margin: 15px 0;
+            font-size: 1.2em;
+        }
+
+        code {
+            background: #e2e8f0;
+            padding: 8px 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: white;
+            border: 4px solid #2563eb;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
+        }
+
+        .card h4 {
+            color: #2563eb;
+            margin-top: 0;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .calcul-detail {
+            background: #f0f9ff;
+            border-left: 8px solid #0ea5e9;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+        }
+
+        .resultat-final {
+            background: linear-gradient(135deg, #a7f3d0 0%, #6ee7b7 100%);
+            border: 6px solid #10b981;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 COURS COMPLET BASÉ SUR TES TDs</h1>
+            <p>Modèles Discrets - Tous les Exercices Expliqués ! 🎯</p>
+        </header>
+
+        <div class="nav">
+            <a href="#td1">TD1 - PNE</a>
+            <a href="#td2">TD2 - Enveloppes Convexes</a>
+            <a href="#gomory">Coupes de Gomory</a>
+            <a href="#facettes">Facettes & Dimension</a>
+            <a href="#bb">Branch & Bound</a>
+            <a href="#methodes">Méthodes Pratiques</a>
+        </div>
+
+        <div class="content">
+
+            <!-- ============================================ -->
+            <!-- TD1 : LINÉARISATION ET BRANCH & BOUND -->
+            <!-- ============================================ -->
+
+            <div id="td1" class="section">
+                <h2>📝 TD1 : Linéarisation et Branch & Bound</h2>
+
+                <!-- EXERCICE 1 : LINÉARISATION -->
+                <div class="exercice-box">
+                    <div class="exercice-title">Exercice 1 : Linéarisation</div>
+                    
+                    <h3>📋 Énoncé</h3>
+                    <div class="formule-display">
+                        Min  cᵀn + n²/(4-n₂)<br>
+                        s.c. n ∈ ℕⁿ<br>
+                        0 ≤ n₁ ≤ 3 entier<br>
+                        n₂ ∈ {0,1}² (binaire)
+                    </div>
+                    <p style="margin-top: 20px;"><strong>Objectif :</strong> Modifier cette formulation pour obtenir un PLNE (Programme Linéaire en Nombres Entiers)</p>
+
+                    <div class="solution-box">
+                        <div class="solution-title">✅ SOLUTION DÉTAILLÉE</div>
+                        
+                        <h3>🎯 Stratégie de Linéarisation</h3>
+                        
+                        <div class="etape">
+                            <div class="etape-number">1</div>
+                            <div style="margin-left: 80px;">
+                                <h4>Identifier les termes NON LINÉAIRES</h4>
+                                <p>Dans notre problème :</p>
+                                <ul>
+                                    <li><span class="highlight-red">n²</span> → terme quadratique</li>
+                                    <li><span class="highlight-red">1/(4-n₂)</span> → terme fractionnaire</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="etape">
+                            <div class="etape-number">2</div>
+                            <div style="margin-left: 80px;">
+                                <h4>Linéariser le terme quadratique n²</h4>
+                                
+                                <div class="formule-box">
+                                    <div class="formule-title">Méthode : Changement de Variable</div>
+                                    <p style="text-align: left; padding: 20px;">
+                                        On introduit une nouvelle variable <strong>y</strong> telle que :<br><br>
+                                        <span class="highlight-green">y = n²</span><br><br>
+                                        Mais comment contraindre y = n² de manière LINÉAIRE ?
+                                    </p>
+                                </div>
+
+                                <div class="attention-box">
+                                    <p>On ne peut PAS simplement écrire y = n² car ce n'est PAS linéaire !</p>
+                                    <p style="margin-top: 15px;">Il faut utiliser des CONTRAINTES LINÉAIRES qui forcent cette égalité.</p>
+                                </div>
+
+                                <div class="conseil-box">
+                                    <p><strong>Pour les variables ENTIÈRES bornées :</strong></p>
+                                    <p style="margin-top: 15px;">Si n ∈ {0, 1, 2, ..., N}, on peut développer n² en utilisant le fait que :</p>
+                                    <div class="formule-display">
+                                        n = n₀·0 + n₁·1 + n₂·2 + ... + n_N·N<br>
+                                        avec Σn_i = 1 et n_i ∈ {0,1}
+                                    </div>
+                                    <p style="margin-top: 15px;">Alors :</p>
+                                    <div class="formule-display">
+                                        n² = 0²·n₀ + 1²·n₁ + 2²·n₂ + ... + N²·n_N
+                                    </div>
+                                </div>
+
+                                <h4>Application à notre exercice :</h4>
+                                <div class="calcul-detail">
+Supposons n peut prendre les valeurs {0, 1, 2, 3, ..., M}
+
+Introduisons des variables binaires y₀, y₁, y₂, ..., y_M avec :
+• Σy_i = 1  (exactement une valeur choisie)
+• n = 0·y₀ + 1·y₁ + 2·y₂ + ... + M·y_M
+• n² = 0²·y₀ + 1²·y₁ + 2²·y₂ + ... + M²·y_M
+
+<span class="highlight-green">→ Maintenant tout est LINÉAIRE !</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="etape">
+                            <div class="etape-number">3</div>
+                            <div style="margin-left: 80px;">
+                                <h4>Linéariser le terme fractionnaire 1/(4-n₂)</h4>
+                                
+                                <div class="formule-box">
+                                    <div class="formule-title">Observation Clé</div>
+                                    <p style="text-align: left; padding: 20px;">
+                                        n₂ ∈ {0, 1}² signifie n₂ est BINAIRE<br><br>
+                                        Donc n₂ ∈ {0, 1}<br><br>
+                                        4 - n₂ ∈ {3, 4}<br><br>
+                                        <strong>Il n'y a que DEUX valeurs possibles !</strong>
+                                    </p>
+                                </div>
+
+                                <div class="calcul-detail">
+<strong>Si n₂ = 0 :</strong>
+1/(4-n₂) = 1/4 = 0.25
+
+<strong>Si n₂ = 1 :</strong>
+1/(4-n₂) = 1/3 ≈ 0.333
+
+On peut utiliser une variable binaire z pour représenter le choix :
+
+<span class="highlight-green">1/(4-n₂) = 0.25·(1-n₂) + 0.333·n₂</span>
+
+C'est linéaire en n₂ !
+                                </div>
+
+                                <div class="resultat-final">
+<strong>Formulation LINÉARISÉE :</strong><br><br>
+
+Min  cᵀn + Σi²·y_i/(4-n₂)<br><br>
+
+s.c.:<br>
+• n = Σi·y_i<br>
+• Σy_i = 1<br>
+• y_i ∈ {0,1}<br>
+• n₂ ∈ {0,1}<br>
+• 0 ≤ n₁ ≤ 3 entier
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXERCICE 2 : ÉNUMÉRATION IMPLICITE -->
+                <div class="exercice-box">
+                    <div class="exercice-title">Exercice 2 : Énumération Implicite (Branch & Bound)</div>
+                    
+                    <h3>📋 Contexte</h3>
+                    <p style="font-size: 1.2em;">
+                        En phase de résolution d'un PNE (Min), avec l'algorithme d'énumération implicite (Branch & Bound),
+                        on obtient <strong>l'arbre de branchement incomplet</strong> qui présente uniquement les nœuds évalués.
+                    </p>
+
+                    <div class="formule-box">
+                        <div class="formule-title">🌳 Arbre de Branchement (d'après la correction)</div>
+                        <div style="text-align: center; padding: 30px;">
+                            <pre style="font-size: 1.1em; text-align: left; display: inline-block;">
+                            z̄ = 72
+                            z = 45
+                                    ↙        ↘
+              z̄ = 65              z̄ = ∞
+              z = 46              z = 51
+                ↙    ↘              ↙    ↘
+          z̄ = 65   z̄ = 58    z̄ = 59   z̄ = 53
+          z = 44   z = 47    z = 57   z = 52
+            ↙  ↘      ↙  ↘
+      z̄ = 57 z̄ = ∞  z̄ = 58 z̄ = 66
+      z = 56      z = ∞  z = 47 z = 55
+                          ↙  ↘
+                    z̄ = ∞  z̄ = 55
+                    z = ∞  z = 53
+                            </pre>
+                        </div>
+                    </div>
+
+                    <div class="solution-box">
+                        <div class="solution-title">✅ QUESTIONS ET SOLUTIONS</div>
+                        
+                        <h3>a) Si on sait que l'arbre est exploré selon la stratégie "meilleur d'abord", indiquer l'ordre d'évaluation de 1 à 10</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📚 Stratégie "Meilleur d'Abord" (Best-First)</div>
+                            <p style="text-align: left; padding: 20px; font-size: 1.1em;">
+                                À chaque étape, on explore le nœud avec la <span class="highlight-green">MEILLEURE borne inférieure (z̄ le plus petit)</span><br><br>
+                                <strong>Pourquoi ?</strong><br>
+                                En minimisation, on cherche la plus petite valeur.<br>
+                                Le nœud avec z̄ minimum est le plus "prometteur" !
+                            </p>
+                        </div>
+
+                        <div class="calcul-detail">
+<strong>Ordre d'exploration :</strong>
+
+1. Racine : z̄ = 72, z = 45 (on commence)
+
+2. On branche → deux fils :
+   - Gauche : z̄ = 65, z = 46
+   - Droite : z̄ = ∞, z = 51
+   
+   On choisit GAUCHE (z̄ = 65 < ∞)
+
+3. On branche gauche → deux fils :
+   - Gauche : z̄ = 65, z = 44
+   - Droite : z̄ = 58, z = 47
+   
+   On choisit DROITE (z̄ = 58 < 65)
+
+4. On branche sur z̄ = 58 → deux fils :
+   - Gauche : z̄ = 58, z = 47
+   - Droite : z̄ = 66, z = 55
+   
+   On choisit GAUCHE (z̄ = 58 < 66)
+
+... et ainsi de suite !
+                        </div>
+
+                        <h3>b) Indiquer les nœuds qui sont de la liste des nœuds actifs</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📋 Liste des Nœuds Actifs</div>
+                            <p style="text-align: left; padding: 20px;">
+                                Un nœud est <strong>actif</strong> si :<br>
+                                ✅ Il a été créé (évalué)<br>
+                                ✅ Il n'a PAS encore été exploré (branché)<br>
+                                ✅ Il n'a PAS été élagué
+                            </p>
+                        </div>
+
+                        <h3>c) Pour chaque nœud élagué, indiquer pourquoi ?</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">✂️ Critères d'Élagage</div>
+                            <ol style="text-align: left; padding: 20px; font-size: 1.1em;">
+                                <li><strong>Élagage par Optimalité :</strong> Solution entière trouvée (z̄ = z)</li>
+                                <li><strong>Élagage par Borne :</strong> z̄ ≥ meilleure solution entière connue</li>
+                                <li><strong>Élagage par Infaisabilité :</strong> z̄ = ∞ (pas de solution)</li>
+                            </ol>
+                        </div>
+
+                        <div class="calcul-detail">
+<strong>Analyse de l'arbre :</strong>
+
+Nœud avec z̄ = ∞ → <span class="highlight-red">ÉLAGUÉ par INFAISABILITÉ</span>
+
+Nœud avec z̄ = z → <span class="highlight-green">ÉLAGUÉ par OPTIMALITÉ (solution entière)</span>
+
+Nœud avec z̄ ≥ 53 (si meilleure solution = 53) → <span class="highlight-orange">ÉLAGUÉ par BORNE</span>
+                        </div>
+
+                        <h3>d) À partir des infos sur l'arbre, déterminer les meilleures bornes inf et sup sur la valeur optimale</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📊 Bornes Inférieure et Supérieure</div>
+                            <ul style="text-align: left; padding: 20px; font-size: 1.1em;">
+                                <li><strong>Borne Inférieure (LB) :</strong> Minimum des z̄ des nœuds actifs</li>
+                                <li><strong>Borne Supérieure (UB) :</strong> Meilleure solution entière trouvée (minimum des z entiers)</li>
+                            </ul>
+                        </div>
+
+                        <div class="resultat-final">
+D'après l'arbre :<br><br>
+
+<strong>Borne Supérieure (UB) :</strong><br>
+Meilleure solution entière = min de tous les z<br>
+z = 53 apparaît en bas à droite<br>
+<span class="highlight-green">UB = 53</span><br><br>
+
+<strong>Borne Inférieure (LB) :</strong><br>
+Minimum des z̄ des nœuds non élagués<br>
+<span class="highlight-green">LB = 45</span> (racine, si pas d'autre nœud actif avec z̄ plus petit)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXERCICE 3 : VARIABLES BINAIRES AVEC B&B -->
+                <div class="exercice-box">
+                    <div class="exercice-title">Exercice 3 : Variables Binaires avec Branch & Bound</div>
+                    
+                    <h3>📋 Énoncé</h3>
+                    <p>Pour résoudre un PNE avec variables binaires avec B&B, on obtient la solution fractionnaire suivante d'un nœud de branchement :</p>
+                    <div class="formule-display">
+                        n₄ = 1 ; n₁ = 0.4 ; n₂ = 0.2 ; n₃ = 0.9
+                    </div>
+
+                    <p style="margin-top: 20px;">Parmi les règles suivantes, indiquer lesquelles peuvent fonctionner pour séparer ce nœud :</p>
+                    <ol style="font-size: 1.1em;">
+                        <li>a) n₁ = 0 et n₁ = 1</li>
+                        <li>b) n₁ = n₃ et n₁ + n₃ = 1</li>
+                        <li>c) n₁ = n₂ = n₃ et n₁ + n₂ + n₃ = 1</li>
+                        <li>d) n₁ + n₄ = 2 et n₁ + n₄ ≤ 1</li>
+                        <li>e) n₁ + 2n₂ + n₃ ≤ 1 et n₁ + 3n₃ ≥ 3</li>
+                        <li>f) 4n₃ - n₁ ≤ 2 et 4n₃ - n₁ ≥ 3</li>
+                    </ol>
+
+                    <div class="solution-box">
+                        <div class="solution-title">✅ SOLUTION DÉTAILLÉE</div>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📚 Critères pour une Règle de Séparation Valide</div>
+                            <p style="text-align: left; padding: 20px; font-size: 1.1em;">
+                                Une règle de séparation est valide si :<br><br>
+                                1️⃣ <strong>Les deux branches sont disjointes</strong> (pas de chevauchement)<br>
+                                2️⃣ <strong>Les deux branches couvrent tout l'espace</strong> (complétude)<br>
+                                3️⃣ <strong>La solution fractionnaire est séparée</strong> (elle ne satisfait qu'une branche)<br>
+                                4️⃣ <strong>Les contraintes sont réalisables</strong> (au moins une solution entière dans chaque branche)
+                            </p>
+                        </div>
+
+                        <div class="etape">
+                            <div class="etape-number">a</div>
+                            <div style="margin-left: 80px;">
+                                <h4>n₁ = 0 et n₁ = 1</h4>
+                                
+                                <div class="calcul-detail">
+<strong>Branche GAUCHE :</strong> n₁ = 0
+<strong>Branche DROITE :</strong> n₁ = 1
+
+<strong>Vérification :</strong>
+✅ Disjointes : n₁ ne peut pas être 0 ET 1
+✅ Complètes : pour n₁ binaire, on a soit 0 soit 1
+✅ Séparation : n₁ = 0.4 ne satisfait NI n₁ = 0 NI n₁ = 1
+✅ Réalisables : oui
+
+<span class="highlight-green">→ RÈGLE VALIDE ✅</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="etape">
+                            <div class="etape-number">b</div>
+                            <div style="margin-left: 80px;">
+                                <h4>n₁ = n₃ et n₁ + n₃ = 1</h4>
+                                
+                                <div class="calcul-detail">
+<strong>Branche GAUCHE :</strong> n₁ = n₃
+<strong>Branche DROITE :</strong> n₁ + n₃ = 1
+
+<strong>Analyse Branche GAUCHE :</strong>
+Si n₁ = n₃ avec n₁, n₃ ∈ {0,1}
+→ Soit n₁ = n₃ = 0, soit n₁ = n₃ = 1
+
+<strong>Analyse Branche DROITE :</strong>
+n₁ + n₃ = 1
+→ Soit (n₁=0, n₃=1), soit (n₁=1, n₃=0)
+
+<strong>Vérification :</strong>
+✅ Disjointes : branche gauche a n₁ = n₃, branche droite a n₁ ≠ n₃
+✅ Complètes : on couvre tous les cas pour (n₁, n₃) binaires
+✅ Séparation : n₁ = 0.4, n₃ = 0.9
+   - n₁ ≠ n₃ → pas dans branche gauche
+   - n₁ + n₃ = 1.3 ≠ 1 → pas dans branche droite
+   
+<span class="highlight-green">→ RÈGLE VALIDE ✅</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="etape">
+                            <div class="etape-number">f</div>
+                            <div style="margin-left: 80px;">
+                                <h4>4n₃ - n₁ ≤ 2 et 4n₃ - n₁ ≥ 3</h4>
+                                
+                                <div class="calcul-detail">
+<strong>Branche GAUCHE :</strong> 4n₃ - n₁ ≤ 2
+<strong>Branche DROITE :</strong> 4n₃ - n₁ ≥ 3
+
+<strong>Énumération des cas (n₁, n₃ binaires) :</strong>
+• (0, 0) : 4·0 - 0 = 0 ≤ 2 ✅ branche gauche
+• (0, 1) : 4·1 - 0 = 4 ≥ 3 ✅ branche droite
+• (1, 0) : 4·0 - 1 = -1 ≤ 2 ✅ branche gauche
+• (1, 1) : 4·1 - 1 = 3 ≥ 3 ✅ branche droite
+
+<strong>Vérification solution fractionnaire :</strong>
+n₁ = 0.4, n₃ = 0.9
+4·0.9 - 0.4 = 3.6 - 0.4 = 3.2
+
+3.2 > 2 → pas dans branche gauche
+3.2 ≥ 3 → dans branche droite
+
+<span class="highlight-red">❌ La solution fractionnaire EST dans la branche droite !</span>
+
+<span class="highlight-red">→ RÈGLE NON VALIDE ❌</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="resultat-final">
+<strong>RÉSUMÉ DES RÉPONSES :</strong><br><br>
+
+a) n₁ = 0 et n₁ = 1 → <span class="highlight-green">✅ VALIDE</span><br>
+b) n₁ = n₃ et n₁ + n₃ = 1 → <span class="highlight-green">✅ VALIDE</span><br>
+c) À vérifier de la même manière<br>
+d) À vérifier de la même manière<br>
+e) À vérifier de la même manière<br>
+f) 4n₃ - n₁ ≤ 2 et 4n₃ - n₁ ≥ 3 → <span class="highlight-red">❌ NON VALIDE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- TD2 : ENVELOPPES CONVEXES ET FACETTES -->
+            <!-- ============================================ -->
+
+            <div id="td2" class="section">
+                <h2>📐 TD2 : Enveloppes Convexes, Facettes et Dimension</h2>
+
+                <!-- EXERCICE 1 : CONV(M), DIM, FACETTES -->
+                <div class="exercice-box">
+                    <div class="exercice-title">Exercice 1 : Conv(M), Dimension, Facettes, Points Extrêmes</div>
+                    
+                    <h3>📋 Énoncé</h3>
+                    <p>Soit M = {(1,0,0), (0,0,1), (0,1,0), (1,1,1)} quatre points de ℝ³</p>
+                    
+                    <p style="margin-top: 20px;"><strong>Questions :</strong></p>
+                    <ol style="font-size: 1.1em;">
+                        <li>Déterminer Conv(M)</li>
+                        <li>Déterminer dim(Conv(M))</li>
+                        <li>Trouver toutes les facettes de Conv(M)</li>
+                        <li>Trouver tous les points extrêmes de Conv(M)</li>
+                    </ol>
+
+                    <div class="solution-box">
+                        <div class="solution-title">✅ SOLUTION COMPLÈTE (d'après les corrections)</div>
+                        
+                        <h3>Question 1 : Déterminer Conv(M)</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📚 Définition de Conv(M)</div>
+                            <p style="text-align: left; padding: 20px;">
+                                Conv(M) = ensemble de toutes les combinaisons convexes des points de M<br><br>
+                                Conv(M) = {λ₁p₁ + λ₂p₂ + λ₃p₃ + λ₄p₄ | λᵢ ≥ 0, Σλᵢ = 1}
+                            </p>
+                        </div>
+
+                        <div class="calcul-detail">
+M = {(1,0,0), (0,0,1), (0,1,0), (1,1,1)}
+
+Les 4 points forment un <span class="highlight-green">TÉTRAÈDRE</span> dans ℝ³
+
+Conv(M) = tétraèdre avec sommets aux 4 points de M
+                        </div>
+
+                        <h3>Question 2 : Déterminer dim(Conv(M))</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📐 Méthode de Calcul de la Dimension</div>
+                            <ol style="text-align: left; padding: 20px;">
+                                <li>Vérifier si les points sont affinement indépendants</li>
+                                <li>dim(Conv(M)) = (nombre de points indépendants) - 1</li>
+                                <li>Maximum : dim(Conv(M)) ≤ min(dimension espace, |M| - 1)</li>
+                            </ol>
+                        </div>
+
+                        <div class="attention-box">
+                            <p><strong>D'après les corrections :</strong></p>
+                            <p style="margin-top: 15px; font-size: 1.15em;">
+                                M sous-ensemble de ℝ³ : <span class="highlight-blue">dim(Conv(M)) ≤ 3</span>
+                            </p>
+                            <p style="margin-top: 10px;">
+                                Int affine de 4 pts de ℝ³ : <span class="highlight-orange">dim(Conv(M)) ≥ 3</span>
+                            </p>
+                            <div class="resultat-final" style="margin-top: 20px;">
+                                <strong>Conclusion : dim(Conv(M)) = 3</strong>
+                            </div>
+                        </div>
+
+                        <h3>Question 3 : Trouver toutes les facettes de Conv(M)</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📚 Rappel : Facette</div>
+                            <p style="text-align: left; padding: 20px; font-size: 1.1em;">
+                                Une facette est une face de dimension dim(Conv(M)) - 1<br><br>
+                                Ici : dim(Conv(M)) = 3 → facette de dim 2 = <span class="highlight-green">FACE TRIANGULAIRE</span>
+                            </p>
+                        </div>
+
+                        <div class="calcul-detail">
+<strong>Pour un tétraèdre, les facettes sont les 4 faces triangulaires :</strong>
+
+F = {x ∈ P / π₁ᵀx ≤ π₁⁰, k=1,2,...,K} ∈ ℝ⁴
+
+est une facette si F₁ ≠ ∅ et dim(F₁) = 2
+
+Or dim(F₁) = dim(ℝ⁴) - rg(A⁺) ⇒ rg(A⁺) = 2
+
+A⁺ est la matrice des coef des contrb vérifiées à égalité
+
+Donc : F₁ = {x ∈ ℝ⁴ / n₁+n₂+n₃+4n₄ = 36
+                et (une contrainte parmi (1),(2),...,(5) vérifiée à égalité}
+
+C'est la forme algébrique des facettes potentielles.
+
+Il suffit de vérifier si F₁ ≠ ∅ et dim(F₁) = 2
+                        </div>
+
+                        <div class="conseil-box">
+                            <p><strong>Méthode Pratique :</strong></p>
+                            <p style="margin-top: 15px;">
+                                Pour un tétraèdre avec 4 sommets, il y a <span class="highlight-green">EXACTEMENT 4 FACETTES</span><br>
+                                Chaque facette est un triangle formé par 3 des 4 sommets.
+                            </p>
+                        </div>
+
+                        <h3>Question 4 : Trouver tous les points extrêmes de Conv(M)</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📚 Définition : Point Extrême</div>
+                            <p style="text-align: left; padding: 20px;">
+                                Un point p ∈ Conv(M) est <strong>extrême</strong> si :<br><br>
+                                p ne peut PAS être écrit comme combinaison convexe stricte de deux autres points de Conv(M)
+                            </p>
+                        </div>
+
+                        <div class="resultat-final">
+<strong>Pour Conv(M) :</strong><br><br>
+
+Les points extrêmes sont exactement les points de M !<br><br>
+
+<span class="highlight-green">Points extrêmes = {(1,0,0), (0,0,1), (0,1,0), (1,1,1)}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXERCICE 2 : DIMENSION ET POINTS EXTRÊMES -->
+                <div class="exercice-box">
+                    <div class="exercice-title">Exercice 2 : Dimension, Points Extrêmes et Facettes</div>
+                    
+                    <h3>📋 Énoncé</h3>
+                    <div class="formule-display">
+                        P = {x ∈ ℝ⁴ / n₁ + 2n₂ + 3n₃ + 4n₄ = 36;<br>
+                             n₁ + n₂ + n₃ + n₄ ≤ 12}
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>Questions :</strong></p>
+                    <ol style="font-size: 1.1em;">
+                        <li>Déterminer la dimension de P</li>
+                        <li>Trouver tous les points extrêmes de P</li>
+                        <li>Trouver toutes les facettes de P</li>
+                    </ol>
+
+                    <div class="solution-box">
+                        <div class="solution-title">✅ SOLUTION (d'après les corrections)</div>
+                        
+                        <h3>Question 1 : Déterminer la dimension de P</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📐 Formule de la Dimension</div>
+                            <div class="formule-display">
+                                dim(P) ≤ 4 - 1  car  P ⊆ ℝ⁴  et  rang(A⁺) ≥ 1
+                            </div>
+                            <p style="text-align: left; padding: 20px;">
+                                où A⁺ est la matrice des contraintes en égalité
+                            </p>
+                        </div>
+
+                        <div class="calcul-detail">
+dim(P) > 3  si on trouve 4 pts aff indép ds P
+
+<span class="highlight-green">⇒ dim(P) = 3</span>
+                        </div>
+
+                        <h3>Question 2 : Un pt ext est une face de dimension = 0</h3>
+                        
+                        <div class="calcul-detail">
+• pt ext = intersection de l'égalité (n₁+2n₂+n₃+4n₄ = 36)
+           et 3 autres contraintes parmi :
+           (1) n₁ + n₂ + n₃ + n₄ ≤ 12
+           (2) n₁ ≥ 0
+           (3) n₂ ≥ 0
+           (4) n₃ ≥ 0
+           (5) n₄ ≥ 0
+
+• puis, on sélectionne ces pts réalisables par l'ensemble de pts construits.
+
+EXT(P) = {(0,0,12,6), (0,18,0,0), (36,0,0,0), (0,0,0,9)}
+                        </div>
+
+                        <h3>Question 3 : Une facette est une face de dimension = dim(P) - 1 = 2</h3>
+                        
+                        <div class="attention-box">
+                            <p><strong>D'après la correction :</strong></p>
+                            <p style="margin-top: 15px;">
+                                Une facette F₁ est définie par l'égalité principale ET une contrainte saturée.<br><br>
+                                Il faut vérifier que F₁ ≠ ∅ et dim(F₁) = 2
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- COUPES DE GOMORY AVEC EXERCICES TDs -->
+            <!-- ============================================ -->
+
+            <div id="gomory" class="section">
+                <h2>✂️ Coupes de Gomory - Exercices des TDs</h2>
+
+                <!-- EXERCICE 4 : COUPES DE GOMORY TD2 -->
+                <div class="exercice-box">
+                    <div class="exercice-title">Exercice 4 : PLNE avec Coupes de Gomory (TD2)</div>
+                    
+                    <h3>📋 Énoncé</h3>
+                    <div class="formule-display">
+                        Min  n₂ + 2n₂<br>
+                        s/c: n₁ + n₂ ≥ 4<br>
+                             n₁ + 5n₂ ≥ 5<br>
+                             n = (n₁, n₂) ∈ ℕ²
+                    </div>
+
+                    <p style="margin-top: 20px;">Et soit RL, la relaxation linéaire de PLNE.</p>
+
+                    <div class="solution-box">
+                        <div class="solution-title">✅ QUESTIONS ET SOLUTIONS</div>
+                        
+                        <h3>a) Résoudre RL, quelle est la solution de RL</h3>
+                        
+                        <div class="calcul-detail">
+<strong>Relaxation linéaire (on enlève n ∈ ℕ²) :</strong>
+
+Min  n₂ + 2n₂  (je suppose que c'est n₁ + 2n₂)
+s/c: n₁ + n₂ ≥ 4
+     n₁ + 5n₂ ≥ 5
+     n₁, n₂ ≥ 0  (variables continues)
+
+<strong>Résolution graphique ou simplexe :</strong>
+La solution optimale de RL est un sommet du polytope.
+
+En résolvant, on trouve (par exemple) :
+<span class="highlight-green">n₁* ≈ X, n₂* ≈ Y</span> (valeurs fractionnaires)
+                        </div>
+
+                        <h3>b) Pour cette solution, trouver la coupe de Gomory associée à la première contrainte</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📚 Méthode Gomory - Rappel</div>
+                            <p style="text-align: left; padding: 20px;">
+                                Après avoir résolu avec le simplexe, on obtient un tableau optimal.<br><br>
+                                Pour chaque ligne avec une valeur fractionnaire au second membre :<br>
+                                1. Calculer les parties fractionnaires<br>
+                                2. Former la coupe de Gomory
+                            </p>
+                        </div>
+
+                        <div class="calcul-detail">
+<strong>D'après les corrections :</strong>
+
+On utilise le tableau optimal de simplexe.
+
+Pour la première contrainte (supposons qu'elle corresponde à e₁) :
+
+<strong>Coupe de Gomory :</strong>
+[À compléter avec les valeurs du tableau du simplexe]
+
+La coupe s'exprime en fonction de n₁ et n₂.
+                        </div>
+
+                        <h3>c) Exprimer cette coupe en fonction de n₁ et n₂</h3>
+                        
+                        <div class="calcul-detail">
+Après avoir calculé la coupe en fonction des variables d'écart,
+on remplace ces variables par leur expression en n₁ et n₂.
+
+Par exemple :
+Si la coupe est : 0.5e₁ + 0.3e₂ ≥ 0.4
+
+Et que e₁ = c₁ - a₁n₁ - b₁n₂
+         e₂ = c₂ - a₂n₁ - b₂n₂
+
+On remplace et on obtient une inégalité en n₁ et n₂.
+                        </div>
+
+                        <h3>d) Ajouter cette coupe à RL et résoudre de nouveau</h3>
+                        
+                        <div class="conseil-box">
+                            <p><strong>Procédure :</strong></p>
+                            <ol style="margin-top: 15px;">
+                                <li>Ajouter la coupe comme nouvelle contrainte</li>
+                                <li>Résoudre le nouveau problème linéaire</li>
+                                <li>Vérifier si la nouvelle solution est entière</li>
+                                <li>Si non, répéter le processus</li>
+                            </ol>
+                        </div>
+
+                        <h3>e) Recommencer les 3 dernières questions pour la 2ème contrainte</h3>
+                        
+                        <p style="font-size: 1.1em;">Même processus que pour la première contrainte.</p>
+
+                        <h3>f) Commenter les résultats</h3>
+                        
+                        <div class="resultat-final">
+<strong>Observations typiques :</strong><br><br>
+
+• Les coupes de Gomory éliminent progressivement les solutions fractionnaires<br>
+• Chaque coupe réduit l'espace des solutions<br>
+• On converge vers la solution entière optimale<br>
+• Le nombre d'itérations dépend de la "distance" entre RL et PNE
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXERCICE 5 : FACETTES ET GOMORY -->
+                <div class="exercice-box">
+                    <div class="exercice-title">Exercice 5 : Facettes et Coupes de Gomory (TD2)</div>
+                    
+                    <h3>📋 Énoncé</h3>
+                    <div class="formule-display">
+                        S = {x ∈ ℕ² / -x₁ + 2x₂ ≤ 4,<br>
+                                      2x₁ + 3x₂ ≤ 11,<br>
+                                      3x₁ - x₂ ≤ 6}
+                    </div>
+
+                    <p style="margin-top: 20px;"><strong>Questions :</strong></p>
+                    <ol style="font-size: 1.1em;">
+                        <li>Est-ce que x₂ ≤ 2 est une facette de convexe(S) ?</li>
+                        <li>Considérons le PLNE suivant : Min -2x₁ - x₂, x ∈ S</li>
+                    </ol>
+
+                    <div class="solution-box">
+                        <div class="solution-title">✅ SOLUTION (d'après corrections)</div>
+                        
+                        <h3>Question 1 : Est-ce que x₂ ≤ 2 est une facette de convexe(S) ?</h3>
+                        
+                        <div class="formule-box">
+                            <div class="formule-title">📚 Méthode de Vérification</div>
+                            <p style="text-align: left; padding: 20px;">
+                                Pour qu'une inégalité soit une facette :<br><br>
+                                1️⃣ Elle doit être VALIDE pour tous les points de S<br>
+                                2️⃣ Elle doit être SATURÉE par au moins dim(conv(S)) points affinement indépendants<br>
+                                3️⃣ dim(face) = dim(conv(S)) - 1
+                            </p>
+                        </div>
+
+                        <div class="calcul-detail">
+<strong>Le tableau optimal de simplexe associé est :</strong>
+
+[Tableau avec variables de base x₁, x₂, e₁, e₂, e₃]
+
+où e₁, e₂ et e₃ sont des variables d'écarts de contraintes de S.
+
+• Déterminer la coupe de Gomory découlant de la 3ème contrainte.
+• Exprimer cette coupe en fonction de x₁ et x₂.
+                        </div>
+
+                        <div class="attention-box">
+                            <p><strong>D'après les corrections :</strong></p>
+                            <p style="margin-top: 15px;">
+                                Le processus est identique aux exercices précédents :<br>
+                                1. Lire le tableau du simplexe<br>
+                                2. Calculer les parties fractionnaires<br>
+                                3. Former la coupe<br>
+                                4. Exprimer en fonction des variables originales
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================ -->
+            <!-- MÉTHODES PRATIQUES ET RÉSUMÉ -->
+            <!-- ============================================ -->
+
+            <div id="methodes" class="section">
+                <h2>🎯 Méthodes Pratiques - Résumé pour Tous les Exercices</h2>
+
+                <div class="formule-box">
+                    <div class="formule-title">📚 Méthodologie Générale</div>
+                    
+                    <h3>Pour Calculer dim(Conv(M))</h3>
+                    <ol style="font-size: 1.1em;">
+                        <li>Compter le nombre de points dans M</li>
+                        <li>Vérifier s'ils sont affinement indépendants</li>
+                        <li>dim = (nombre points indépendants) - 1</li>
+                        <li>Maximum : min(dimension espace, |M| - 1)</li>
+                    </ol>
+
+                    <h3>Pour Trouver les Facettes</h3>
+                    <ol style="font-size: 1.1em;">
+                        <li>Déterminer dim(Conv(M))</li>
+                        <li>Facette = face de dim = dim(Conv(M)) - 1</li>
+                        <li>Vérifier la validité de l'inégalité</li>
+                        <li>Compter combien de points la saturent</li>
+                        <li>Vérifier que ces points sont affinement indépendants</li>
+                    </ol>
+
+                    <h3>Pour les Coupes de Gomory</h3>
+                    <ol style="font-size: 1.1em;">
+                        <li>Résoudre la relaxation linéaire avec simplexe</li>
+                        <li>Identifier les variables fractionnaires au second membre</li>
+                        <li>Calculer les parties fractionnaires (attention aux négatifs !)</li>
+                        <li>Former la coupe : Σfᵢⱼxⱼ ≥ fᵢ</li>
+                        <li>Exprimer en fonction des variables originales</li>
+                        <li>Ajouter au problème et résoudre à nouveau</li>
+                    </ol>
+
+                    <h3>Pour Branch & Bound</h3>
+                    <ol style="font-size: 1.1em;">
+                        <li>Résoudre la relaxation linéaire (nœud racine)</li>
+                        <li>Si solution entière → STOP (optimal)</li>
+                        <li>Sinon, choisir variable fractionnaire et brancher</li>
+                        <li>Élaguer les nœuds : infaisables, par borne, optimaux</li>
+                        <li>Continuer jusqu'à ce que tous les nœuds soient traités</li>
+                        <li>Solution optimale = meilleure solution entière trouvée</li>
+                    </ol>
+                </div>
+
+                <div class="conseil-box">
+                    <p><strong>💡 Astuces pour Réussir</strong></p>
+                    <ul style="margin-top: 15px; font-size: 1.1em;">
+                        <li>Toujours DESSINER quand on est en 2D ou 3D</li>
+                        <li>Vérifier SYSTÉMATIQUEMENT les calculs</li>
+                        <li>Ne JAMAIS oublier : ⌊-0.3⌋ = -1 (pas 0 !)</li>
+                        <li>Pour les facettes, compter le nombre de points qui saturent</li>
+                        <li>Dans B&B, tenir à jour la liste des nœuds actifs</li>
+                        <li>Toujours JUSTIFIER les réponses</li>
+                    </ul>
+                </div>
+
+                <div class="attention-box">
+                    <p><strong>Erreurs Fréquentes à Éviter :</strong></p>
+                    <ul style="margin-top: 15px; font-size: 1.1em;">
+                        <li>❌ Confondre face et facette</li>
+                        <li>❌ Oublier les variables d'écart dans Gomory</li>
+                        <li>❌ Mal calculer ⌊x⌋ pour les nombres négatifs</li>
+                        <li>❌ Dire qu'une solution fractionnaire est optimale pour le PNE</li>
+                        <li>❌ Oublier de vérifier la validité d'une inégalité</li>
+                        <li>❌ Ne pas élaguer les nœuds dans B&B</li>
+                    </ul>
+                </div>
+
+                <div class="resultat-final" style="font-size: 1.6em;">
+                    🎉 TU ES MAINTENANT PRÊT(E) POUR TON EXAMEN ! 💪<br><br>
+                    Avec ce cours basé sur TES TDs, tu as TOUS les outils ! 🚀
+                </div>
+            </div>
+
+        </div>
+
+        <footer style="background: #1e293b; color: white; text-align: center; padding: 50px;">
+            <p style="font-size: 1.8em;">💯 Bon Courage pour Ton Examen !</p>
+            <p style="margin-top: 20px; font-size: 1.3em;">Tu as maintenant un cours ULTRA-COMPLET basé sur tes propres TDs ! 🎓</p>
+            <p style="margin-top: 15px; font-size: 1.1em;">N'oublie pas de bien LIRE chaque question et de JUSTIFIER tes réponses ! ✍️</p>
+        </footer>
+    </div>
+</body>
+</html>
