@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 Régimes Transitoires - Cours Complet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: #2c3e50;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        h3 {
+            color: #34495e;
+            font-size: 1.5em;
+            margin: 30px 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .important {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .formule {
+            background: #e7f3ff;
+            border: 2px solid #2196F3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        .formule-titre {
+            font-weight: bold;
+            color: #2196F3;
+            margin-bottom: 10px;
+        }
+
+        .circuit-schema {
+            background: white;
+            border: 2px solid #34495e;
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .liste-etapes {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .liste-etapes li {
+            margin: 15px 0;
+            padding-left: 10px;
+        }
+
+        .liste-etapes li strong {
+            color: #2196F3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .exemple {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .exercice {
+            background: #fce4ec;
+            border-left: 4px solid #e91e63;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .regime {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .regime-aperiodique {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .regime-critique {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .regime-periodique {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63031;
+        }
+
+        .astuce {
+            background: #e8f5e9;
+            border: 2px dashed #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+
+        .astuce::before {
+            content: "💡 ASTUCE : ";
+            font-weight: bold;
+            color: #4caf50;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            nav {
+                display: none;
+            }
+        }
+
+        .svg-circuit {
+            margin: 20px auto;
+            display: block;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ RÉGIMES TRANSITOIRES ⚡</h1>
+            <p>Cours complet pour réussir ton examen - Électronique</p>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#intro">📖 Introduction</a></li>
+                <li><a href="#methodologie">🎯 Méthodologie</a></li>
+                <li><a href="#ordre1">🔌 1er Ordre</a></li>
+                <li><a href="#ordre2">⚡ 2ème Ordre</a></li>
+                <li><a href="#formules">📐 Formules</a></li>
+                <li><a href="#exercices">✍️ Exercices</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <!-- INTRODUCTION -->
+            <section id="intro">
+                <h2>📖 Introduction aux Régimes Transitoires</h2>
+                
+                <div class="box">
+                    <h3>🎯 Qu'est-ce qu'un régime transitoire ?</h3>
+                    <p>Un <strong>régime transitoire</strong> est la période pendant laquelle un circuit électrique passe d'un état d'équilibre à un autre suite à une perturbation (fermeture/ouverture d'un interrupteur, application d'une tension, etc.).</p>
+                </div>
+
+                <h3>📊 L'échelle des temps</h3>
+                <div class="circuit-schema">
+                    <svg width="800" height="200" viewBox="0 0 800 200">
+                        <!-- Axe temps -->
+                        <line x1="50" y1="100" x2="750" y2="100" stroke="#333" stroke-width="2"/>
+                        <polygon points="750,100 740,95 740,105" fill="#333"/>
+                        
+                        <!-- Point t0 -->
+                        <line x1="250" y1="80" x2="250" y2="120" stroke="#e74c3c" stroke-width="3"/>
+                        <text x="250" y="140" text-anchor="middle" font-size="18" fill="#e74c3c" font-weight="bold">t₀</text>
+                        
+                        <!-- Régions -->
+                        <rect x="50" y="50" width="190" height="30" fill="#3498db" opacity="0.3"/>
+                        <text x="145" y="70" text-anchor="middle" font-size="14" font-weight="bold">Régime Permanent Initial</text>
+                        <text x="145" y="35" text-anchor="middle" font-size="12">t < t₀</text>
+                        
+                        <rect x="260" y="50" width="240" height="30" fill="#e74c3c" opacity="0.3"/>
+                        <text x="380" y="70" text-anchor="middle" font-size="14" font-weight="bold">RÉGIME TRANSITOIRE</text>
+                        <text x="380" y="35" text-anchor="middle" font-size="12">t ≥ t₀</text>
+                        
+                        <rect x="510" y="50" width="190" height="30" fill="#27ae60" opacity="0.3"/>
+                        <text x="605" y="70" text-anchor="middle" font-size="14" font-weight="bold">Régime Permanent Final</text>
+                        <text x="605" y="35" text-anchor="middle" font-size="12">t >> t₀</text>
+                        
+                        <!-- Labels temps -->
+                        <text x="770" y="105" font-size="16" font-weight="bold">t</text>
+                    </svg>
+                </div>
+
+                <div class="important">
+                    <h3>⚠️ POINTS CLÉS À RETENIR</h3>
+                    <ul style="margin-left: 20px;">
+                        <li>✅ <strong>t < t₀</strong> : État initial connu (régime permanent)</li>
+                        <li>✅ <strong>t = t₀⁺</strong> : Juste après la perturbation (conditions initiales)</li>
+                        <li>✅ <strong>t > t₀</strong> : Évolution transitoire</li>
+                        <li>✅ <strong>t → ∞</strong> : Retour au régime permanent (état final)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- MÉTHODOLOGIE -->
+            <section id="methodologie">
+                <h2>🎯 Méthodologie Complète en 4 ÉTAPES</h2>
+
+                <div class="liste-etapes">
+                    <h3>📝 ÉTAPE 1 : Mise en équation</h3>
+                    <ol style="margin-left: 20px;">
+                        <li><strong>Définir les variables</strong> (tensions, courants)</li>
+                        <li><strong>Écrire les lois</strong> : Kirchhoff (mailles et nœuds)</li>
+                        <li><strong>Relations composants</strong> :
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>Résistance : <code>u_R(t) = R × i_R(t)</code></li>
+                                <li>Inductance : <code>u_L(t) = L × di_L(t)/dt</code></li>
+                                <li>Capacité : <code>i_C(t) = C × du_C(t)/dt</code></li>
+                            </ul>
+                        </li>
+                        <li><strong>Éliminer les variables</strong> pour obtenir l'équation différentielle</li>
+                    </ol>
+                </div>
+
+                <div class="liste-etapes">
+                    <h3>🔍 ÉTAPE 2 : Conditions Initiales</h3>
+                    <p><strong>Lois de continuité ESSENTIELLES :</strong></p>
+                    <div class="formule">
+                        <div class="formule-titre">🔋 Pour une INDUCTANCE :</div>
+                        i_L(t₀⁺) = i_L(t₀⁻)
+                        <p style="font-size: 0.9em; margin-top: 10px;">Le courant ne peut pas varier instantanément</p>
+                    </div>
+                    <div class="formule">
+                        <div class="formule-titre">⚡ Pour une CAPACITÉ :</div>
+                        u_C(t₀⁺) = u_C(t₀⁻)
+                        <p style="font-size: 0.9em; margin-top: 10px;">La tension ne peut pas varier instantanément</p>
+                    </div>
+                </div>
+
+                <div class="liste-etapes">
+                    <h3>🎨 ÉTAPE 3 : Régime Permanent (optionnel)</h3>
+                    <p>Pour <strong>t → ∞</strong>, on considère :</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>d/dt → 0 (plus de variation)</li>
+                        <li>Toutes les grandeurs tendent vers des constantes</li>
+                    </ul>
+                </div>
+
+                <div class="liste-etapes">
+                    <h3>✅ ÉTAPE 4 : Résolution</h3>
+                    <p>Résoudre l'équation différentielle avec les conditions initiales trouvées</p>
+                </div>
+
+                <div class="astuce">
+                    Toujours vérifier que tes conditions initiales ont un sens physique ! Si tu trouves i(0⁺) = 0 et di/dt(0⁺) = 0 pour un circuit excité par une tension E, c'est qu'il y a une erreur !
+                </div>
+            </section>
+
+            <!-- CIRCUITS 1ER ORDRE -->
+            <section id="ordre1">
+                <h2>🔌 Circuits du 1ER ORDRE (RC et RL)</h2>
+
+                <h3>🔵 A. Circuit RC - Charge du condensateur</h3>
+                
+                <div class="circuit-schema">
+                    <h4>Schéma du circuit RC</h4>
+                    <svg width="600" height="300" viewBox="0 0 600 300" class="svg-circuit">
+                        <!-- Source de tension -->
+                        <circle cx="80" cy="150" r="30" fill="none" stroke="#e74c3c" stroke-width="3"/>
+                        <text x="80" y="155" text-anchor="middle" font-size="20" font-weight="bold" fill="#e74c3c">E</text>
+                        <text x="80" y="200" text-anchor="middle" font-size="16">e(t)</text>
+                        
+                        <!-- Interrupteur -->
+                        <line x1="110" y1="150" x2="150" y2="150" stroke="#333" stroke-width="3"/>
+                        <text x="130" y="135" text-anchor="middle" font-size="16" font-weight="bold">K</text>
+                        <text x="130" y="175" text-anchor="middle" font-size="14">t = 0</text>
+                        
+                        <!-- Résistance -->
+                        <rect x="180" y="135" width="80" height="30" fill="none" stroke="#333" stroke-width="3"/>
+                        <text x="220" y="155" text-anchor="middle" font-size="20" font-weight="bold">R</text>
+                        <line x1="150" y1="150" x2="180" y2="150" stroke="#333" stroke-width="3"/>
+                        <line x1="260" y1="150" x2="300" y2="150" stroke="#333" stroke-width="3"/>
+                        
+                        <!-- Courant i(t) -->
+                        <text x="230" y="120" text-anchor="middle" font-size="16" fill="#2196F3" font-weight="bold">i(t) →</text>
+                        
+                        <!-- Condensateur -->
+                        <line x1="350" y1="110" x2="350" y2="190" stroke="#333" stroke-width="3"/>
+                        <line x1="360" y1="110" x2="360" y2="190" stroke="#333" stroke-width="3"/>
+                        <text x="390" y="155" text-anchor="start" font-size="20" font-weight="bold">C</text>
+                        <line x1="300" y1="150" x2="350" y2="150" stroke="#333" stroke-width="3"/>
+                        <line x1="360" y1="150" x2="400" y2="150" stroke="#333" stroke-width="3"/>
+                        
+                        <!-- Tension u_c(t) -->
+                        <text x="380" y="210" text-anchor="middle" font-size="16" fill="#e74c3c" font-weight="bold">u_c(t)</text>
+                        <line x1="350" y1="220" x2="360" y2="220" stroke="#e74c3c" stroke-width="2" marker-end="url(#arrowred)"/>
+                        
+                        <!-- Retour -->
+                        <line x1="400" y1="150" x2="450" y2="150" stroke="#333" stroke-width="3"/>
+                        <line x1="450" y1="150" x2="450" y2="250" stroke="#333" stroke-width="3"/>
+                        <line x1="450" y1="250" x2="80" y2="250" stroke="#333" stroke-width="3"/>
+                        <line x1="80" y1="250" x2="80" y2="180" stroke="#333" stroke-width="3"/>
+                        
+                        <!-- Masse -->
+                        <line x1="60" y1="250" x2="100" y2="250" stroke="#333" stroke-width="3"/>
+                        <line x1="70" y1="260" x2="90" y2="260" stroke="#333" stroke-width="3"/>
+                        <line x1="75" y1="270" x2="85" y2="270" stroke="#333" stroke-width="3"/>
+                    </svg>
+                </div>
+
+                <div class="box">
+                    <h4>📊 Équation différentielle et solution</h4>
+                    <div class="formule">
+                        <div class="formule-titre">Équation pour u_c(t)</div>
+                        RC × du_c(t)/dt + u_c(t) = E
+                        <br><br>
+                        <span style="color: #e74c3c;">τ = RC</span> (constante de temps)
+                    </div>
+
+                    <div class="formule">
+                        <div class="formule-titre">✅ SOLUTION pour u_c(t)</div>
+                        u_c(t) = E(1 - e^(-t/τ))
+                        <br><br>
+                        Avec : u_c(0⁺) = 0 et u_c(∞) = E
+                    </div>
+
+                    <div class="formule">
+                        <div class="formule-titre">Courant i(t)</div>
+                        i(t) = (E/R) × e^(-t/τ)
+                        <br><br>
+                        Avec : i(0⁺) = E/R et i(∞) = 0
+                    </div>
+                </div>
+
+                <div class="important">
+                    <h4>⏱️ Constante de temps τ = RC</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>À <strong>t = τ</strong> : u_c atteint <span class="highlight">63% de E</span></li>
+                        <li>À <strong>t = 3τ</strong> : u_c atteint <span class="highlight">95% de E</span></li>
+                        <li>À <strong>t = 5τ</strong> : u_c atteint <span class="highlight">99% de E</span> (régime permanent)</li>
+                    </ul>
+                </div>
+
+                <h3>🟢 B. Circuit RL - Établissement du courant</h3>
+                
+                <div class="circuit-schema">
+                    <h4>Schéma du circuit RL</h4>
+                    <svg width="600" height="300" viewBox="0 0 600 300" class="svg-circuit">
+                        <!-- Source de tension -->
+                        <circle cx="80" cy="150" r="30" fill="none" stroke="#e74c3c" stroke-width="3"/>
+                        <text x="80" y="155" text-anchor="middle" font-size="20" font-weight="bold" fill="#e74c3c">E</text>
+                        
+                        <!-- Interrupteur -->
+                        <line x1="110" y1="150" x2="150" y2="150" stroke="#333" stroke-width="3"/>
+                        <text x="130" y="135" text-anchor="middle" font-size="16" font-weight="bold">K</text>
+                        
+                        <!-- Résistance -->
+                        <rect x="180" y="135" width="80" height="30" fill="none" stroke="#333" stroke-width="3"/>
+                        <text x="220" y="155" text-anchor="middle" font-size="20" font-weight="bold">R</text>
+                        <line x1="150" y1="150" x2="180" y2="150" stroke="#333" stroke-width="3"/>
+                        <line x1="260" y1="150" x2="300" y2="150" stroke="#333" stroke-width="3"/>
+                        
+                        <!-- Courant -->
+                        <text x="230" y="120" text-anchor="middle" font-size="16" fill="#2196F3" font-weight="bold">i(t) →</text>
+                        
+                        <!-- Inductance (bobine) -->
+                        <circle cx="330" cy="150" r="10" fill="none" stroke="#333" stroke-width="3"/>
+                        <circle cx="350" cy="150" r="10" fill="none" stroke="#333" stroke-width="3"/>
+                        <circle cx="370" cy="150" r="10" fill="none" stroke="#333" stroke-width="3"/>
+                        <text x="350" y="185" text-anchor="middle" font-size="20" font-weight="bold">L</text>
+                        <line x1="300" y1="150" x2="320" y2="150" stroke="#333" stroke-width="3"/>
+                        <line x1="380" y1="150" x2="420" y2="150" stroke="#333" stroke-width="3"/>
+                        
+                        <!-- Tension u_L(t) -->
+                        <text x="350" y="210" text-anchor="middle" font-size="16" fill="#e74c3c" font-weight="bold">u_L(t)</text>
+                        
+                        <!-- Retour -->
+                        <line x1="420" y1="150" x2="450" y2="150" stroke="#333" stroke-width="3"/>
+                        <line x1="450" y1="150" x2="450" y2="250" stroke="#333" stroke-width="3"/>
+                        <line x1="450" y1="250" x2="80" y2="250" stroke="#333" stroke-width="3"/>
+                        <line x1="80" y1="250" x2="80" y2="180" stroke="#333" stroke-width="3"/>
+                        
+                        <!-- Masse -->
+                        <line x1="60" y1="250" x2="100" y2="250" stroke="#333" stroke-width="3"/>
+                        <line x1="70" y1="260" x2="90" y2="260" stroke="#333" stroke-width="3"/>
+                        <line x1="75" y1="270" x2="85" y2="270" stroke="#333" stroke-width="3"/>
+                    </svg>
+                </div>
+
+                <div class="box">
+                    <h4>📊 Équation différentielle et solution</h4>
+                    <div class="formule">
+                        <div class="formule-titre">Équation pour i(t)</div>
+                        (L/R) × di(t)/dt + i(t) = E/R
+                        <br><br>
+                        <span style="color: #e74c3c;">τ = L/R</span> (constante de temps)
+                    </div>
+
+                    <div class="formule">
+                        <div class="formule-titre">✅ SOLUTION pour i(t)</div>
+                        i(t) = (E/R) × (1 - e^(-t/τ))
+                        <br><br>
+                        Avec : i(0⁺) = 0 et i(∞) = E/R
+                    </div>
+
+                    <div class="formule">
+                        <div class="formule-titre">Tension u_L(t)</div>
+                        u_L(t) = E × e^(-t/τ)
+                        <br><br>
+                        Avec : u_L(0⁺) = E et u_L(∞) = 0
+                    </div>
+                </div>
+
+                <div class="astuce">
+                    <strong>DUALITÉ RC ↔ RL :</strong> Le comportement de i(t) dans un circuit RL est identique au comportement de u_c(t) dans un circuit RC ! De même, u_L(t) se comporte comme i(t) dans le circuit RC.
+                </div>
+            </section>
+
+            <!-- CIRCUITS 2ÈME ORDRE -->
+            <section id="ordre2">
+                <h2>⚡ Circuits du 2ÈME ORDRE (RLC)</h2>
+
+                <h3>🔴 A. Circuit RLC Série</h3>
+                
+                <div class="circuit-schema">
+                    <h4>Schéma du circuit RLC série</h4>
+                    <svg width="700" height="300" viewBox="0 0 700 300" class="svg-circuit">
+                        <!-- Source -->
+                        <circle cx="80" cy="150" r="30" fill="none" stroke="#e74c3c" stroke-width="3"/>
+                        <text x="80" y="155" text-anchor="middle" font-size="20" font-weight="bold" fill="#e74c3c">E</text>
+                        
+                        <!-- Interrupteur -->
+                        <line x1="110" y1="150" x2="150" y2="150" stroke="#333" stroke-width="3"/>
+                        <text x="130" y="135" text-anchor="middle" font-size="16" font-weight="bold">K</text>
+                        
+                        <!-- Résistance -->
+                        <rect x="180" y="135" width="80" height="30" fill="none" stroke="#333" stroke-width="3"/>
+                        <text x="220" y="155" text-anchor="middle" font-size="18" font-weight="bold">R</text>
+                        <text x="220" y="120" text-anchor="middle" font-size="14">u_R</text>
+                        <line x1="150" y1="150" x2="180" y2="150" stroke="#333" stroke-width="3"/>
+                        <line x1="260" y1="150" x2="300" y2="150" stroke="#333" stroke-width="3"/>
+                        
+                        <!-- Inductance -->
+                        <circle cx="330" cy="150" r="10" fill="none" stroke="#333" stroke-width="3"/>
+                        <circle cx="350" cy="150" r="10" fill="none" stroke="#333" stroke-width="3"/>
+                        <circle cx="370" cy="150" r="10" fill="none" stroke="#333" stroke-width="3"/>
+                        <text x="350" y="120" text-anchor="middle" font-size="18" font-weight="bold">L</text>
+                        <text x="350" y="185" text-anchor="middle" font-size="14">u_L</text>
+                        <line x1="300" y1="150" x2="320" y2="150" stroke="#333" stroke-width="3"/>
+                        <line x1="380" y1="150" x2="420" y2="150" stroke="#333" stroke-width="3"/>
+                        
+                        <!-- Condensateur -->
+                        <line x1="470" y1="110" x2="470" y2="190" stroke="#333" stroke-width="3"/>
+                        <line x1="480" y1="110" x2="480" y2="190" stroke="#333" stroke-width="3"/>
+                        <text x="510" y="155" text-anchor="start" font-size="18" font-weight="bold">C</text>
+                        <text x="475" y="210" text-anchor="middle" font-size="14">u_c</text>
+                        <line x1="420" y1="150" x2="470" y2="150" stroke="#333" stroke-width="3"/>
+                        <line x1="480" y1="150" x2="520" y2="150" stroke="#333" stroke-width="3"/>
+                        
+                        <!-- Courant -->
+                        <text x="300" y="100" text-anchor="middle" font-size="16" fill="#2196F3" font-weight="bold">i(t) →</text>
+                        
+                        <!-- Retour -->
+                        <line x1="520" y1="150" x2="550" y2="150" stroke="#333" stroke-width="3"/>
+                        <line x1="550" y1="150" x2="550" y2="250" stroke="#333" stroke-width="3"/>
+                        <line x1="550" y1="250" x2="80" y2="250" stroke="#333" stroke-width="3"/>
+                        <line x1="80" y1="250" x2="80" y2="180" stroke="#333" stroke-width="3"/>
+                        
+                        <!-- Masse -->
+                        <line x1="60" y1="250" x2="100" y2="250" stroke="#333" stroke-width="3"/>
+                    </svg>
+                </div>
+
+                <div class="box">
+                    <h4>📊 Équation différentielle canonique</h4>
+                    <div class="formule">
+                        <div class="formule-titre">Forme générale pour x(t)</div>
+                        d²x(t)/dt² + 2λ × dx(t)/dt + ω₀² × x(t) = μ
+                    </div>
+
+                    <div class="formule">
+                        <div class="formule-titre">Paramètres du circuit RLC série</div>
+                        <strong>ω₀ = 1/√(LC)</strong> ← Pulsation propre
+                        <br><br>
+                        <strong>2λ = R/L</strong> ← Coefficient d'amortissement
+                        <br><br>
+                        <strong>λ = R/(2L)</strong>
+                    </div>
+                </div>
+
+                <div class="important">
+                    <h4>🎯 LES 3 RÉGIMES SELON λ et ω₀</h4>
+                    <p><strong>Discriminant : Δ = λ² - ω₀²</strong></p>
+                    
+                    <table>
+                        <tr>
+                            <th>Condition</th>
+                            <th>Régime</th>
+                            <th>Comportement</th>
+                            <th>Solution</th>
+                        </tr>
+                        <tr>
+                            <td><strong>λ > ω₀</strong><br>(Δ > 0)</td>
+                            <td><span class="regime regime-aperiodique">APÉRIODIQUE</span></td>
+                            <td>Retour lent à l'équilibre sans oscillation</td>
+                            <td>x(t) = Ae^(r₁t) + Be^(r₂t)<br>r₁,₂ = -λ ± √(λ²-ω₀²)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>λ = ω₀</strong><br>(Δ = 0)</td>
+                            <td><span class="regime regime-critique">CRITIQUE</span></td>
+                            <td>Retour le plus rapide sans oscillation</td>
+                            <td>x(t) = (A + Bt)e^(-λt)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>λ < ω₀</strong><br>(Δ < 0)</td>
+                            <td><span class="regime regime-periodique">PSEUDO-PÉRIODIQUE</span></td>
+                            <td>Oscillations amorties</td>
+                            <td>x(t) = Ke^(-λt) × cos(ω_p×t + φ)<br>ω_p = √(ω₀²-λ²)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <h3>📈 Exemple complet : Tension u_c(t) dans RLC série</h3>
+                
+                <div class="exemple">
+                    <h4>Données :</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>Tension d'entrée : E (échelon)</li>
+                        <li>Conditions initiales : u_c(0⁻) = 0, i(0⁻) = 0</li>
+                    </ul>
+
+                    <h4>🔹 Équation différentielle :</h4>
+                    <div class="formule">
+                        d²u_c/dt² + (R/L) × du_c/dt + (1/LC) × u_c = E/LC
+                    </div>
+
+                    <h4>🔹 Conditions initiales :</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>u_c(0⁺) = u_c(0⁻) = 0 (continuité de la tension aux bornes de C)</li>
+                        <li>du_c/dt|_(t=0⁺) = i(0⁺)/C = 0 (car i(0⁺) = i(0⁻) = 0 par continuité du courant dans L)</li>
+                    </ul>
+
+                    <h4>🔹 Solutions selon le régime :</h4>
+                    
+                    <div class="box">
+                        <strong>RÉGIME PSEUDO-PÉRIODIQUE (λ < ω₀) :</strong>
+                        <div class="formule">
+                            u_c(t) = E × [1 - e^(-λt) × cos(ω_p×t + φ)]
+                            <br><br>
+                            Avec : ω_p = √(ω₀² - λ²) et φ à déterminer avec les CI
+                        </div>
+                        <p style="margin-top: 10px;"><strong>Période propre :</strong> T_p = 2π/ω_p</p>
+                    </div>
+                </div>
+
+                <div class="astuce">
+                    Pour déterminer le régime sans calculer : si <strong>R est faible</strong> → régime oscillant. Si <strong>R est grande</strong> → régime apériodique. Le régime critique est un cas particulier (frontière entre les deux).
+                </div>
+            </section>
+
+            <!-- FORMULES ESSENTIELLES -->
+            <section id="formules">
+                <h2>📐 FORMULES ESSENTIELLES À CONNAÎTRE</h2>
+
+                <h3>🔵 Relations fondamentales des composants</h3>
+                <table>
+                    <tr>
+                        <th>Composant</th>
+                        <th>Relation courant-tension</th>
+                        <th>Comportement</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Résistance R</strong></td>
+                        <td>u_R = R × i_R</td>
+                        <td>Instantané (pas de mémoire)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inductance L</strong></td>
+                        <td>u_L = L × di_L/dt</td>
+                        <td>S'oppose aux variations de courant<br>✅ i_L(t₀⁺) = i_L(t₀⁻)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Capacité C</strong></td>
+                        <td>i_C = C × du_C/dt</td>
+                        <td>S'oppose aux variations de tension<br>✅ u_C(t₀⁺) = u_C(t₀⁻)</td>
+                    </tr>
+                </table>
+
+                <h3>🟢 Circuits du 1er ordre</h3>
+                <div class="box">
+                    <h4>Circuit RC</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Constante de temps :</strong> τ = RC</li>
+                        <li><strong>Charge :</strong> u_c(t) = E(1 - e^(-t/τ))</li>
+                        <li><strong>Décharge :</strong> u_c(t) = E × e^(-t/τ)</li>
+                        <li><strong>Courant charge :</strong> i(t) = (E/R) × e^(-t/τ)</li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <h4>Circuit RL</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Constante de temps :</strong> τ = L/R</li>
+                        <li><strong>Établissement :</strong> i(t) = (E/R) × (1 - e^(-t/τ))</li>
+                        <li><strong>Tension :</strong> u_L(t) = E × e^(-t/τ)</li>
+                    </ul>
+                </div>
+
+                <h3>🔴 Circuits du 2ème ordre - RLC</h3>
+                <div class="formule">
+                    <div class="formule-titre">Paramètres fondamentaux</div>
+                    <strong>Pulsation propre :</strong> ω₀ = 1/√(LC)
+                    <br><br>
+                    <strong>Coefficient d'amortissement :</strong> λ = R/(2L) pour RLC série
+                    <br><br>
+                    <strong>Pulsation pseudo-période :</strong> ω_p = √(ω₀² - λ²) si λ < ω₀
+                    <br><br>
+                    <strong>Période propre :</strong> T_p = 2π/ω_p
+                </div>
+
+                <div class="important">
+                    <h4>⚡ Choix du régime :</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>λ > ω₀</strong> ou <strong>R > 2√(L/C)</strong> → APÉRIODIQUE</li>
+                        <li><strong>λ = ω₀</strong> ou <strong>R = 2√(L/C)</strong> → CRITIQUE</li>
+                        <li><strong>λ < ω₀</strong> ou <strong>R < 2√(L/C)</strong> → PSEUDO-PÉRIODIQUE</li>
+                    </ul>
+                </div>
+
+                <h3>📊 Temps de réponse</h3>
+                <table>
+                    <tr>
+                        <th>Pourcentage</th>
+                        <th>Temps (1er ordre)</th>
+                    </tr>
+                    <tr>
+                        <td>63%</td>
+                        <td>t = τ</td>
+                    </tr>
+                    <tr>
+                        <td>95%</td>
+                        <td>t = 3τ</td>
+                    </tr>
+                    <tr>
+                        <td>99%</td>
+                        <td>t = 5τ (régime permanent atteint)</td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- EXERCICES -->
+            <section id="exercices">
+                <h2>✍️ EXERCICES TYPES AVEC SOLUTIONS</h2>
+
+                <div class="exercice">
+                    <h3>📝 Exercice 1 : Circuit RC (Séance 4)</h3>
+                    
+                    <h4>Énoncé :</h4>
+                    <p>Soit le circuit suivant où U_E(t) est un échelon :</p>
+                    <ul style="margin-left: 20px;">
+                        <li>U_E(t) = 0 pour t < 0</li>
+                        <li>U_E(t) = E pour t ≥ 0</li>
+                        <li>On veut étudier l'évolution de U_R2(t)</li>
+                    </ul>
+
+                    <div class="circuit-schema">
+                        <svg width="500" height="300" viewBox="0 0 500 300">
+                            <!-- Source -->
+                            <text x="50" y="150" font-size="18" font-weight="bold">U_E(t)</text>
+                            
+                            <!-- R1 -->
+                            <rect x="120" y="135" width="60" height="30" fill="none" stroke="#333" stroke-width="2"/>
+                            <text x="150" y="155" text-anchor="middle" font-size="16" font-weight="bold">R₁</text>
+                            <text x="150" y="120" text-anchor="middle" font-size="14">U_R1</text>
+                            
+                            <!-- Condensateur -->
+                            <line x1="250" y1="120" x2="250" y2="180" stroke="#333" stroke-width="2"/>
+                            <line x1="260" y1="120" x2="260" y2="180" stroke="#333" stroke-width="2"/>
+                            <text x="290" y="155" font-size="16" font-weight="bold">C</text>
+                            <text x="255" y="200" text-anchor="middle" font-size="14">U_C</text>
+                            
+                            <!-- R2 -->
+                            <rect x="350" y="135" width="60" height="30" fill="none" stroke="#333" stroke-width="2"/>
+                            <text x="380" y="155" text-anchor="middle" font-size="16" font-weight="bold">R₂</text>
+                            <text x="380" y="120" text-anchor="middle" font-size="14" fill="#e74c3c">U_R2</text>
+                            
+                            <!-- Courant i(t) -->
+                            <text x="200" y="130" font-size="14" fill="#2196F3">i(t) →</text>
+                            
+                            <!-- Connexions -->
+                            <line x1="80" y1="150" x2="120" y2="150" stroke="#333" stroke-width="2"/>
+                            <line x1="180" y1="150" x2="250" y2="150" stroke="#333" stroke-width="2"/>
+                            <line x1="260" y1="150" x2="350" y2="150" stroke="#333" stroke-width="2"/>
+                            <line x1="410" y1="150" x2="450" y2="150" stroke="#333" stroke-width="2"/>
+                            <line x1="450" y1="150" x2="450" y2="250" stroke="#333" stroke-width="2"/>
+                            <line x1="450" y1="250" x2="50" y2="250" stroke="#333" stroke-width="2"/>
+                            <line x1="50" y1="250" x2="50" y2="170" stroke="#333" stroke-width="2"/>
+                        </svg>
+                    </div>
+
+                    <h4>📋 Démarche complète :</h4>
+                    
+                    <div class="liste-etapes">
+                        <strong>1️⃣ Conditions initiales AVANT basculement (t = 0⁻) :</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>U_E = 0 → Circuit au repos</li>
+                            <li>i(0⁻) = 0</li>
+                            <li>U_C(0⁻) = 0</li>
+                            <li>U_R1(0⁻) = 0, U_R2(0⁻) = 0</li>
+                        </ul>
+                    </div>
+
+                    <div class="liste-etapes">
+                        <strong>2️⃣ Conditions initiales JUSTE APRÈS basculement (t = 0⁺) :</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>U_C(0⁺) = U_C(0⁻) = 0 (continuité)</li>
+                            <li>Équation de maille : E = U_R1 + U_C + U_R2</li>
+                            <li>À t = 0⁺ : E = R₁×i(0⁺) + 0 + R₂×i(0⁺)</li>
+                            <li>Donc : <strong>i(0⁺) = E/(R₁ + R₂)</strong></li>
+                            <li><strong>U_R2(0⁺) = R₂ × E/(R₁ + R₂)</strong></li>
+                        </ul>
+                    </div>
+
+                    <div class="liste-etapes">
+                        <strong>3️⃣ Régime permanent (t → ∞) :</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Le condensateur est complètement chargé</li>
+                            <li>i(∞) = 0 (plus de courant)</li>
+                            <li><strong>U_R2(∞) = 0</strong></li>
+                            <li>U_C(∞) = E</li>
+                        </ul>
+                    </div>
+
+                    <div class="liste-etapes">
+                        <strong>4️⃣ Équation différentielle :</strong>
+                        <p style="margin: 10px 0;">Loi de maille : E = R₁×i + U_C + R₂×i</p>
+                        <p>Avec i = C × dU_C/dt</p>
+                        <p>On dérive pour obtenir une équation en U_R2 :</p>
+                        <div class="formule">
+                            (R₁ + R₂)C × dU_R2/dt + U_R2 = 0
+                            <br><br>
+                            <strong>τ = (R₁ + R₂)C</strong>
+                        </div>
+                    </div>
+
+                    <div class="liste-etapes">
+                        <strong>5️⃣ Solution :</strong>
+                        <div class="formule">
+                            U_R2(t) = [R₂×E/(R₁ + R₂)] × e^(-t/τ)
+                        </div>
+                    </div>
+
+                    <div class="liste-etapes">
+                        <strong>7️⃣ Temps de réponse à 90% :</strong>
+                        <p style="margin: 10px 0;">On cherche t tel que U_R2(t) = 0.1 × U_R2(0⁺)</p>
+                        <p>e^(-t/τ) = 0.1</p>
+                        <p>-t/τ = ln(0.1)</p>
+                        <div class="formule">
+                            <strong>t_90% = 2.3 × τ</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exercice">
+                    <h3>📝 Exercice 2 : Circuit RL avec signal rectangulaire (Séance 5)</h3>
+                    
+                    <h4>Énoncé :</h4>
+                    <p>Circuit R-L alimenté par une tension rectangulaire symétrique Ve(t) :</p>
+                    <ul style="margin-left: 20px;">
+                        <li>Ve(t) = +E pour 0 < t < T/2</li>
+                        <li>Ve(t) = -E pour T/2 < t < T</li>
+                        <li>Période T >> τ (constante de temps du circuit)</li>
+                        <li>À t = 0⁻, régime permanent établi avec Ve(0⁻) = +E</li>
+                    </ul>
+
+                    <h4>📋 Analyse par intervalles :</h4>
+                    
+                    <div class="box">
+                        <strong>INTERVALLE 1 : [0, T/2]</strong>
+                        <p style="margin: 10px 0;"><strong>Conditions :</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>Ve(t) = +E</li>
+                            <li>Régime permanent avant : Vs(0⁻) = +E</li>
+                            <li>Donc : i(0⁻) = E/R et Vs(0⁻) = E</li>
+                        </ul>
+
+                        <p style="margin: 10px 0;"><strong>Équation :</strong></p>
+                        <div class="formule">
+                            E = R×i + L×di/dt
+                            <br>
+                            Vs(t) = L×di/dt
+                            <br><br>
+                            τ×dVs/dt + Vs = 0, avec τ = L/R
+                        </div>
+
+                        <p style="margin: 10px 0;"><strong>Solution :</strong></p>
+                        <p>Comme le régime permanent était établi avec Ve = +E, et Ve reste à +E :</p>
+                        <div class="formule">
+                            <strong>Vs(t) = 0</strong> pour t ∈ [0, T/2]
+                            <br>
+                            (Pas de variation → Pas de tension aux bornes de L)
+                        </div>
+                    </div>
+
+                    <div class="box">
+                        <strong>INTERVALLE 2 : [T/2, T]</strong>
+                        <p style="margin: 10px 0;"><strong>Conditions :</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>Ve passe de +E à -E (saut de 2E)</li>
+                            <li>i(T/2⁻) = E/R (continuité du courant dans L)</li>
+                            <li>À t = T/2⁺ : -E = R×i(T/2⁺) + Vs(T/2⁺)</li>
+                            <li>-E = R×(E/R) + Vs(T/2⁺)</li>
+                            <li><strong>Vs(T/2⁺) = -2E</strong></li>
+                        </ul>
+
+                        <p style="margin: 10px 0;"><strong>Équation et solution :</strong></p>
+                        <div class="formule">
+                            τ×dVs/dt + Vs = 0
+                            <br><br>
+                            Vs(t) = -2E × e^(-(t-T/2)/τ)
+                            <br><br>
+                            pour t ∈ [T/2, T]
+                        </div>
+
+                        <p style="margin: 10px 0;"><strong>Régime permanent :</strong></p>
+                        <p>Si T >> τ, alors Vs(T⁻) ≈ 0</p>
+                    </div>
+
+                    <div class="astuce">
+                        Pour un signal rectangulaire, divise toujours le problème en intervalles où Ve est constant. N'oublie pas d'utiliser les conditions de continuité à chaque changement !
+                    </div>
+                </div>
+
+                <div class="exercice">
+                    <h3>📝 Exercice 3 : RLC série - Régime pseudo-périodique</h3>
+                    
+                    <h4>Données :</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>R = 10 Ω, L = 0.1 H, C = 100 μF</li>
+                        <li>Échelon de tension E = 12 V</li>
+                        <li>Condensateur initialement déchargé</li>
+                    </ul>
+
+                    <h4>Questions :</h4>
+                    <ol style="margin-left: 20px;">
+                        <li>Déterminer le type de régime</li>
+                        <li>Calculer la pseudo-période</li>
+                        <li>Écrire l'expression de u_c(t)</li>
+                    </ol>
+
+                    <div class="liste-etapes">
+                        <strong>✅ Solution :</strong>
+                        
+                        <p><strong>1) Type de régime :</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>ω₀ = 1/√(LC) = 1/√(0.1 × 100×10⁻⁶) = 316.2 rad/s</li>
+                            <li>λ = R/(2L) = 10/(2×0.1) = 50 rad/s</li>
+                            <li>λ < ω₀ → <span class="regime regime-periodique">RÉGIME PSEUDO-PÉRIODIQUE</span></li>
+                        </ul>
+
+                        <p><strong>2) Pseudo-période :</strong></p>
+                        <ul style="margin-left: 20px;">
+                            <li>ω_p = √(ω₀² - λ²) = √(316.2² - 50²) = 312.2 rad/s</li>
+                            <li><strong>T_p = 2π/ω_p = 20.1 ms</strong></li>
+                        </ul>
+
+                        <p><strong>3) Expression u_c(t) :</strong></p>
+                        <div class="formule">
+                            u_c(t) = 12 × [1 - e^(-50t) × (cos(312.2t) + 0.16×sin(312.2t))]
+                            <br><br>
+                            ou sous forme compacte :
+                            <br>
+                            u_c(t) = 12 × [1 - 1.01×e^(-50t) × cos(312.2t - 0.16)]
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONSEILS FINAUX -->
+            <section>
+                <h2>🎯 CONSEILS POUR RÉUSSIR TON EXAMEN</h2>
+
+                <div class="important">
+                    <h3>✅ Checklist avant de commencer un exercice :</h3>
+                    <ol style="margin-left: 20px; line-height: 2;">
+                        <li>📊 <strong>Dessiner le circuit proprement</strong></li>
+                        <li>⚡ <strong>Définir toutes les grandeurs</strong> (tensions, courants, sens)</li>
+                        <li>📝 <strong>Noter les conditions initiales</strong> (t < 0)</li>
+                        <li>🔍 <strong>Identifier les éléments réactifs</strong> (L et C)</li>
+                        <li>📐 <strong>Appliquer les lois de continuité</strong></li>
+                        <li>✍️ <strong>Écrire l'équation différentielle</strong></li>
+                        <li>🎨 <strong>Déterminer le régime</strong> (pour ordre 2)</li>
+                        <li>✅ <strong>Résoudre avec les CI</strong></li>
+                    </ol>
+                </div>
+
+                <div class="astuce">
+                    <strong>Erreurs à éviter :</strong>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>❌ Oublier les conditions de continuité (L et C)</li>
+                        <li>❌ Confondre t = 0⁺ et t = 0⁻</li>
+                        <li>❌ Négliger les unités dans les calculs</li>
+                        <li>❌ Ne pas vérifier la cohérence des résultats</li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <h3>📚 Points clés à réviser la veille :</h3>
+                    <ul style="margin-left: 20px; line-height: 2;">
+                        <li>🔹 Les deux lois de continuité (L et C)</li>
+                        <li>🔹 Constantes de temps : τ = RC et τ = L/R</li>
+                        <li>🔹 Les 3 régimes du 2ème ordre</li>
+                        <li>🔹 ω₀ = 1/√(LC) et λ = R/(2L)</li>
+                        <li>🔹 Méthode de résolution en 4 étapes</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; padding: 40px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; margin-top: 40px;">
+                    <h2 style="color: white; border: none;">🌟 BONNE CHANCE POUR TON EXAMEN ! 🌟</h2>
+                    <p style="font-size: 1.3em; margin-top: 20px;">Tu as toutes les clés pour réussir !</p>
+                    <p style="font-size: 1.1em; margin-top: 10px;">💪 Reste confiant et méthodique ! 💪</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
